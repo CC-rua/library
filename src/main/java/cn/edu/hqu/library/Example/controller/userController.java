@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 
@@ -24,7 +25,7 @@ public class userController extends ConvertServiceImpl {
         this.userService = userService;
     }
 
-    @RequestMapping
+    @RequestMapping(method = RequestMethod.GET)
     public String ShowUserPage(@ModelAttribute("name")String name, Model model){
 
         User user=  userService.findUserByUserName(name);

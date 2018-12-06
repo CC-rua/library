@@ -11,13 +11,14 @@
 <div>
     <form action="" method="get" th:action="@{/user}" th:object="${users}">
         <label>用户名:
-            <output type="text" name="name"  th:text="*{name}"></output>
+            <output type="text" name="name"  th:text="*{name}"></output><br/>
             密码:
-            <output type="text" name="pwd"  th:text="*{pwd}"></output>
+            <output type="text" name="pwd"  th:text="*{pwd}"></output><br/>
             生日:
-            <output type="text" name="birthday"  th:text="*{birthday}"></output>
+            <output type="text" name="birthday"  th:text="*{birthday}"></output><br/>
         </label><br />
     </form>
+    <a th:href="@{/borrow}" href="/borrow">借书信息</a>
 </div>
 </body>
 </html>

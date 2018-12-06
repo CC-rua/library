@@ -74,7 +74,7 @@ public class loginController {
 
 
 
-            if(userService.findUserByUserNameAndPwd(user.getName(),user.getPwd())==null){
+            if(userService.Authentication(user.getName(),user.getPwd())==null){
                 return "index";
             }else {
                 session.setAttribute("name", user.getName());

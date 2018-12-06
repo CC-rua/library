@@ -6,7 +6,8 @@ import cn.edu.hqu.library.Example.service.dto.users;
 
 public interface UserService {
      boolean userExist(users user);
-     User findUserByUserNameAndPwd(String name, String password);
+     User Authentication(String name, String password);
      User findUserByUserName(String name);
      void addUser(User user);
+     boolean UserRegister(users user1);
      }

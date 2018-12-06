@@ -1,7 +1,7 @@
 package cn.edu.hqu.library.Example.controller;
 
 import cn.edu.hqu.library.Example.service.Impl.BaseServiceImpl;
-import cn.edu.hqu.library.Example.service.RegisterService;
+import cn.edu.hqu.library.Example.service.UserService;
 import cn.edu.hqu.library.Example.service.dto.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,11 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping(value = "/register")
 public class registerController extends BaseServiceImpl {
-    private final RegisterService registerService;
+    private final UserService userService;
 
     @Autowired
-    public registerController(RegisterService registerService) {
-        this.registerService = registerService;
+    public registerController(UserService userService) {
+        this.userService = userService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -39,7 +39,7 @@ public class registerController extends BaseServiceImpl {
             user1.setName(user.getName());
             user1.setPwd(user.getPwd());
             user1.setBirthday(user.getBirthday());
-            if(registerService.UserRegister(user1)){//注册成功
+            if(userService.UserRegister(user1)){//注册成功
                 return "index";
             }else {
                 return "register";
