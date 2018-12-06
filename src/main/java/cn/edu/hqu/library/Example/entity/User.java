@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,7 +19,9 @@ public class User {
 
   @Id
   @Column(name = "UserID")
-  private String userId;
-  private String passwd;
+  private String username;
+  @Column(name = "passwd")
+  private String password;
   private String type;
+  private Date birthday;
 }

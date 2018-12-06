@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link
+            href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            rel="stylesheet">
+</head>
+<body>
+<div>
+    <form action="" method="get" th:action="@{/user}" th:object="${users}">
+        <label>用户名:
+            <output type="text" name="name"  th:text="*{name}"></output>
+            密码:
+            <output type="text" name="pwd"  th:text="*{pwd}"></output>
+            生日:
+            <output type="text" name="birthday"  th:text="*{birthday}"></output>
+        </label><br />
+    </form>
+</div>
+</body>
+</html>
