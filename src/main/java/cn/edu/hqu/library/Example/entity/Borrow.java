@@ -1,25 +1,25 @@
 package cn.edu.hqu.library.Example.entity;
 
+import cn.edu.hqu.library.Example.entity.UnionKey.BorrowKey;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
 @Table(name="borrow")
-public class Borrow {
+@IdClass(BorrowKey.class)
+public class Borrow implements Serializable {
 
   @Id
   @Column(name = "UserID")
   private String userId;
-
+  @Id
   @Column
   private String code;
   @Column(name = "Btime")
