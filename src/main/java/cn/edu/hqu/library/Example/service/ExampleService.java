@@ -1,9 +1,7 @@
 package cn.edu.hqu.library.Example.service;
 
-import cn.edu.hqu.library.Example.entity.Example;
 import cn.edu.hqu.library.Example.entity.User;
-import cn.edu.hqu.library.Example.mapper.ExampleImp;
-import cn.edu.hqu.library.Example.mapper.ExampleRepositroy;
+import cn.edu.hqu.library.Example.mapper.ExampleRepository;
 import cn.edu.hqu.library.Example.mapper.ExampleServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +9,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ExampleService implements ExampleServiceImp {
     private final
-    ExampleRepositroy exampleRepositroy;
+    ExampleRepository exampleRepositroy;
 
     @Autowired
-    public ExampleService(ExampleRepositroy exampleRepositroy) {
+    public ExampleService(ExampleRepository exampleRepositroy) {
         this.exampleRepositroy = exampleRepositroy;
     }
     public void AddFakeDate() {
