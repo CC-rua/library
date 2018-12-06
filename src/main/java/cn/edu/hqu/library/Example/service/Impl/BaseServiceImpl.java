@@ -17,7 +17,7 @@ public class BaseServiceImpl {
     private class MyDateEditor extends PropertyEditorSupport {
         @Override
         public void  setAsText (String text){
-            SimpleDateFormat format = new SimpleDateFormat(("yyyy-MM-dd HH:mm:ss"));
+            SimpleDateFormat format = new SimpleDateFormat(("yyyy-MM-dd"));
             Date date=null;
             try {
                 date=format.parse(text);

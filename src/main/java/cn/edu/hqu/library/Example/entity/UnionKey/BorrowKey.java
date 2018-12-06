@@ -1,29 +1,22 @@
 package cn.edu.hqu.library.Example.entity.UnionKey;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 /* 联合主键 */
 @Embeddable
+@Data
+@NoArgsConstructor
 public class BorrowKey implements Serializable {
+
     private String userId;
+
     private String code;
-    private String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    private String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-    public BorrowKey(){ }
 
     @Override
     public boolean equals(Object o) {
