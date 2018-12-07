@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -24,5 +25,5 @@ public class User {
   @Column(name = "passwd")
   private String password;
   private String type;
-  private Date birthday;
+  private LocalDate birthday;
 }

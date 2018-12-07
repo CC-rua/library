@@ -1,5 +1,6 @@
 package cn.edu.hqu.library.controller;
 
+import cn.edu.hqu.library.controller.vo.BorrorForm;
 import cn.edu.hqu.library.entity.Borrow;
 import cn.edu.hqu.library.service.BorrowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -27,7 +29,12 @@ public class borrowController {
     public String ShowBorrowPage(@ModelAttribute("name")String name, Model model){
         List<Borrow>borrows;
         borrows= borrowService.borrowInfo(name);
-        model.addAttribute("borrows",borrows);
+        List<BorrorForm> result = new ArrayList<>();
+        for(Borrow borrow : borrows)
+        {
+            result.add(new BorrorForm(borrow));
+        }
+        model.addAttribute("borrows",result);
         return "borrow";
     }
 }
