@@ -9,4 +9,5 @@ import java.util.List;
 public interface BookService {
     List<Borrow> borrowInfo(String name);
     List<BookInfo> FindBorrowInfoByName(String name);
+    List<BookInfo> FindBookInfoByName(String name);
 }

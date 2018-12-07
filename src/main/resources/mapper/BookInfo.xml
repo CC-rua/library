@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.hqu.library.mapper.BookImp">
+
+    <select id="FindBookInfoByName" resultType="cn.edu.hqu.library.service.dto.BookInfo" >
+		SELECT DISTINCT book.Code AS "Code",
+						bookmessage.name AS "name",
+						bookmessage.jiaofu AS "JiaoFu",
+		bookmessage.kind AS "Kind"
+		FROM
+			 book LEFT JOIN bookmessage on book.BookID = bookmessage.BookID
+		WHERE
+				bookmessage.name=#{0}
+    </select>
+
+</mapper>

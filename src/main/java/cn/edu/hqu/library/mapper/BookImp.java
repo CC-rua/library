@@ -9,4 +9,5 @@ import java.util.List;
 @Component
 public interface BookImp {
     public List<BookInfo> FindBorrowInfoByName(String name);
+    public List<BookInfo> FindBookInfoByName(String name);
 }

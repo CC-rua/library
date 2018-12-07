@@ -30,4 +30,9 @@ public class BookServiceImpl implements BookService {
     public List<BookInfo> FindBorrowInfoByName(String name) {
         return bookImp.FindBorrowInfoByName(name);
     }
+
+    @Override
+    public List<BookInfo> FindBookInfoByName(String name) {
+        return bookImp.FindBookInfoByName(name);
+    }
 }

@@ -5,6 +5,13 @@
     <title>Title</title>
 </head>
 <body>
+<form action="" method="post" th:action="@{/index}" >
+
+    <label >书名:
+        <input  name="name" />
+    </label>
+    <input type="submit" value="查询" /><br />
+</form>
         <a th:href="@{/login}" href="login">登陆</a>
 </body>
 </html>
