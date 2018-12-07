@@ -1,6 +1,7 @@
 package cn.edu.hqu.library.controller.vo;
 
 import cn.edu.hqu.library.entity.Borrow;
+import cn.edu.hqu.library.service.dto.BookInfo;
 import cn.edu.hqu.library.util.DateTransferUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,8 +18,8 @@ import java.time.ZoneId;
 @AllArgsConstructor
 public class BorrorForm {
 
-    private String userId;
 
+    private String name;
     private String code;
 
     private LocalDate btime;
@@ -27,12 +28,12 @@ public class BorrorForm {
 
     private String jiaofu;
 
-    public BorrorForm(Borrow borrow) {
-        this.userId = borrow.getUserId();
+    public BorrorForm(BookInfo borrow) {
+        this.name=borrow.getName();
         this.code = borrow.getCode();
         this.btime = DateTransferUtil.DateToLocalDate(borrow.getBtime());
         this.etime = DateTransferUtil.DateToLocalDate(borrow.getEtime());
-        this.jiaofu = borrow.getJiaofu();
+        this.jiaofu = borrow.getJiaoFu();
     }
 
 }

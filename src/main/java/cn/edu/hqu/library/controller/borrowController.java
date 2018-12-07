@@ -1,8 +1,8 @@
 package cn.edu.hqu.library.controller;
 
 import cn.edu.hqu.library.controller.vo.BorrorForm;
-import cn.edu.hqu.library.entity.Borrow;
-import cn.edu.hqu.library.service.BorrowService;
+import cn.edu.hqu.library.service.BookService;
+import cn.edu.hqu.library.service.dto.BookInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,19 +18,19 @@ import java.util.List;
 @RequestMapping("/borrow")
 @SessionAttributes({"name"})
 public class borrowController {
-    private final BorrowService borrowService;
+    private final BookService bookService;
 
     @Autowired
-    public borrowController(BorrowService borrowService) {
-        this.borrowService = borrowService;
+    public borrowController(BookService borrowService) {
+        this.bookService = borrowService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public String ShowBorrowPage(@ModelAttribute("name")String name, Model model){
-        List<Borrow>borrows;
-        borrows= borrowService.borrowInfo(name);
+        List<BookInfo>borrows;
+        borrows= bookService.FindBorrowInfoByName(name);
         List<BorrorForm> result = new ArrayList<>();
-        for(Borrow borrow : borrows)
+        for(BookInfo borrow : borrows)
         {
             result.add(new BorrorForm(borrow));
         }

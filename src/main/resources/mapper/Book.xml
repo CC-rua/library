@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.hqu.library.mapper.BookImp">
+
+    <select id="FindBorrowInfoByName" resultType="cn.edu.hqu.library.service.dto.BookInfo" >
+     		SELECT DISTINCT book.Code AS "Code",
+						bookmessage.name AS "name",
+						borrow.Btime AS "Btime",
+						borrow.Etime AS "Etime"
+		FROM
+			 book LEFT JOIN bookmessage on book.BookID = bookmessage.BookID
+				  LEFT JOIN borrow on book.BookID
+		WHERE
+				borrow.UserID = #{0}
+    </select>
+
+</mapper>
