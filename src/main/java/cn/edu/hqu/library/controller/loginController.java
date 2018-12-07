@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = {"/","index"})
+@RequestMapping(value = {"login"})
 @SessionAttributes({"name","pwd"})
 public class loginController {
     private final UserService userService;
@@ -42,19 +42,19 @@ public class loginController {
                 } else {
                     users user1 = new users();
                     model.addAttribute(user1);
-                    return "index";
+                    return "login";
                 }
             }
         }
         users user1 = new users();
         model.addAttribute(user1);
-        return "index";
+        return "login";
     }
     @RequestMapping(method = RequestMethod.POST)
     public String LoginAction(@Valid users user, Errors errors, RedirectAttributes model,
                               HttpServletRequest request, HttpServletResponse response) {
         if(errors.hasErrors()){
-            return "index";
+            return "login";
         }else{
 
             Cookie cookie = new Cookie("user",user.getName());
@@ -75,7 +75,7 @@ public class loginController {
 
 
             if(userService.Authentication(user.getName(),user.getPwd())==null){
-                return "index";
+                return "login";
             }else {
                 session.setAttribute("name", user.getName());
                 return "redirect:/user";

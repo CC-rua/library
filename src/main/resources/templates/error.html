@@ -11,16 +11,18 @@
 
 	</head>
 	<body>
-		<div class="weui-panel__hd qx-header">登录</div>
 		<div class="weui-msg" style="margin-top:30px;">
 		    <div class="weui-msg__icon-area"><i class="weui-icon-warn weui-icon_msg"></i></div>
-		    <!--<p class="weui-msg__desc" th:text="${errorMsg}"></p>-->
+		    <p class="weui-msg__desc" th:text="${errorMsg}"></p>
 		    <div class="weui-msg__extra-area">
 		        <div class="weui-footer">		            
 		            <p class="weui-footer__text">Copyright &copy; 2018-2020 </p>
 		        </div>
 		    </div>
 		</div>
+
+		<a th:href="@{/login}" href="login">重新登陆</a>
+
 	</body>
 </html>
 

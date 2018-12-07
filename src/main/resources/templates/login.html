@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link
+            href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            rel="stylesheet">
+</head>
+<body>
+<div>
+
+    <form action="" method="post" th:action="@{/login}"
+          th:object="${users}">
+        <div class="errors" th:if="${#fields.hasErrors('*')}">
+            错误信息:
+            <ul>
+                <li th:each="err:${#fields.errors('*')}"
+                    th:text="${err}">Input is incorrect</li>
+            </ul>
+        </div>
+        <label th:class="${#fields.hasErrors('name')}?'error'">用户名:
+            <input  type="text" name="name" th:class="${#fields.hasErrors('name')}?'error'" th:field="*{name}" />
+        </label><br />
+        <label th:class="${#fields.hasErrors('pwd')}?'error'">密码:
+            <input type="password" name="pwd" th:class="${#fields.hasErrors('pwd')}?'error'" th:field="*{pwd}"/>
+        </label><br />
+        <input type="submit" value="登录" />
+    </form>
+    <a th:href="@{/register}" href="register">注册</a>
+
+</div>
+</body>
+</html>

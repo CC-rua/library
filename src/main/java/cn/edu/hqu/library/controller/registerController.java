@@ -40,7 +40,7 @@ public class registerController extends BaseServiceImpl {
             user1.setPwd(user.getPwd());
             user1.setBirthday(user.getBirthday());
             if(userService.UserRegister(user1)){//注册成功
-                return "index";
+                return "login";
             }else {
                 return "register";
             }
