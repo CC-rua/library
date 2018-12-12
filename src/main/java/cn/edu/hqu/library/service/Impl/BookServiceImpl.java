@@ -5,6 +5,7 @@ import cn.edu.hqu.library.mapper.BookImp;
 import cn.edu.hqu.library.repository.BorrowRepository;
 import cn.edu.hqu.library.service.BookService;
 import cn.edu.hqu.library.service.dto.BookInfo;
+import cn.edu.hqu.library.service.dto.Rank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +35,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookInfo> FindBookInfoByName(String name) {
         return bookImp.FindBookInfoByName(name);
+    }
+
+    @Override
+    public List<Rank> FindRankList(String kind){
+        return bookImp.FindRankList(kind);
     }
 }

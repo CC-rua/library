@@ -26,4 +26,8 @@ public class User {
   private String password;
   private String type;
   private LocalDate birthday;
+  private String name;
+  private String department;
+  private String grade;
+  private String major;
 }

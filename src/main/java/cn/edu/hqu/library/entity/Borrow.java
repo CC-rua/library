@@ -29,6 +29,5 @@ public class Borrow implements Serializable {
   @Column(name="Etime")
   private Date etime;
   private String jiaofu;
-
-
+  private String quantity;
 }

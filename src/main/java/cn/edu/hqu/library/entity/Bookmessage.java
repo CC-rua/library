@@ -14,10 +14,13 @@ import javax.persistence.Table;
 @Data
 public class Bookmessage {
 
+
+
   private String bookId;
   private String name;
   private String jiaofu;
   private String kind;
-
-
+  private String author;
+  private String publisher;
+  private String introduction;
 }

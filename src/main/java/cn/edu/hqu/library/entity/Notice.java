@@ -10,9 +10,8 @@ import lombok.NoArgsConstructor;
 public class Notice {
 
   private String noticeId;
-  private String getplace;
-  private java.sql.Timestamp gettime;
-
-
+  private java.sql.Timestamp btime;
+  private java.sql.Timestamp etime;
+  private String msg;
 
 }

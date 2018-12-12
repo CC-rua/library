@@ -21,7 +21,8 @@ public class Book {
   private String code;
   @Column(name = "BookID")
   private String bookId;
-  @Column
   private String state;
+  private long isDelete;
+  private String quality;
 
 }
