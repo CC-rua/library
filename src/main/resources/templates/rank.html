@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link
+            href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            rel="stylesheet">
+</head>
+<body>
+<div>
+    <form action="" method="get" th:action="@{/rank}" th:each="rank:${ranks}">
+        <label>
+            排名:
+            <output type="text" name="no"  ></output><br/>
+            书名:
+            <output type="text" name="name"  th:text="${rank.name}"></output><br/>
+            借阅量:
+            <output type="text" name="pwd"  th:text="${rank.num}"></output><br/>
+        </label><br />
+    </form>
+    <form action="" method="get" th:action="@{/rank}" th:each="rank:${ranks2}">
+        <label>
+            排名:
+            <output type="text" name="no"></output><br/>
+            书名:
+            <output type="text" name="name"  th:text="${rank.name}"></output><br/>
+            借阅量:
+            <output type="text" name="pwd"  th:text="${rank.num}"></output><br/>
+        </label><br />
+    </form>
+</div>
+</body>
+</html>

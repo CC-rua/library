@@ -17,4 +17,5 @@ public class BookInfo {
    String Kind;
    Date Btime;
    Date Etime;
+   String Status;
 }
