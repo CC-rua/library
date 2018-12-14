@@ -2,20 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.hqu.library.mapper.BookImp">
 
-    <select id="FindBorrowInfoByName" resultType="cn.edu.hqu.library.service.dto.BookInfo" >
+    <select id="FindReturnBorrowByName" resultType="cn.edu.hqu.library.service.dto.BookInfo" >
 		SELECT DISTINCT
 			book. CODE AS "Code",
 			bookmessage. NAME AS "name",
-			borrow.Btime AS "Btime",
-			borrow.Etime AS "Etime",
 			bookmessage.jiaofu AS "JiaoFu",
-			book.state AS "status"
+			borrow.ReturnStatus AS "ReturnStatus",
+			borrow.quality AS "Quality"
 		FROM
 			book
 		LEFT JOIN bookmessage ON book.BookID = bookmessage.BookID
 		LEFT JOIN borrow ON book. CODE = borrow. CODE
 		WHERE
-			borrow.UserID =#{0}
+			borrow.ReturnStatus != '0'
+		AND borrow.UserID = #{0}
     </select>
 
 </mapper>

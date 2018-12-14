@@ -15,8 +15,8 @@ import javax.persistence.Table;
 public class Bookmessage {
 
 
-
-  @Id
+@Id
+@Column(name = "BookID")
   private String bookId;
   private String name;
   private String jiaofu;

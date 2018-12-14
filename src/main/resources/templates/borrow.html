@@ -9,16 +9,36 @@
 </head>
 <body>
 <div>
-    <form action="" method="get" th:action="@{/user}" th:each="borrow:${borrows}">
+    借阅记录
+    <form action="" method="get" th:action="@{/borrow}" th:each="borrow:${borrows}">
         <label>
-            书号:
-            <output type="text" name="name"  th:text="${borrow.code}"></output><br/>
-            书名:
+            提取码:
+            <output type="text" name="code"  th:text="${borrow.code}"></output><br/>
+            图书名称:
             <output type="text" name="name"  th:text="${borrow.name}"></output><br/>
+            性质:
+            <output type="text" name="JiaoFu" th:text="${borrow.jiaofu}"></output><br/>
             出借时间:
             <output type="text" name="pwd"  th:text="${borrow.btime}"></output><br/>
             应归还时间:
             <output type="text" name="birthday"  th:text="${borrow.etime}"></output><br/>
+            状态:
+            <output type="text" name="status" th:text="${borrow.status}"></output>
+        </label><br />
+    </form>
+    已还书记录
+    <form action="" method="get" th:action="@{/borrow}" th:each="borrow:${Returnborrows}">
+        <label>
+            提取码:
+            <output type="text" name="code"  th:text="${borrow.code}"></output><br/>
+            图书名称:
+            <output type="text" name="name"  th:text="${borrow.name}"></output><br/>
+            性质:
+            <output type="text" name="JiaoFu" th:text="${borrow.jiaofu}"></output><br/>
+            图书状态:
+            <output type="text" name="status" th:text="${borrow.quality}"></output><br/>
+            归还情况:
+            <output type="text" name="Returnstatus" th:text="${borrow.returnStatus}"></output>
         </label><br />
     </form>
 </div>

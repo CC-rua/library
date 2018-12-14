@@ -10,8 +10,9 @@ import java.util.List;
 @Mapper
 @Component
 public interface BookImp {
-    public List<BookInfo> FindBorrowInfoByName(String name);
-    public List<BookInfo> FindBookInfoByName(String name);
-    public List<Rank> FindRankList(String kind);
+    List<BookInfo> FindBorrowInfoByName(String name);
+    List<BookInfo> FindBookInfoByName(String name);
+    List<Rank> FindRankList(String kind);
+    List<BookInfo> FindReturnBorrowByName(String name);
     public List<NewBookInfo> FindBookByTimeDesc();
 }

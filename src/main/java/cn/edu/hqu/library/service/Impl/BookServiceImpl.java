@@ -33,6 +33,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<BookInfo> FindReturnBorrowByName(String name) {
+        return bookImp.FindReturnBorrowByName(name);
+    }
+
+    @Override
     public List<BookInfo> FindBookInfoByName(String name) {
         return bookImp.FindBookInfoByName(name);
     }

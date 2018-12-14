@@ -8,7 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Timestamp;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,7 +24,5 @@ public class Book {
   private String state;
   private long isDelete;
   private String quality;
-
-  private Timestamp putawayTime;
 
 }
