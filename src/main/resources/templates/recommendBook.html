@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+图书推荐
+<form action="" method="get" th:action="@{/recommendBook}" th:each="bookinfo:${list}">
+
+    <label>
+        <output type="text" name="name"  th:text="${bookinfo.name}"></output><br/>
+        <output type="text" name="author"  th:text="${bookinfo.author}"></output><br/>
+        <output type="text" name="publisher"  th:text="${bookinfo.publisher}"></output><br/>
+        <output type="text" name="reason"  th:text="${bookinfo.reason}"></output><br/>
+    </label><br />
+</form>
+
+</body>
+</html>

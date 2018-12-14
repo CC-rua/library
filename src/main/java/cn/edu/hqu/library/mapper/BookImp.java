@@ -1,6 +1,7 @@
 package cn.edu.hqu.library.mapper;
 
 import cn.edu.hqu.library.controller.vo.NewBookInfo;
+import cn.edu.hqu.library.controller.vo.RecommendBookInfo;
 import cn.edu.hqu.library.service.dto.BookInfo;
 import cn.edu.hqu.library.service.dto.Rank;
 import org.apache.ibatis.annotations.Mapper;
@@ -15,4 +16,6 @@ public interface BookImp {
     List<Rank> FindRankList(String kind);
     List<BookInfo> FindReturnBorrowByName(String name);
     public List<NewBookInfo> FindBookByTimeDesc();
+
+    List<RecommendBookInfo> findRecommendBook();
 }

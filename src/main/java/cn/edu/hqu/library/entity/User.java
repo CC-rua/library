@@ -30,4 +30,5 @@ public class User {
   private String department;
   private String grade;
   private String major;
+  private Integer sex;//1 男 2 女 3 未知
 }

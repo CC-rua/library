@@ -1,5 +1,7 @@
 package cn.edu.hqu.library.service.Impl;
 
+import cn.edu.hqu.library.controller.vo.NewBookInfo;
+import cn.edu.hqu.library.controller.vo.RecommendBookInfo;
 import cn.edu.hqu.library.entity.Borrow;
 import cn.edu.hqu.library.mapper.BookImp;
 import cn.edu.hqu.library.repository.BorrowRepository;
@@ -45,5 +47,16 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Rank> FindRankList(String kind){
         return bookImp.FindRankList(kind);
+    }
+
+    @Override
+    public List<NewBookInfo> findNewBookInfo()
+    {
+        return bookImp.FindBookByTimeDesc();
+    }
+
+    @Override
+    public List<RecommendBookInfo> findRecommendBook() {
+        return bookImp.findRecommendBook();
     }
 }

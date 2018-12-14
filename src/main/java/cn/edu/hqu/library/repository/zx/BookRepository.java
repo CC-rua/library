@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface BookRepository extends JpaRepository<Book,String> {
 
-    List<Book> findAllByPutawayTimeAfter(Timestamp time);
+//    List<Book> findBy(Timestamp time);
 
     /**
      * 	//查询按照时间顺序入库的三本书

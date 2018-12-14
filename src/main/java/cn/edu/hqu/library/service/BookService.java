@@ -1,6 +1,8 @@
 package cn.edu.hqu.library.service;
 
 
+import cn.edu.hqu.library.controller.vo.NewBookInfo;
+import cn.edu.hqu.library.controller.vo.RecommendBookInfo;
 import cn.edu.hqu.library.entity.Borrow;
 import cn.edu.hqu.library.service.dto.BookInfo;
 import cn.edu.hqu.library.service.dto.Rank;
@@ -16,4 +18,8 @@ public interface BookService {
     List<BookInfo> FindReturnBorrowByName(String name);
     List<BookInfo> FindBookInfoByName(String name);
     List<Rank>FindRankList(String kind);
+
+    List<NewBookInfo> findNewBookInfo();
+
+    List<RecommendBookInfo> findRecommendBook();
 }

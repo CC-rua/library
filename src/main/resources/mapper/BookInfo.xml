@@ -10,8 +10,26 @@
 		FROM
 			 book LEFT JOIN bookmessage on book.BookID = bookmessage.BookID
 		WHERE
-				bookmessage.name=#{0}
+				bookmessage.name  like concat('%',#{0},'%')
     </select>
+
+
+	<select id="FindBookByTimeDesc" resultType="cn.edu.hqu.library.controller.vo.NewBookInfo">
+		SELECT *
+		FROM bookmessage
+		WHERE BookID IN
+    		(SELECT DISTINCT BookID
+   	 		FROM book
+    		ORDER BY  putawayTime DESC )
+    	limit 10
+	</select>
+
+
+	<select id="findRecommendBook" resultType="cn.edu.hqu.library.controller.vo.RecommendBookInfo">
+		select name , author,publisher,reason
+		from recommendBook left join bookmessage on recommendBook.bookId = bookmessage.BookID
+		where isUse = true
+	</select>
 
 
 
