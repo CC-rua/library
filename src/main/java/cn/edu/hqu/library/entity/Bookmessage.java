@@ -16,6 +16,7 @@ public class Bookmessage {
 
 
 
+  @Id
   private String bookId;
   private String name;
   private String jiaofu;
