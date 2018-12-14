@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link
+            href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            rel="stylesheet">
+</head>
+<body>
+<div>
+    近期活动
+    <form action="" method="get" th:action="@{/notice}" th:each="be:${beginNotice}">
+
+        <label>
+            <output type="text" name="btime"  th:text="${be.btime}"></output><br/>
+            <output type="text" name="etime"  th:text="${be.etime}"></output><br/>
+            <output type="text" name="msg"  th:text="${be.msg}"></output><br/>
+        </label><br />
+    </form>
+    即将开展
+    <form action="" method="get" th:action="@{/notice}" th:each="af:${afterNotice}">
+
+        <label>
+            <output type="text" name="btime"  th:text="${af.btime}"></output><br/>
+            <output type="text" name="etime"  th:text="${af.etime}"></output><br/>
+            <output type="text" name="msg"  th:text="${af.msg}"></output><br/>
+        </label><br />
+    </form>
+</div>
+</body>
+</html>
