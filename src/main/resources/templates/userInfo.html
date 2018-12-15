@@ -9,40 +9,32 @@
 
 <div>
     <form action="" method="get" th:action="@{/user/showUserInfo}" th:object="${user}">
-        <label>用户名:
-            <output type="text" name="name"  th:text="*{username}"></output><br/>
-            性别:
-            <output type="text" name="sex"  th:text="*{sex}"></output><br/>
-            院系:
-            <output type="text" name="birthday"  th:text="*{department}"></output><br/>
-            年级:
-            <output type="text" name="birthday"  th:text="*{grade}"></output><br/>
-            专业:
-            <output type="text" name="birthday"  th:text="*{major}"></output><br/>
-
+        <label>
+            用户名:<output type="text" name="name"  th:text="*{username}"></output><br/>
+            性别:<output type="text" name="sex"  th:text="*{sex}"></output><br/>
+            院系:<output type="text" name="birthday"  th:text="*{department}"></output><br/>
+            年级:<output type="text" name="birthday"  th:text="*{grade}"></output><br/>
+            专业:<output type="text" name="birthday"  th:text="*{major}"></output><br/>
         </label><br />
     </form>
     <a th:href="@{/borrow}" href="/borrow">借书信息</a>
     <a th:href="@{/user/showUserInfo}" href="/borrow">用户信息</a>
 </div>
-
 <br/><br/><br/><br/><br/><br/><br/><br/>
-
-
-
 用户信息
 <div>
     <!--<form  method="get" th:action="@{/user/showUserInfo}" th:object="${user}">-->
     <form action="" method="get"  th:action="@{/user/showUserInfo}"  th:object="${user}">
         <label>
             userId:
-            <output  type="txt" th:value="*{username}" name="username" /><br>
+            <output  type="text" name="username" th:text="*{username}" ></output><br>
             Name:
-            <output  type="txt" th:value="*{name}" name="name" /><br>
-            <output  type="txt" th:value="*{sex}" name="sex" /><br>
-            <output  type="txt" th:value="*{department}" name="department" /><br>
-            <output type="txt"  th:value="*{grade}" name="grade" /><br>
-            <output type="txt" th:value="*{major}" name="major" /><br>
+            <output  type="txt" th:text="*{name}" name="name" /><br>
+
+            <output  type="txt" th:text="*{sex}" name="sex" /><br>
+            <output  type="txt" th:text="*{department}" name="department" /><br>
+            <output type="txt"  th:text="*{grade}" name="grade" /><br>
+            <output type="txt" th:text="*{major}" name="major" /><br>
 
         </label>
     </form>

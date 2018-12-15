@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link
+            href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <form action="" method="get" th:action="@{/userManager}" th:each="user:${AllUsers}">
+        <label>
+            用户名:<output type="text" name="username"  th:text="${user.username}"></output><br/>
+            姓名:<output type="text" name="name"  th:text="${user.name}"></output><br/>
+            性别:<output type="text" name="sex"  th:text="${user.sex}"></output><br/>
+            院系:<output type="text" name="department"  th:text="${user.department}"></output><br/>
+            年级:<output type="text" name="grade"  th:text="${user.grade}"></output><br/>
+            专业:<output type="text" name="major"  th:text="${user.major}"></output><br/>
+        </label><br />
+        <a class="del" href="userManager/delete/100">DELETE</a>
+    </form>
+    <a th:href="@{/index}" href="/borrow">主页</a>
+</div>
+</body>
+<script type="text/javascript">
+
+    $(function(){
+        $('.del').click(function(){
+            $.delete(this.attr("href")
+            )
+        })
+    })
+</script>
+</html>
