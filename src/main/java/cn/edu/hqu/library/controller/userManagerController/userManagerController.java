@@ -29,7 +29,7 @@ public class userManagerController {
     public  String DeleteUser(Model model , @PathVariable("id") String id){
         //发回id串
         String getid=id;
-        userService.DeleteByuserName(id);
+        userService.DeleteByUserId(id);
         return "userManager";
     }
 }

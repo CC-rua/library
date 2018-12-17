@@ -9,9 +9,9 @@ import java.util.List;
 public interface UserService {
      boolean userExist(users user);
      User Authentication(String name, String password);
-     User findUserByUserName(String name);
+     User findUserByUserId(String name);
      void addUser(User user);
      boolean UserRegister(users user1);
      List<User> findAll();
-     void DeleteByuserName(String userName);
+     void DeleteByUserId(String UserId);
 }

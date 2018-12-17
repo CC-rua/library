@@ -13,7 +13,7 @@ public class ConvertServiceImpl implements Converter<users, User> {
     @Override
     public User convert(users value) {
         User user=new User();
-        user.setUsername(value.getName());
+        user.setUserId(value.getName());
         user.setPassword(value.getPwd());
         user.setBirthday(value.getBirthday());
         return user;

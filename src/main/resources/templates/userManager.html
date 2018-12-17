@@ -12,7 +12,7 @@
 <div>
     <form action="" method="get" th:action="@{/userManager}" th:each="user:${AllUsers}">
         <label>
-            用户名:<output type="text" name="username"  th:text="${user.username}"></output><br/>
+            用户名:<output type="text" name="userId"  th:text="${user.userId}"></output><br/>
             姓名:<output type="text" name="name"  th:text="${user.name}"></output><br/>
             性别:<output type="text" name="sex"  th:text="${user.sex}"></output><br/>
             院系:<output type="text" name="department"  th:text="${user.department}"></output><br/>

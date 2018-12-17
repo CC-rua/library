@@ -23,18 +23,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean userExist(users user) {
         //查找数据库中是否有同名
-        return userRepository.findAllByUsernameEquals(user.getName()) != null;
+        return userRepository.findAllByUserIdEquals(user.getName()) != null;
     }
     @Override
     public User Authentication(String name, String password) {
         //身份认证,账号和密码对应
-        return userRepository.findByUsernameEqualsAndPasswordEquals(name,password);
+        return userRepository.findByUserIdEqualsAndPasswordEquals(name,password);
     }
 
     @Override
-    public User findUserByUserName(String name) {
+    public User findUserByUserId(String name) {
         //通过name参数返回User对象
-        return userRepository.findAllByUsernameEquals(name);
+        return userRepository.findAllByUserIdEquals(name);
     }
 
     @Override
@@ -46,9 +46,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean UserRegister(users user1) {
         //注册
-        if (userRepository.findAllByUsernameEquals(user1.getName()) == null) {
+        if (userRepository.findAllByUserIdEquals(user1.getName()) == null) {
             User user = new User();
-            user.setUsername(user1.getName());
+            user.setUserId(user1.getName());
             user.setPassword(user1.getPwd());
             user.setType("1");
             user.setBirthday(user1.getBirthday());
@@ -65,9 +65,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void DeleteByuserName(String userName) {
+    public void DeleteByUserId(String UserId) {
         User users=new User();
-        users.setUsername(userName);
+        users.setUserId(UserId);
         userRepository.delete(users);
     }
 }

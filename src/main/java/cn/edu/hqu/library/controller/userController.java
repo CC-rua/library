@@ -6,14 +6,9 @@ import cn.edu.hqu.library.service.Impl.ConvertServiceImpl;
 import cn.edu.hqu.library.service.UserService;
 import cn.edu.hqu.library.service.dto.users;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 @Controller
@@ -30,9 +25,9 @@ public class userController extends ConvertServiceImpl {
     @RequestMapping(method = RequestMethod.GET)
     public String ShowUserPage(@ModelAttribute("name")String name, Model model){
 
-        User user=  userService.findUserByUserName(name);
+        User user=  userService.findUserByUserId(name);
         users users = new users();
-        users.setName(user.getUsername());
+        users.setName(user.getUserId());
         users.setPwd(user.getPassword());
         users.setBirthday(user.getBirthday());
         model.addAttribute(users);
@@ -44,7 +39,7 @@ public class userController extends ConvertServiceImpl {
     @RequestMapping("showUserInfo")
     public String showUserInfo(@ModelAttribute("name")String name,Model model)
     {
-        User user = userService.findUserByUserName(name);
+        User user = userService.findUserByUserId(name);
         user.setPassword("");
         model.addAttribute(user);
         return "userInfo";

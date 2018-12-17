@@ -10,7 +10,7 @@
 <div>
     <form action="" method="get" th:action="@{/user/showUserInfo}" th:object="${user}">
         <label>
-            用户名:<output type="text" name="name"  th:text="*{username}"></output><br/>
+            用户名:<output type="text" name="name"  th:text="*{userId}"></output><br/>
             性别:<output type="text" name="sex"  th:text="*{sex}"></output><br/>
             院系:<output type="text" name="birthday"  th:text="*{department}"></output><br/>
             年级:<output type="text" name="birthday"  th:text="*{grade}"></output><br/>
@@ -27,7 +27,7 @@
     <form action="" method="get"  th:action="@{/user/showUserInfo}"  th:object="${user}">
         <label>
             userId:
-            <output  type="text" name="username" th:text="*{username}" ></output><br>
+            <output  type="text" name="userId" th:text="*{userId}" ></output><br>
             Name:
             <output  type="txt" th:text="*{name}" name="name" /><br>
 
