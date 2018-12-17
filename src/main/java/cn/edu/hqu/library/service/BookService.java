@@ -3,6 +3,7 @@ package cn.edu.hqu.library.service;
 
 import cn.edu.hqu.library.controller.vo.NewBookInfo;
 import cn.edu.hqu.library.controller.vo.RecommendBookInfo;
+import cn.edu.hqu.library.controller.zx.vo.BookMsgVo;
 import cn.edu.hqu.library.entity.Borrow;
 import cn.edu.hqu.library.service.dto.BookInfo;
 import cn.edu.hqu.library.service.dto.Rank;
@@ -22,4 +23,6 @@ public interface BookService {
     List<NewBookInfo> findNewBookInfo();
 
     List<RecommendBookInfo> findRecommendBook();
+
+    BookMsgVo findBookMsgByBookId(String bookId);
 }

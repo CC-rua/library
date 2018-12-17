@@ -3,12 +3,13 @@ package cn.edu.hqu.library.controller.zx;
 import cn.edu.hqu.library.controller.BaseController;
 import cn.edu.hqu.library.controller.vo.NewBookInfo;
 import cn.edu.hqu.library.controller.vo.RecommendBookInfo;
+import cn.edu.hqu.library.controller.zx.vo.BookMsgVo;
+import cn.edu.hqu.library.entity.Bookmessage;
 import cn.edu.hqu.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -33,6 +34,14 @@ public class BookController extends BaseController {
         List<RecommendBookInfo> list = bookService.findRecommendBook();
         model.addAttribute("list",list);
         return "recommendBook";
+    }
+
+    @RequestMapping
+    public String findBookMsgByBookId(String bookId, Model model)
+    {
+        BookMsgVo bookMsgVo = bookService.findBookMsgByBookId(bookId);
+        model.addAttribute("bookInfo",bookMsgVo);
+        return "bookMsgInfo";
     }
 
 }

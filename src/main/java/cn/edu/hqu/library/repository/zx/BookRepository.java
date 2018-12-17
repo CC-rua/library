@@ -11,6 +11,8 @@ public interface BookRepository extends JpaRepository<Book,String> {
 
 //    List<Book> findBy(Timestamp time);
 
+    int countAllByBookIdAndState(String bookId,String status);
+
     /**
      * 	//查询按照时间顺序入库的三本书
      * 	<select id="findAllByPutawayTime" resultType="cn.edu.hqu.library.controller.vo.NewBookInfo">

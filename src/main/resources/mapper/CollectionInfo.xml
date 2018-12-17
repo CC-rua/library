@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.hqu.library.mapper.CollectionImp">
+
+    <select id="findCollectionByUserId" resultType="cn.edu.hqu.library.controller.zx.vo.CollectionInfo" >
+		select
+		name as bookName,
+		author,
+		jiaofu,
+		kind,
+		publisher ,
+		count(*) as freeNum
+		from collection left join bookmessage b on collection.BookmsgID = b.BookID
+			left join book b2 on b.BookID = b2.BookID
+		where collection.UserID = #{0}
+		group by name,author,jiaofu,kind,publisher;
+    </select>
+
+</mapper>
