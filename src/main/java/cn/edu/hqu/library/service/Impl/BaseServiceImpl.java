@@ -1,18 +1,20 @@
 package cn.edu.hqu.library.service.Impl;
 
 
+import cn.edu.hqu.library.util.DateTransferUtil;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
 import java.beans.PropertyEditorSupport;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class BaseServiceImpl {
     @InitBinder
     public void initBinder(WebDataBinder binder){
-        binder.registerCustomEditor(Date.class,new MyDateEditor());
+        binder.registerCustomEditor(LocalDate.class,new MyDateEditor());
     }
     private class MyDateEditor extends PropertyEditorSupport {
         @Override
@@ -33,7 +35,8 @@ public class BaseServiceImpl {
 
                     }
                 }
-                setValue(date);
+                assert date != null;
+                setValue(DateTransferUtil.DateToLocalDate(date));
             }
         }
     }

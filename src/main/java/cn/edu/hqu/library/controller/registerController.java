@@ -18,7 +18,7 @@ import java.time.LocalDate;
 
 @Controller
 @RequestMapping(value = "/register")
-public class registerController extends BaseServiceImpl {
+public class registerController extends BaseServiceImpl{
     private final UserService userService;
 
     @Autowired

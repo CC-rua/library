@@ -12,6 +12,7 @@
 		WHERE bookmessage.kind =#{0}
 		GROUP BY name
 		ORDER BY num DESC
+		limit 5
     </select>
 
 </mapper>

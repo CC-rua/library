@@ -15,7 +15,7 @@ public interface BookImp {
     List<BookInfo> FindBookInfoByName(String name);
     List<Rank> FindRankList(String kind);
     List<BookInfo> FindReturnBorrowByName(String name);
-    public List<NewBookInfo> FindBookByTimeDesc();
+    List<NewBookInfo> FindBookByTimeDesc();
 
     List<RecommendBookInfo> findRecommendBook();
 }

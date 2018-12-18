@@ -39,7 +39,7 @@ public class userController extends ConvertServiceImpl {
     }
 
 
-    @RequestMapping("showUserInfo")
+    @RequestMapping("/showUserInfo")
     public String showUserInfo(@ModelAttribute("name")String name,Model model)
     {
         User user = userService.findUserByUserId(name);

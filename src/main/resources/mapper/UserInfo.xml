@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.hqu.library.mapper.UserImp">
+
+    <select id="findUserByConditions" resultType="cn.edu.hqu.library.entity.User" >
+	SELECT
+		UserID AS "userId",
+		name AS "name",
+		department AS "department",
+		grade AS "grade",
+		major AS "major",
+		sex AS "sex"
+		FROM
+			user
+		WHERE
+			(
+				CASE
+				WHEN userid= #{UserId}||ISNULL(#{UserId}) THEN
+					1
+				ELSE
+					0
+				END + CASE
+				WHEN name=#{name}||ISNULL(#{name}) THEN
+					1
+				ELSE
+					0
+		END+ CASE
+				WHEN department=#{department}||ISNULL(#{department}) THEN
+					1
+				ELSE
+					0
+		END+ CASE
+				WHEN grade=#{grade}||ISNULL(#{grade}) THEN
+					1
+				ELSE
+					0
+		END+ CASE
+				WHEN major=#{major}||ISNULL(#{major}) THEN
+					1
+				ELSE
+					0
+		END+ CASE
+				WHEN sex=#{sex}||ISNULL(#{sex}) THEN
+					1
+				ELSE
+					0
+		END
+
+			) >= 6
+    </select>
+
+
+
+
+</mapper>
