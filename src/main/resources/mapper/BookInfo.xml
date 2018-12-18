@@ -17,6 +17,7 @@
 				IFNULL(bookmessage.kind, ''),
 				IFNULL(bookmessage.author, '')
 			) LIKE concat('%',#{0},'%')
+			GROUP BY book.BookID
     </select>
 
 

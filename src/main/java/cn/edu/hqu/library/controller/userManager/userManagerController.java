@@ -1,7 +1,6 @@
 package cn.edu.hqu.library.controller.userManager;
 
 import cn.edu.hqu.library.controller.BaseController;
-import cn.edu.hqu.library.entity.ReturnBean;
 import cn.edu.hqu.library.entity.User;
 import cn.edu.hqu.library.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,24 +13,29 @@ import java.util.List;
 @Controller
 @RequestMapping("/userManager")
 public class userManagerController extends BaseController {
+    private final UserService userService;
+
     @Autowired
-    UserService userService;
+    public userManagerController(UserService userService) {
+        this.userService = userService;
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public String ShowUserManagerPage(Model model){
         List<User> AllUsers=userService.findAll();
         model.addAttribute("AllUsers",AllUsers);
         return "userManager";
     }
-
-    @RequestMapping(method = RequestMethod.POST)
-    @ResponseBody
-    public List<User> SearchUser(@RequestBody(required = false) User user1){
-        //需要一个User的json
-        List<User> result=
-        userService.findUserByConditions(user1.getUserId(),user1.getName(),user1.getDepartment(),
-                user1.getGrade(),user1.getMajor(),user1.getSex());
-        return result;
+    //增
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public String AddUser(@RequestBody(required = false) User user1){
+        String getid=user1.getUserId();
+        if(userService.findUserByUserId(getid)==null){
+            userService.addUser(user1);
+        }
+        return "userManager";
     }
+    //删
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     public  String DeleteUser(@RequestBody(required = false) List<String> userId){
         //发回id串
@@ -42,4 +46,24 @@ public class userManagerController extends BaseController {
         }
         return "userManager";
     }
+    //改
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    public String UpDateUser(@RequestBody(required = false) List<User> userList){
+        for(User user1:userList){
+            String getid=user1.getUserId();
+            if(userService.findUserByUserId(getid)!=null){
+                userService.addUser(user1);
+            }
+        }
+        return "userManager";
+    }
+    //查
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
+    public List<User> SearchUser(@RequestBody(required = false) User user1) {
+        //需要一个User的json
+        return userService.findUserByConditions(user1.getUserId(), user1.getName(), user1.getDepartment(),
+                user1.getGrade(), user1.getMajor(), user1.getSex());
+    }
+
 }
