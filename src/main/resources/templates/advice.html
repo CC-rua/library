@@ -5,12 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-<form action="" method="post" th:action="@{/index}" >
+<form action="" method="post" th:action="@{/advice}" th:object="${advice}">
 
-    <label >书名:
-        <input  name="name" />
-    </label>
-    <input type="submit" value="查询" /><br />
+    <label >账号:
+        <input type="text" name="userId" th:field="*{userId}"/>
+    </label><br/>
+    <label >姓名:
+        <input type="text" name="name" th:field="*{name}"/>
+    </label><br/>
+    <label >意见:
+        <input type="text" name="advice" th:field="*{advice}"/>
+    </label><br/>
+    <input type="submit" value="提交" /><br />
 </form>
 <a th:href="@{/login}" href="login">登陆</a>
 <a th:href="@{/rank}" href="rank">排行榜</a>

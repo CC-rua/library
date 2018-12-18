@@ -14,4 +14,5 @@ public interface UserService {
      boolean UserRegister(users user1);
      List<User> findAll();
      void DeleteByUserId(String UserId);
+     List<User> findUserByConditions(String UserId,String name,String department,String grade,String major,Integer sex);
 }

@@ -2,6 +2,7 @@ package cn.edu.hqu.library.service.Impl;
 
 
 import cn.edu.hqu.library.entity.User;
+import cn.edu.hqu.library.mapper.UserImp;
 import cn.edu.hqu.library.repository.UserRepository;
 import cn.edu.hqu.library.service.UserService;
 import cn.edu.hqu.library.service.dto.users;
@@ -12,12 +13,13 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-
+    private final UserImp userImp;
     private final UserRepository userRepository;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, UserImp userImp) {
         this.userRepository = userRepository;
+        this.userImp = userImp;
     }
 
     @Override
@@ -69,5 +71,10 @@ public class UserServiceImpl implements UserService {
         User users=new User();
         users.setUserId(UserId);
         userRepository.delete(users);
+    }
+
+    @Override
+    public List<User> findUserByConditions(String UserId, String name, String department, String grade, String major,Integer sex) {
+        return (List<User>) userImp.findUserByConditions(UserId,name,department,grade,major,sex);
     }
 }

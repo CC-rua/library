@@ -3,14 +3,20 @@
 <mapper namespace="cn.edu.hqu.library.mapper.BookImp">
 
     <select id="FindBookInfoByName" resultType="cn.edu.hqu.library.service.dto.BookInfo" >
-		SELECT DISTINCT book.Code AS "Code",
-						bookmessage.name AS "name",
-						bookmessage.jiaofu AS "JiaoFu",
-		bookmessage.kind AS "Kind"
+		SELECT DISTINCT
+			book. CODE AS "Code",
+			bookmessage. NAME AS "name",
+			bookmessage.jiaofu AS "JiaoFu",
+			bookmessage.kind AS "Kind"
 		FROM
-			 book LEFT JOIN bookmessage on book.BookID = bookmessage.BookID
+			book
+		LEFT JOIN bookmessage ON book.BookID = bookmessage.BookID
 		WHERE
-				bookmessage.name  like concat('%',#{0},'%')
+			CONCAT(
+				IFNULL(bookmessage.`name`, ''),
+				IFNULL(bookmessage.kind, ''),
+				IFNULL(bookmessage.author, '')
+			) LIKE concat('%',#{0},'%')
     </select>
 
 
