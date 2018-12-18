@@ -18,8 +18,6 @@ public interface BookService {
     List<BookInfo> FindReturnBorrowByName(String name);
     List<BookInfo> FindBookInfoByName(String name);
     List<Rank>FindRankList(String kind);
-
     List<NewBookInfo> findNewBookInfo();
-
     List<RecommendBookInfo> findRecommendBook();
 }

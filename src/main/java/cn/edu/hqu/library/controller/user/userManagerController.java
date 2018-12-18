@@ -1,4 +1,4 @@
-package cn.edu.hqu.library.controller.userManager;
+package cn.edu.hqu.library.controller.user;
 
 import cn.edu.hqu.library.controller.BaseController;
 import cn.edu.hqu.library.entity.User;

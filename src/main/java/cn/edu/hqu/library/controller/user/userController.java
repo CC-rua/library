@@ -1,4 +1,4 @@
-package cn.edu.hqu.library.controller;
+package cn.edu.hqu.library.controller.user;
 
 
 import cn.edu.hqu.library.entity.User;
@@ -34,8 +34,6 @@ public class userController extends ConvertServiceImpl {
 
         return "user";
     }
-
-
     @RequestMapping("/showUserInfo")
     public String showUserInfo(@ModelAttribute("name")String name,Model model)
     {

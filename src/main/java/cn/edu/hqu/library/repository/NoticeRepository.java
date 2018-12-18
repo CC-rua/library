@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface NoticeRepository extends JpaRepository<Notice,String> {
     List<Notice> findAll();
+    Notice findNoticeByNoticeId(String noticeId);
 }
