@@ -3,6 +3,8 @@ package cn.edu.hqu.library.service.Impl;
 import cn.edu.hqu.library.controller.vo.NewBookInfo;
 import cn.edu.hqu.library.controller.vo.RecommendBookInfo;
 import cn.edu.hqu.library.controller.zx.vo.BookMsgVo;
+import cn.edu.hqu.library.controller.zx.vo.BookVo;
+import cn.edu.hqu.library.entity.Book;
 import cn.edu.hqu.library.entity.Bookmessage;
 import cn.edu.hqu.library.entity.Borrow;
 import cn.edu.hqu.library.mapper.BookImp;
@@ -12,9 +14,11 @@ import cn.edu.hqu.library.repository.zx.BookRepository;
 import cn.edu.hqu.library.service.BookService;
 import cn.edu.hqu.library.service.dto.BookInfo;
 import cn.edu.hqu.library.service.dto.Rank;
+import cn.edu.hqu.library.util.StaticData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -85,5 +89,68 @@ public class BookServiceImpl implements BookService {
         return bookMsgVo;
 
     }
+
+
+    //功能 新增 批量新增 出借 查看 还书 删除
+
+    //新增
+    @Override
+    public void addBook(Book book)
+    {
+        bookRepository.save(book);
+
+    }
+
+    @Override
+    public void addBookList(List<Book> list)
+    {
+        for(Book book:list)
+        {
+            bookRepository.save(book);
+        }
+    }
+
+    @Override
+    public void borrowBook(String bookId, String code, String userId)//需要定位到某一本书 然后将其出借给某个人
+    {
+        Book book = bookRepository.findByBookIdAndCode(bookId,code);
+        Bookmessage bookmessage = bookMsgRepository.findBookmessageByBookId(bookId);
+        book.setState(StaticData.BOOK_STATUS_WAIT_QU);
+        Date now = new Date(System.currentTimeMillis());
+        Date etime = new Date(System.currentTimeMillis()+1000*60*60*24* StaticData.JIEYUEQI);
+        Borrow borrow = new Borrow(userId,code,now,etime,bookmessage.getJiaofu(),book.getQuality(),null);
+        borrowRepository.save(borrow);
+    }
+
+    @Override
+    public BookVo findBookVoByBookCodeAndBookId(String bookId, String code)
+    {
+        Book book = bookRepository.findByBookIdAndCode(bookId,code);
+        Bookmessage bookmessage = bookMsgRepository.findBookmessageByBookId(bookId);
+        BookVo bookVo = new BookVo(bookId,bookmessage.getName(),bookmessage.getJiaofu(),bookmessage.getKind(),bookmessage.getPublisher(),bookmessage.getAuthor(),book.getQuality(),book.getCode());
+        return bookVo;
+    }
+
+    @Override
+    public void deleteBook(String bookId, String code)
+    {
+
+        Book book = bookRepository.findByBookIdAndCode(bookId,code);
+        book.setIsDelete(StaticData.BOOK_DELETE_IS_DELETE);
+        bookRepository.save(book);
+
+    }
+
+    //还书  需要精确到书 需要归还时的状态
+    @Override
+    public void giveBack(String bookId,String code,String status)
+    {
+        Book book =bookRepository.findByBookIdAndCode(bookId,code);
+        book.setState(StaticData.BOOK_STATUS_ALREADY_BACK);
+        Borrow borrow = borrowRepository.findByUserIdAndCode(bookId,code);
+        borrow.setReturnStatus(status);
+        borrowRepository.save(borrow);
+    }
+
 
 }

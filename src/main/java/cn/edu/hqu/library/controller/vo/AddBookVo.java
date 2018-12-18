@@ -1,18 +1,20 @@
 package cn.edu.hqu.library.controller.vo;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-//推荐图书
-public class RecommendBookInfo {
-    String name;
-    String author;
+@Data
+public class AddBookVo {
+    String bookId;
+    String bookName;
+    String jiaofu;
+    String type;
     String publisher;
-    String reason;
+    String author;
+    String quality;
+    int count;
 
 }

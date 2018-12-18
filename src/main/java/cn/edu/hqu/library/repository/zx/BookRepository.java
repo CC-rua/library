@@ -13,6 +13,10 @@ public interface BookRepository extends JpaRepository<Book,String> {
 
     int countAllByBookIdAndState(String bookId,String status);
 
+    Book findTop1ByBookIdOrderByQuality(String bookId);
+
+    Book findByBookIdAndCode(String bookId,String code);
+
     /**
      * 	//查询按照时间顺序入库的三本书
      * 	<select id="findAllByPutawayTime" resultType="cn.edu.hqu.library.controller.vo.NewBookInfo">

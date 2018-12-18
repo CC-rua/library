@@ -36,7 +36,9 @@ public class ReturnForm {
     private String translateQuality(String quality){
         switch (quality){
             case "0":return "正常";
-            case "1":return "严重缺损";
+            case "1":return "";
+            case "2":return "";
+            case "3":return "严重缺损";
             default:
                 break;
         }

@@ -3,6 +3,7 @@ package cn.edu.hqu.library.controller;
 import cn.edu.hqu.library.controller.vo.BorrorForm;
 import cn.edu.hqu.library.controller.vo.ReturnForm;
 import cn.edu.hqu.library.service.BookService;
+import cn.edu.hqu.library.service.Impl.BorrowService;
 import cn.edu.hqu.library.service.dto.BookInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,9 @@ import java.util.List;
 @SessionAttributes({"name"})
 public class borrowController {
     private final BookService bookService;
+
+    @Autowired
+    BorrowService borrowService;
 
     @Autowired
     public borrowController(BookService borrowService) {
@@ -45,5 +49,13 @@ public class borrowController {
         model.addAttribute("borrows",result);
         model.addAttribute("Returnborrows",result2);
         return "borrow";
+    }
+
+
+    //某人借阅某书
+    @RequestMapping(value = "borrowBookByUserId")
+    public String borrowBookByUserId(@ModelAttribute("name") String userId ,String bookMsgId)
+    {
+        return borrowService.UserBorrowSomeBook(userId,bookMsgId);
     }
 }
