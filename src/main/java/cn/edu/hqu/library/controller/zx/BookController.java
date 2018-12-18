@@ -4,7 +4,6 @@ import cn.edu.hqu.library.controller.BaseController;
 import cn.edu.hqu.library.controller.vo.NewBookInfo;
 import cn.edu.hqu.library.controller.vo.RecommendBookInfo;
 import cn.edu.hqu.library.controller.zx.vo.BookMsgVo;
-import cn.edu.hqu.library.entity.Bookmessage;
 import cn.edu.hqu.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +27,7 @@ public class BookController extends BaseController {
         return "newBook";
     }
 
-    @RequestMapping
+    @RequestMapping("recommendBook")
     public String recommendBook(Model model)
     {
         List<RecommendBookInfo> list = bookService.findRecommendBook();
@@ -36,7 +35,7 @@ public class BookController extends BaseController {
         return "recommendBook";
     }
 
-    @RequestMapping
+    @RequestMapping("findBookMsgByBookId")
     public String findBookMsgByBookId(String bookId, Model model)
     {
         BookMsgVo bookMsgVo = bookService.findBookMsgByBookId(bookId);

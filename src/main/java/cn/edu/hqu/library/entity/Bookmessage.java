@@ -12,12 +12,15 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Table(name = "bookmessage")
+@Entity
 public class Bookmessage {
 
 
 @Id
 @Column(name = "BookID")
   private String bookId;
+
   private String name;
   private String jiaofu;
   private String kind;
