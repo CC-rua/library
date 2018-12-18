@@ -26,16 +26,20 @@ public class userManagerController extends BaseController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public List<User> SearchUser(@RequestBody(required = false) User user1){
-        String userid = "16251220";
+        //需要一个User的json
         List<User> result=
-        userService.findUserByConditions(userid,null,null,null,null,null);
+        userService.findUserByConditions(user1.getUserId(),user1.getName(),user1.getDepartment(),
+                user1.getGrade(),user1.getMajor(),user1.getSex());
         return result;
     }
-    @RequestMapping(value = "/delete/{id}",method = RequestMethod.DELETE)
-    public  String DeleteUser(Model model , @PathVariable("id") String id){
+    @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
+    public  String DeleteUser(@RequestBody(required = false) List<String> userId){
         //发回id串
-        String getid=id;
-        userService.DeleteByUserId(id);
+        for(String getid:userId){
+            if(userService.findUserByUserId(getid)!=null){
+                userService.DeleteByUserId(getid);
+            }
+        }
         return "userManager";
     }
 }

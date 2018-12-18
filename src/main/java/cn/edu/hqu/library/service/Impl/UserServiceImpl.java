@@ -34,9 +34,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserByUserId(String name) {
+    public User findUserByUserId(String userId) {
         //通过name参数返回User对象
-        return userRepository.findAllByUserIdEquals(name);
+        return userRepository.findAllByUserIdEquals(userId);
     }
 
     @Override

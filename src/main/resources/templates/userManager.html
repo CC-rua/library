@@ -19,7 +19,7 @@
             年级:<output type="text" name="grade"  th:text="${user.grade}"></output><br/>
             专业:<output type="text" name="major"  th:text="${user.major}"></output><br/>
         </label><br />
-        <a class="del" href="userManager/delete/100">DELETE</a>
+        <a class="del" method="delete" href="userManager/delete">DELETE</a>
     </form>
     <a th:href="@{/index}" href="/borrow">主页</a>
 </div>

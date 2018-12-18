@@ -3,45 +3,44 @@
 <mapper namespace="cn.edu.hqu.library.mapper.UserImp">
 
     <select id="findUserByConditions" resultType="cn.edu.hqu.library.entity.User" >
-		SELECT
+	SELECT
 		UserID AS "userId",
-		passwd AS "password",
 		name AS "name",
 		department AS "department",
 		grade AS "grade",
 		major AS "major",
 		sex AS "sex"
 		FROM
-			`user`
+			user
 		WHERE
 			(
 				CASE
-				WHEN userid= #{0}||ISNULL(userid) THEN
+				WHEN userid= #{UserId}||ISNULL(#{UserId}) THEN
 					1
 				ELSE
 					0
 				END + CASE
-				WHEN name='a'||ISNULL(name) THEN
+				WHEN name=#{name}||ISNULL(#{name}) THEN
 					1
 				ELSE
 					0
 		END+ CASE
-				WHEN department='a'||ISNULL(department) THEN
+				WHEN department=#{department}||ISNULL(#{department}) THEN
 					1
 				ELSE
 					0
 		END+ CASE
-				WHEN grade='a'||ISNULL(grade) THEN
+				WHEN grade=#{grade}||ISNULL(#{grade}) THEN
 					1
 				ELSE
 					0
 		END+ CASE
-				WHEN major='a'||ISNULL(major) THEN
+				WHEN major=#{major}||ISNULL(#{major}) THEN
 					1
 				ELSE
 					0
 		END+ CASE
-				WHEN sex=3||ISNULL(sex) THEN
+				WHEN sex=#{sex}||ISNULL(#{sex}) THEN
 					1
 				ELSE
 					0
