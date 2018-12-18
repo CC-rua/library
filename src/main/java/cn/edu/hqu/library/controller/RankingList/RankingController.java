@@ -13,12 +13,10 @@ import java.util.List;
 @Controller
 @RequestMapping("rank")
 public class RankingController {
-    private final BookService bookService;
 
     @Autowired
-    public RankingController(BookService bookService) {
-        this.bookService = bookService;
-    }
+    private BookService bookService;
+
 
 
     @RequestMapping(method = RequestMethod.GET)

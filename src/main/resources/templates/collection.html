@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+我的收藏
+<form action="" method="get" th:action="@{/collection}" th:each="collectioninfo:${list}">
+
+    <label>
+        <output type="text" name="name"  th:text="${collectioninfo.bookName}"></output><br/>
+        <output type="text" name="author"  th:text="${collectioninfo.author}"></output><br/>
+        <output type="text" name="jiaofu"  th:text="${collectioninfo.jiaofu}"></output><br/>
+        <output type="text" name="kind"  th:text="${collectioninfo.kind}"></output><br/>
+        <output type="text" name="publisher"  th:text="${collectioninfo.publisher}"></output><br/>
+        <output type="text" name="num"  th:text="${collectioninfo.freeNum}"></output><br/>
+    </label><br />
+</form>
+
+</body>
+</html>

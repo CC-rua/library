@@ -1,9 +1,6 @@
 package cn.edu.hqu.library.util;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.*;
 import java.util.Date;
 
 public class DateTransferUtil {
@@ -15,6 +12,14 @@ public class DateTransferUtil {
         LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, zone);
         LocalDate localDate = localDateTime.toLocalDate();
         return localDate;
+    }
+
+    public static Date LocalDateToDate(LocalDate localDate)
+    {
+        ZoneId zoneId = ZoneId.systemDefault();
+        ZonedDateTime zdt = localDate.atStartOfDay(zoneId);
+        Date date = Date.from(zdt.toInstant());
+        return date;
     }
 
 }
