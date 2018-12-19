@@ -29,34 +29,31 @@ public class noticeManagerController {
     }
     //增
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public String AddNotice(@RequestBody(required = false) Notice notice1){
+    public void AddNotice(@RequestBody(required = false) Notice notice1){
         Integer getid=notice1.getNoticeId();
         if(noticeService.findNoticeByNoticeId(getid)==null){
             noticeService.addNotice(notice1);
         }
-        return "noticeManager";
     }
     //删
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
-    public  String Deletenotice(@RequestBody(required = false) List<Integer> noticeId){
+    public  void Deletenotice(@RequestBody(required = false) List<Integer> noticeId){
         //发回id串
         for(Integer getid:noticeId){
             if(noticeService.findNoticeByNoticeId(getid)!=null){
                 noticeService.DeleteByNoticeId(getid);
             }
         }
-        return "noticeManager";
     }
     //改
     @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public String UpDatenotice(@RequestBody(required = false) List<Notice> noticeList){
+    public void UpDatenotice(@RequestBody(required = false) List<Notice> noticeList){
         for(Notice notice1:noticeList){
             Integer getid=notice1.getNoticeId();
             if(noticeService.findNoticeByNoticeId(getid)!=null){
                 noticeService.addNotice(notice1);
             }
         }
-        return "noticeManager";
     }
     //查
     @RequestMapping(method = RequestMethod.POST)

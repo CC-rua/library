@@ -16,8 +16,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/adviceManager")
 public class adviceManagerController {
+    private final AdviceService adviceService;
+
     @Autowired
-    AdviceService adviceService;
+    public adviceManagerController(AdviceService adviceService) {
+        this.adviceService = adviceService;
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String  ShowadviceManagerPage(Model model){
@@ -28,31 +32,28 @@ public class adviceManagerController {
     
     //增
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public String Addadvice(@RequestBody(required = false) Advice advice1){
+    public void Addadvice(@RequestBody(required = false) Advice advice1){
             adviceService.addAdvice(advice1);
-        return "adviceManager";
     }
     //删
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
-    public  String Deleteadvice(@RequestBody(required = false) List<Integer> adviceId){
+    public  void Deleteadvice(@RequestBody(required = false) List<Integer> adviceId){
         //发回id串
         for(int getid:adviceId){
             if(adviceService.findAdviceByAdviceId(getid)!=null){
                 adviceService.DeleteByAdviceId(getid);
             }
         }
-        return "adviceManager";
     }
     //改
     @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public String UpDateadvice(@RequestBody(required = false) List<Advice> adviceList){
+    public void UpDateadvice(@RequestBody(required = false) List<Advice> adviceList){
         for(Advice advice1:adviceList){
             Integer adviceId=advice1.getAdviceId();
             if(adviceService.findAdviceByAdviceId(adviceId)!=null){
                 adviceService.addAdvice(advice1);
             }
         }
-        return "adviceManager";
     }
     //查
     @RequestMapping(method = RequestMethod.POST)

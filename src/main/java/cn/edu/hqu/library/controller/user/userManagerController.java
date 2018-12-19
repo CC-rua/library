@@ -28,34 +28,31 @@ public class userManagerController extends BaseController {
     }
     //增
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public String AddUser(@RequestBody(required = false) User user1){
+    public void AddUser(@RequestBody(required = false) User user1){
         String getid=user1.getUserId();
-        if(userService.findUserByUserId(getid)==null){
+        if(userService.findUserByUserId(getid)==null) {
             userService.addUser(user1);
         }
-        return "userManager";
     }
     //删
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
-    public  String DeleteUser(@RequestBody(required = false) List<String> userId){
+    public  void DeleteUser(@RequestBody(required = false) List<String> userId){
         //发回id串
         for(String getid:userId){
             if(userService.findUserByUserId(getid)!=null){
                 userService.DeleteByUserId(getid);
             }
         }
-        return "userManager";
     }
     //改
     @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public String UpDateUser(@RequestBody(required = false) List<User> userList){
+    public void UpDateUser(@RequestBody(required = false) List<User> userList){
         for(User user1:userList){
             String getid=user1.getUserId();
             if(userService.findUserByUserId(getid)!=null){
                 userService.addUser(user1);
             }
         }
-        return "userManager";
     }
     //查
     @RequestMapping(method = RequestMethod.POST)
