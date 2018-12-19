@@ -24,12 +24,12 @@ public class adviceController {
         return "advice";
     }
     @RequestMapping(method = RequestMethod.POST)
-    public String  PostAdvice(Advice advice, Errors errors,Model model) {
-        if (advice != null) {
-            adviceRepository.save(advice);
+    public String  PostAdvice(Advice advice1, Errors errors,Model model) {
+        if (advice1 != null) {
+            adviceRepository.save(advice1);
         }
-       advice = new Advice();
-        model.addAttribute("advice",advice);
+       advice1 = new Advice();
+        model.addAttribute("advice",advice1);
         return "advice";
     }
 }

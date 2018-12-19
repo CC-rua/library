@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.hqu.library.mapper.AdviceImp">
+
+    <select id="findAdviceByConditions" resultType="cn.edu.hqu.library.entity.Advice" >
+		SELECT*
+				FROM
+					advice
+				WHERE
+					(
+						CASE
+						WHEN adviceID=#{adviceId}||ISNULL(#{adviceId}) THEN
+							1
+						ELSE
+							0
+						END + CASE
+						WHEN name=#{name}||ISNULL(#{name}) THEN
+							1
+						ELSE
+							0
+				END+ CASE
+						WHEN CONCAT(advice) LIKE concat('%', #{advice}, '%')||
+						ISNULL( #{advice})	||ISNULL(advice) THEN
+							1
+						ELSE
+							0
+				END+ CASE
+						WHEN state=#{state}||ISNULL(#{state}) THEN
+							1
+						ELSE
+							0
+				END
+
+					) >= 4
+    </select>
+
+</mapper>

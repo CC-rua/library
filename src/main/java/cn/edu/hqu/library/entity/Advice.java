@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name="advice")
+@Table(name="adviceMsg")
 public class Advice {
 
   @Id
@@ -22,8 +22,8 @@ public class Advice {
   private String userId;
   @Column(name = "Name")
   private String name;
-  @Column(name = "advice")
-  private String advice;
-
-
+  @Column(name = "adviceMsg")
+  private String adviceMsg;
+  @Column(name = "state")
+  private String state;
 }
