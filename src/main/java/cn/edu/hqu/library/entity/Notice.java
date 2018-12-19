@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,8 +13,9 @@ import javax.persistence.Table;
 @Table(name="notice")
 public class Notice {
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "NoticeID")
-  private String noticeId;
+  private Integer noticeId;
   private java.sql.Timestamp btime;
   private java.sql.Timestamp etime;
   private String msg;

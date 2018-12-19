@@ -17,9 +17,9 @@ public class Advice {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "adviceID")
-  private int adviceId;
+  private Integer adviceId;
 
-  @Column(name = "userId")
+  @Column(name = "userID")
   private String userId;
 
   private String name;

@@ -25,7 +25,7 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public Notice findNoticeByNoticeId(String noticeId) {
+    public Notice findNoticeByNoticeId(Integer noticeId) {
         return noticeRepository.findNoticeByNoticeId(noticeId);
     }
 
@@ -35,12 +35,12 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public void DeleteByNoticeId(String noticeId) {
+    public void DeleteByNoticeId(Integer noticeId) {
         noticeRepository.deleteById(noticeId);
     }
 
     @Override
-    public List<Notice> findNoticeByConditions(String noticeId, String msg) {
+    public List<Notice> findNoticeByConditions(Integer noticeId, String msg) {
         return noticeImp.findNoticeByConditions(noticeId,msg);
     }
 }

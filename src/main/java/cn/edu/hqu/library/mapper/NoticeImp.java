@@ -15,5 +15,5 @@ import java.util.List;
 @Component
 public interface NoticeImp {
 
-    List<Notice> findNoticeByConditions(@Param("noticeId") String noticeId, @Param("msg") String msg);
+    List<Notice> findNoticeByConditions(@Param("noticeId") Integer noticeId, @Param("msg") String msg);
 }

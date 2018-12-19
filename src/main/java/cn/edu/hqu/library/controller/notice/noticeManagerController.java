@@ -30,7 +30,7 @@ public class noticeManagerController {
     //增
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public String AddNotice(@RequestBody(required = false) Notice notice1){
-        String getid=notice1.getNoticeId();
+        Integer getid=notice1.getNoticeId();
         if(noticeService.findNoticeByNoticeId(getid)==null){
             noticeService.addNotice(notice1);
         }
@@ -38,9 +38,9 @@ public class noticeManagerController {
     }
     //删
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
-    public  String Deletenotice(@RequestBody(required = false) List<String> noticeId){
+    public  String Deletenotice(@RequestBody(required = false) List<Integer> noticeId){
         //发回id串
-        for(String getid:noticeId){
+        for(Integer getid:noticeId){
             if(noticeService.findNoticeByNoticeId(getid)!=null){
                 noticeService.DeleteByNoticeId(getid);
             }
@@ -51,7 +51,7 @@ public class noticeManagerController {
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     public String UpDatenotice(@RequestBody(required = false) List<Notice> noticeList){
         for(Notice notice1:noticeList){
-            String getid=notice1.getNoticeId();
+            Integer getid=notice1.getNoticeId();
             if(noticeService.findNoticeByNoticeId(getid)!=null){
                 noticeService.addNotice(notice1);
             }

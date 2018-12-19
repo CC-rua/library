@@ -7,11 +7,11 @@ import java.util.List;
 public interface NoticeService {
     List<Notice> FindAllNotice();
 
-    Notice findNoticeByNoticeId(String noticeId);
+    Notice findNoticeByNoticeId(Integer noticeId);
 
     void addNotice(Notice notice);
 
-    void DeleteByNoticeId(String noticeId);
+    void DeleteByNoticeId(Integer noticeId);
 
-    List<Notice> findNoticeByConditions(String noticeId, String msg);
+    List<Notice> findNoticeByConditions(Integer noticeId, String msg);
 }
