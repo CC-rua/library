@@ -21,7 +21,7 @@ public class AdviceServiceImpl implements AdviceService {
     }
 
     @Override
-    public Advice findAdviceByAdviceId(int adviceId) {
+    public Advice findAdviceByAdviceId(Integer adviceId) {
         return adviceRepository.findAdviceByAdviceId(adviceId);
     }
 
@@ -31,7 +31,7 @@ public class AdviceServiceImpl implements AdviceService {
     }
 
     @Override
-    public void DeleteByAdviceId(int adviceId) {
+    public void DeleteByAdviceId(Integer adviceId) {
         adviceRepository.deleteById(adviceId);
     }
 

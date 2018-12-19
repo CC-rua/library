@@ -29,10 +29,7 @@ public class adviceManagerController {
     //增
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public String Addadvice(@RequestBody(required = false) Advice advice1){
-        int getid=advice1.getAdviceId();
-        if(adviceService.findAdviceByAdviceId(getid)==null){
             adviceService.addAdvice(advice1);
-        }
         return "adviceManager";
     }
     //删
@@ -50,8 +47,8 @@ public class adviceManagerController {
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     public String UpDateadvice(@RequestBody(required = false) List<Advice> adviceList){
         for(Advice advice1:adviceList){
-            int getid=advice1.getAdviceId();
-            if(adviceService.findAdviceByAdviceId(getid)!=null){
+            Integer adviceId=advice1.getAdviceId();
+            if(adviceService.findAdviceByAdviceId(adviceId)!=null){
                 adviceService.addAdvice(advice1);
             }
         }

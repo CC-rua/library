@@ -11,19 +11,16 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name="adviceMsg")
+@Table(name="advice")
 public class Advice {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+ // @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "adviceID")
   private Integer adviceId;
-  @Column(name = "UserID")
   private String userId;
-  @Column(name = "Name")
   private String name;
-  @Column(name = "adviceMsg")
   private String adviceMsg;
-  @Column(name = "state")
+
   private String state;
 }
