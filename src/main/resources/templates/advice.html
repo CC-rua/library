@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="" method="post" th:action="@{/advice}" th:object="${advice}">
+<form action="" method="post" th:action="@{/advice/submitAdvice}" th:object="${advice}">
 
     <label >账号:
         <input type="text" name="userId" th:field="*{userId}"/>
@@ -14,7 +14,7 @@
         <input type="text" name="name" th:field="*{name}"/>
     </label><br/>
     <label >意见:
-        <input type="text" name="adviceMsg" th:field="*{adviceMsg}"/>
+        <input type="text" name="message" th:field="*{message}"/>
     </label><br/>
     <input type="submit" value="提交" /><br />
 </form>

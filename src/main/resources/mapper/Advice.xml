@@ -19,8 +19,8 @@
 						ELSE
 							0
 				END+ CASE
-						WHEN CONCAT(advice) LIKE concat('%', #{advice}, '%')||
-						ISNULL( #{advice})	||ISNULL(advice) THEN
+						WHEN CONCAT(message) LIKE concat('%', #{message}, '%')||
+						ISNULL( #{message})	||ISNULL(message) THEN
 							1
 						ELSE
 							0

@@ -23,9 +23,11 @@ public class adviceController {
         model.addAttribute("advice",advice);
         return "advice";
     }
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST,value = "submitAdvice")
     public String  PostAdvice(Advice advice1, Errors errors,Model model) {
+
         if (advice1 != null) {
+            advice1.setState("0");
             adviceRepository.save(advice1);
         }
        advice1 = new Advice();

@@ -10,6 +10,6 @@ import java.util.List;
 @Component
 @Mapper
 public interface AdviceImp {
-    List<Advice> findAdviceByConditions(@Param("adviceId") Integer adviceId,@Param("name") String name, @Param("adviceMsg") String advice,@Param("state") String state);
+    List<Advice> findAdviceByConditions(@Param("adviceId") Integer adviceId,@Param("name") String name, @Param("message") String message,@Param("state") String state);
 
 }

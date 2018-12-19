@@ -59,6 +59,6 @@ public class adviceManagerController {
     @ResponseBody
     public List<Advice> Searchadvice(@RequestBody(required = false) Advice advice1) {
         //需要一个advice的json
-        return adviceService.findAdviceByConditions(advice1.getAdviceId(),advice1.getName(), advice1.getAdviceMsg(),advice1.getState());
+        return adviceService.findAdviceByConditions(advice1.getAdviceId(),advice1.getName(), advice1.getMessage(),advice1.getState());
     }
 }

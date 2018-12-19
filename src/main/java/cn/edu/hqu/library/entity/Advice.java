@@ -3,9 +3,9 @@ package cn.edu.hqu.library.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,12 +15,17 @@ import javax.persistence.*;
 public class Advice {
 
   @Id
- // @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "adviceID")
-  private Integer adviceId;
+  private int adviceId;
+
+  @Column(name = "userId")
   private String userId;
+
   private String name;
-  private String adviceMsg;
+
+  @Column(name = "message")
+  private String message;
 
   private String state;
 }
