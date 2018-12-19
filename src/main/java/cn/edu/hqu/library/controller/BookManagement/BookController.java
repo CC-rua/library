@@ -15,7 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Random;
 
@@ -95,6 +98,24 @@ public class BookController extends BaseController {
     {
         bookService.giveBack(bookId,code,borrowUserId);
         return getSuccess("success");
+    }
+
+    @ResponseBody
+    @RequestMapping("findBookInfo")
+    public ReturnBean findBookListInfo(@RequestParam(required = false,defaultValue = "")String code,
+                                       @RequestParam(required = false,defaultValue = "")String name,
+                                       @RequestParam(required = false,defaultValue = "")String kind,
+                                       @RequestParam(required = false,defaultValue = "")String jiaofu,
+                                       @RequestParam(required = false,defaultValue = "")String type,
+                                       @RequestParam(required = false,defaultValue = "")String status,
+                                       @RequestParam(required = false,defaultValue = "")String quality,
+                                       @RequestParam(required = false,defaultValue = "")String author
+                                       )
+            //参数 提取码 书名 性质 类别 状态 图书状况 作者
+            //     code,name,jiaofu,kind,status,quality,author
+    {
+        List<BookVo> list = bookService.findBookInfo(code,name,kind,jiaofu,type,status,quality,author);
+        return getSuccess("success",list, list.size());
     }
 
 

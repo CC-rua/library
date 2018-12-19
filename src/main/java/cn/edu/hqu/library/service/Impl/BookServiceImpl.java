@@ -18,6 +18,7 @@ import cn.edu.hqu.library.util.StaticData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -150,6 +151,22 @@ public class BookServiceImpl implements BookService {
         Borrow borrow = borrowRepository.findByUserIdAndCode(bookId,code);
         borrow.setReturnStatus(status);
         borrowRepository.save(borrow);
+    }
+
+
+
+
+    @Override
+    public List<BookVo> findBookInfo(String bookId, String code, String state, String quality, Timestamp startTime, Timestamp endTime)
+    {
+//        return bookImp.findBookInfo(bookId,code,state,quality,startTime,endTime);
+        return null;
+    }
+
+    @Override
+    public List<BookVo> findBookInfo(String code, String name, String kind, String jiaofu, String type, String status, String quality, String author) {
+        return bookImp.findBookInfo(code,name,kind,jiaofu,type,status,quality,author);
+
     }
 
 

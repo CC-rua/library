@@ -39,6 +39,39 @@
 	</select>
 
 
+	<!--String code, String name, String kind, String jiaofu, String type, String status, String quality, String author-->
+	<select id="findBookInfo" resultType="cn.edu.hqu.library.controller.zx.vo.BookVo">
+		select b.BookID,name as bookName,jiaofu,kind,publisher,author,Code,quality from book left join bookmessage b on book.BookID = b.BookID
+
+		where  isDelete =false
+
+		 <if test="bookID=''and bookID = null">
+		 	 and BookID like #{bookId}
+		 </if>
+
+		 <if test="code=''and code = null">
+		 	 and Code like #{code}
+		 </if>
+
+		 <if test="state=''and state = null">
+		 	 and state like #{state}
+		 </if>
+
+		 <if test="quality=''and quality = null">
+		 	and quality like #{quality}
+		 </if>
+
+		 <if test="startTime =''and bookID = null">
+		 	 and putawayTime >= #{startTime}
+		 </if>
+
+		 <if test="endTime =''and endTime = null">
+		 	 and putawayTime !> #{endTime}
+		 </if>
+
+	</select>
+
+
 
 
 </mapper>

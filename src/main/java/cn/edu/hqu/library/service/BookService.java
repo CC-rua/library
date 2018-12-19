@@ -10,6 +10,7 @@ import cn.edu.hqu.library.entity.Borrow;
 import cn.edu.hqu.library.service.dto.BookInfo;
 import cn.edu.hqu.library.service.dto.Rank;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface BookService {
@@ -40,4 +41,9 @@ public interface BookService {
 
     //还书  需要精确到书 需要归还时的状态
     void giveBack(String bookId, String code, String status);
+
+
+    List<BookVo> findBookInfo(String bookId, String code, String state, String quality, Timestamp startTime, Timestamp endTime);
+
+    List<BookVo> findBookInfo(String code, String name, String kind, String jiaofu, String type, String status, String quality, String author);
 }
