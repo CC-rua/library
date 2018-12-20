@@ -69,8 +69,8 @@ public class BookController extends BaseController {
         return getSuccess("success");
     }
 
-    @RequestMapping("findBookBuIdAndCode")
-    public ReturnBean findBookBuIdAndCode(String bookId,String code)
+    @RequestMapping("findBookByIdAndCode")
+    public ReturnBean findBookByIdAndCode(String bookId,String code)
     {
         BookVo bookVo = bookService.findBookVoByBookCodeAndBookId(bookId,code);
         return getSuccess("success",bookVo,1);
