@@ -2,7 +2,7 @@ package cn.edu.hqu.library.controller.zx;
 
 import cn.edu.hqu.library.controller.BaseController;
 
-import cn.edu.hqu.library.controller.zx.vo.CollectionInfo;
+import cn.edu.hqu.library.controller.vo.CollectionInfo;
 import cn.edu.hqu.library.service.Impl.CollectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

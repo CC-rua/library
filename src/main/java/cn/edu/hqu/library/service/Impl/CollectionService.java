@@ -1,7 +1,7 @@
 package cn.edu.hqu.library.service.Impl;
 
 
-import cn.edu.hqu.library.controller.zx.vo.CollectionInfo;
+import cn.edu.hqu.library.controller.vo.CollectionInfo;
 import cn.edu.hqu.library.entity.Collection;
 import cn.edu.hqu.library.mapper.CollectionImp;
 import cn.edu.hqu.library.repository.CollectionRepository;

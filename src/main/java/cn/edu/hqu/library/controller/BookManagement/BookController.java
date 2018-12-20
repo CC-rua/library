@@ -4,8 +4,8 @@ import cn.edu.hqu.library.controller.BaseController;
 import cn.edu.hqu.library.controller.vo.AddBookVo;
 import cn.edu.hqu.library.controller.vo.NewBookInfo;
 import cn.edu.hqu.library.controller.vo.RecommendBookInfo;
-import cn.edu.hqu.library.controller.zx.vo.BookMsgVo;
-import cn.edu.hqu.library.controller.zx.vo.BookVo;
+import cn.edu.hqu.library.controller.vo.BookMsgVo;
+import cn.edu.hqu.library.controller.vo.BookVo;
 import cn.edu.hqu.library.entity.Book;
 import cn.edu.hqu.library.entity.ReturnBean;
 import cn.edu.hqu.library.service.BookService;
@@ -14,13 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.sql.Timestamp;
 import java.util.List;
-import java.util.Random;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("book")
@@ -60,13 +58,12 @@ public class BookController extends BaseController {
     @RequestMapping("addBookList")
     public ReturnBean addBookList(AddBookVo addBookVo,String quality)
     {
-        Random random = new Random(System.currentTimeMillis());
-        String code ="";
+        String code = UUID.randomUUID().toString();
         Book book =new Book(code,addBookVo.getBookId(), StaticData.BOOK_QUALITY_GOOD,StaticData.BOOK_DELETE_NOT_DELETE,quality);
         for(int i = 0;i<addBookVo.getCount();i++)
         {
-//            random. 这里有BUG
-            book.setCode(null);
+//            这里改成了uuid生成的id 会比较复杂
+            book.setCode(code);
             bookService.addBook(book);
         }
         return getSuccess("success");
@@ -115,6 +112,13 @@ public class BookController extends BaseController {
             //     code,name,jiaofu,kind,status,quality,author
     {
         List<BookVo> list = bookService.findBookInfo(code,name,kind,jiaofu,type,status,quality,author);
+
+//        for(BookVo bookVo:list)
+//        {
+//            bookVo.setCode(bookVo.getCode().substring(0,7));
+//        }
+
+
         return getSuccess("success",list, list.size());
     }
 

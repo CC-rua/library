@@ -2,13 +2,14 @@ package cn.edu.hqu.library.mapper;
 
 import cn.edu.hqu.library.controller.vo.NewBookInfo;
 import cn.edu.hqu.library.controller.vo.RecommendBookInfo;
-import cn.edu.hqu.library.controller.zx.vo.BookVo;
+import cn.edu.hqu.library.controller.vo.BookMsgVo;
+import cn.edu.hqu.library.controller.vo.BookVo;
 import cn.edu.hqu.library.service.dto.BookInfo;
 import cn.edu.hqu.library.service.dto.Rank;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
-import java.sql.Timestamp;
 import java.util.List;
 @Mapper
 @Component
@@ -22,5 +23,7 @@ public interface BookImp {
     List<RecommendBookInfo> findRecommendBook();
 
 
-    List<BookVo> findBookInfo(String code, String name, String kind, String jiaofu, String type, String status, String quality, String author);
+    List<BookVo> findBookInfo(@Param("code") String code,@Param("bookName") String bookName,@Param("kind") String kind,@Param("jiaofu") String jiaofu,@Param("type") String type,@Param("status") String status,@Param("quality") String quality,@Param("author") String author);
+
+    List<BookMsgVo> findBookMsgInfo(@Param("bookId") String bookId,@Param("bookName") String bookName,@Param("jiaofu") String jiaofu,@Param("type") String type,@Param("publisher") String publisher,@Param("author") String author);
 }

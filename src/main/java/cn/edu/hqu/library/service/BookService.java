@@ -3,8 +3,8 @@ package cn.edu.hqu.library.service;
 
 import cn.edu.hqu.library.controller.vo.NewBookInfo;
 import cn.edu.hqu.library.controller.vo.RecommendBookInfo;
-import cn.edu.hqu.library.controller.zx.vo.BookMsgVo;
-import cn.edu.hqu.library.controller.zx.vo.BookVo;
+import cn.edu.hqu.library.controller.vo.BookMsgVo;
+import cn.edu.hqu.library.controller.vo.BookVo;
 import cn.edu.hqu.library.entity.Book;
 import cn.edu.hqu.library.entity.Borrow;
 import cn.edu.hqu.library.service.dto.BookInfo;
@@ -46,4 +46,7 @@ public interface BookService {
     List<BookVo> findBookInfo(String bookId, String code, String state, String quality, Timestamp startTime, Timestamp endTime);
 
     List<BookVo> findBookInfo(String code, String name, String kind, String jiaofu, String type, String status, String quality, String author);
+
+    List<BookMsgVo> findBookMsgInfo(String bookId,String bookName,String jiaofu,String type,String publisher,String author);
+
 }

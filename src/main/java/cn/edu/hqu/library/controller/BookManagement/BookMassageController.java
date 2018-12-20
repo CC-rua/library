@@ -1,11 +1,9 @@
 package cn.edu.hqu.library.controller.BookManagement;
 
 import cn.edu.hqu.library.controller.BaseController;
-import cn.edu.hqu.library.controller.zx.vo.BookMsgVo;
+import cn.edu.hqu.library.controller.vo.BookMsgVo;
 import cn.edu.hqu.library.entity.Bookmessage;
 import cn.edu.hqu.library.entity.ReturnBean;
-import cn.edu.hqu.library.repository.zx.BookMsgRepository;
-import cn.edu.hqu.library.repository.zx.BookRepository;
 import cn.edu.hqu.library.service.BookService;
 import cn.edu.hqu.library.service.Impl.BookManagementService;
 import cn.edu.hqu.library.service.Impl.BorrowService;
@@ -92,5 +90,12 @@ public class BookMassageController extends BaseController {
         return getSuccess("success",bookmessage,1);
     }
 
+    @ResponseBody
+    @RequestMapping("findBookMsgInfo")
+    public ReturnBean findBookMsgInfo(String bookId,String bookName,String jiaofu,String type,String publisher,String author)
+    {
+        List<BookMsgVo> list = bookService.findBookMsgInfo( bookId, bookName, jiaofu, type, publisher, author);
+        return getSuccess("success",list,list.size());
+    }
 
 }

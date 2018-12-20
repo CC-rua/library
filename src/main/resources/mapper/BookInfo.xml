@@ -40,34 +40,74 @@
 
 
 	<!--String code, String name, String kind, String jiaofu, String type, String status, String quality, String author-->
-	<select id="findBookInfo" resultType="cn.edu.hqu.library.controller.zx.vo.BookVo">
+	<select id="findBookInfo" resultType="cn.edu.hqu.library.controller.vo.BookVo">
 		select b.BookID,name as bookName,jiaofu,kind,publisher,author,Code,quality from book left join bookmessage b on book.BookID = b.BookID
 
 		where  isDelete =false
 
-		 <if test="bookID=''and bookID = null">
-		 	 and BookID like #{bookId}
+		 <if test=" bookName !=''and bookName != null">
+		 	 and name like concat('%',#{bookName},'%')
 		 </if>
 
-		 <if test="code=''and code = null">
-		 	 and Code like #{code}
+		 <if test="kind!=''and kind != null">
+		 	 and kind like concat('%',#{kind},'%')
 		 </if>
 
-		 <if test="state=''and state = null">
-		 	 and state like #{state}
+		 <if test="jiaofu!=''and jiaofu != null">
+		 	and jiaofu = #{jiaofu}
 		 </if>
 
-		 <if test="quality=''and quality = null">
-		 	and quality like #{quality}
+		 <if test="type =''and type = null">
+		 	 and type = #{type}
 		 </if>
 
-		 <if test="startTime =''and bookID = null">
-		 	 and putawayTime >= #{startTime}
+		 <if test="status !=''and status != null">
+		 	 and status = #{status}
 		 </if>
 
-		 <if test="endTime =''and endTime = null">
-		 	 and putawayTime !> #{endTime}
+		 <if test="quality !=''and quality != null">
+		 	 and quality !> #{quality}
 		 </if>
+
+		 <if test="author !=''and author != null">
+		 	 and author !> #{author}
+		 </if>
+
+	</select>
+
+
+
+	<!--select * from bookmessage left join (select BookID,count(*) as freeNumvfrom from book where state = '0'group by BookID) num on bookmessage.BookID=num.BookID-->
+	<!--String bookId,String bookName,String jiaofu,String type,String publisher,String author-->
+	<select id="findBookMsgInfo" resultType="cn.edu.hqu.library.controller.vo.BookMsgVo">
+		select *,name as bookName from bookmessage left join (select BookID,count(*) as freeNum  from book where state = '0'group by BookID) num on bookmessage.BookID=num.BookID
+
+		<where>
+			<if test=" bookId !=''and bookId != null">
+				bookId like concat('%',#{bookId},'%')
+			</if>
+
+			<if test="bookName!=''and bookName != null">
+				and bookName like concat('%',#{bookName},'%')
+			</if>
+
+			<if test="jiaofu!=''and jiaofu != null">
+				and jiaofu = #{jiaofu}
+			</if>
+
+			<if test="type =''and type = null">
+				and type = #{type}
+			</if>
+
+			<if test="publisher !=''and publisher != null">
+				and publisher = #{publisher}
+			</if>
+
+			<if test="author !=''and author != null">
+				and author !> #{author}
+			</if>
+		</where>
+
 
 	</select>
 

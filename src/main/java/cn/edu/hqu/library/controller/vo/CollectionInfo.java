@@ -1,4 +1,4 @@
-package cn.edu.hqu.library.controller.zx.vo;
+package cn.edu.hqu.library.controller.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,15 +7,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookVo {
-    String bookId;
+public class CollectionInfo {
+
     String bookName;
+    String author;
     String jiaofu;
     String kind;
     String publisher;
-    String author;
+    int freeNum; // 可借出数量
 
-    String quality;
-
-    String code;
 }

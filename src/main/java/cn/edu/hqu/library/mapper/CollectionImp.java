@@ -1,6 +1,6 @@
 package cn.edu.hqu.library.mapper;
 
-import cn.edu.hqu.library.controller.zx.vo.CollectionInfo;
+import cn.edu.hqu.library.controller.vo.CollectionInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 

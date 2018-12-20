@@ -2,8 +2,8 @@ package cn.edu.hqu.library.service.Impl;
 
 import cn.edu.hqu.library.controller.vo.NewBookInfo;
 import cn.edu.hqu.library.controller.vo.RecommendBookInfo;
-import cn.edu.hqu.library.controller.zx.vo.BookMsgVo;
-import cn.edu.hqu.library.controller.zx.vo.BookVo;
+import cn.edu.hqu.library.controller.vo.BookMsgVo;
+import cn.edu.hqu.library.controller.vo.BookVo;
 import cn.edu.hqu.library.entity.Book;
 import cn.edu.hqu.library.entity.Bookmessage;
 import cn.edu.hqu.library.entity.Borrow;
@@ -117,6 +117,7 @@ public class BookServiceImpl implements BookService {
         Book book = bookRepository.findByBookIdAndCode(bookId,code);
         Bookmessage bookmessage = bookMsgRepository.findBookmessageByBookId(bookId);
         book.setState(StaticData.BOOK_STATUS_WAIT_QU);
+        bookRepository.saveAndFlush(book);
         Date now = new Date(System.currentTimeMillis());
         Date etime = new Date(System.currentTimeMillis()+1000*60*60*24* StaticData.JIEYUEQI);
         Borrow borrow = new Borrow(userId,code,now,etime,bookmessage.getJiaofu(),book.getQuality(),null);
@@ -167,6 +168,11 @@ public class BookServiceImpl implements BookService {
     public List<BookVo> findBookInfo(String code, String name, String kind, String jiaofu, String type, String status, String quality, String author) {
         return bookImp.findBookInfo(code,name,kind,jiaofu,type,status,quality,author);
 
+    }
+
+    @Override
+    public List<BookMsgVo> findBookMsgInfo(String bookId, String bookName, String jiaofu, String type, String publisher, String author) {
+        return bookImp.findBookMsgInfo( bookId, bookName, jiaofu, type, publisher, author);
     }
 
 
