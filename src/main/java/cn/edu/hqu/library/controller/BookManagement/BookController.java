@@ -10,10 +10,12 @@ import cn.edu.hqu.library.entity.Book;
 import cn.edu.hqu.library.entity.ReturnBean;
 import cn.edu.hqu.library.service.BookService;
 import cn.edu.hqu.library.util.StaticData;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,12 +23,15 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("book")
+@RequestMapping("churukuguanli")
 public class BookController extends BaseController {
 
     @Autowired
     BookService bookService;
-
+    @RequestMapping(method = RequestMethod.GET)
+    public  String churukuguanli(){
+        return "churukuguanli";
+    }
 
     //最新图书
     @RequestMapping("findNewBook")
@@ -97,17 +102,16 @@ public class BookController extends BaseController {
         return getSuccess("success");
     }
 
-    @ResponseBody
-    @RequestMapping("findBookInfo")
-    public ReturnBean findBookListInfo(@RequestParam(required = false,defaultValue = "")String code,
-                                       @RequestParam(required = false,defaultValue = "")String name,
-                                       @RequestParam(required = false,defaultValue = "")String kind,
-                                       @RequestParam(required = false,defaultValue = "")String jiaofu,
-                                       @RequestParam(required = false,defaultValue = "")String type,
-                                       @RequestParam(required = false,defaultValue = "")String status,
-                                       @RequestParam(required = false,defaultValue = "")String quality,
-                                       @RequestParam(required = false,defaultValue = "")String author
-                                       )
+    @RequestMapping(value = "findBookInfo",method = RequestMethod.POST)
+    public String findBookListInfo(   @RequestParam(value = "code",required = false,defaultValue = "")String code,
+                                       @RequestParam(value = "name",required = false,defaultValue = "")String name,
+                                       @RequestParam(value = "kind",required = false,defaultValue = "")String kind,
+                                       @RequestParam(value = "jiaofu",required = false,defaultValue = "")String jiaofu,
+                                       @RequestParam(value = "type",required = false,defaultValue = "")String type,
+                                       @RequestParam(value = "status",required = false,defaultValue = "")String status,
+                                       @RequestParam(value = "quality",required = false,defaultValue = "")String quality,
+                                       @RequestParam(value = "author",required = false,defaultValue = "")String author ,
+                                      Model model )
             //参数 提取码 书名 性质 类别 状态 图书状况 作者
             //     code,name,jiaofu,kind,status,quality,author
     {
@@ -118,8 +122,8 @@ public class BookController extends BaseController {
 //            bookVo.setCode(bookVo.getCode().substring(0,7));
 //        }
 
-
-        return getSuccess("success",list, list.size());
+        model.addAttribute("list2", list);
+        return "churukuguanli::bookform";
     }
 
 

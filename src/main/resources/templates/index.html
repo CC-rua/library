@@ -1,17 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <script src="/dist/js/jquery.js">
+    </script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<form action="" method="post" th:action="@{/index}" >
 
     <label >书名:
-        <input  name="name" />
+        <input id="bookname" name="name" />
     </label>
-    <input type="submit" value="查询" /><br />
-</form>
+
+<input id="submit1" type="button"  value="查询" /><br />
+<!--<div  th:fragment="bookform" >-->
+<!--<div   th:each="bookinfo:${list}">-->
+
+    <!--<label>-->
+        <!--书名:<output type="text" name="name"  th:text="${bookinfo.name}"></output><br/>-->
+        <!--种类:<output type="text" name="kind"  th:text="${bookinfo.kind}"></output><br/>-->
+    <!--</label><br />-->
+<!--</div>-->
+<!--</div>-->
+
+
+<!--<div id="div1" th:fragment="div1">-->
+    <!--<button id="btn">测试</button>-->
+    <!--<div th:if="${aa} ne null">-->
+        <!--<ul th:each="a : ${aa}">-->
+            <!--<li th:text="${a}"></li>-->
+        <!--</ul>-->
+    <!--</div>-->
+<!--</div>-->
+<div id="bookform" th:fragment="bookform">
+    <div th:if="${list} ne null">
+        <tr th:each="bookinfo:${list}">
+
+            <td th:text="${bookinfo.name}"></td>
+
+            <td th:text="${bookinfo.kind}"></td><br/>
+        </tr>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 <a th:href="@{/login}" href="login">登陆</a>
 <a th:href="@{/rank}" href="rank">排行榜</a>
 <a th:href="@{/notice}" href="notice">公告</a>
@@ -20,4 +62,61 @@
 <a th:href="@{/userManager}" href="/userManager">用户管理</a>
 <a th:href="@{/collection}" href="/userManager">用户收藏</a>
 </body>
+<script type="text/javascript">
+
+    $('#submit1').click(function () {
+
+        var url = '/index';
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {
+                name:$("#bookname").val()
+            },
+            success: function (data) {
+                console.log(data);
+                $('#bookform').html(data);
+            }
+        })
+    });
+    // $('#btn').click(function () {
+    //     var url = '/index/ajaxTest';
+    //     $.ajax({
+    //         url: url,
+    //         type: 'get',
+    //         data: {
+    //             a:'123'
+    //         },
+    //         success: function (data) {
+    //             $('#div1').html(data);
+    //         }
+    //     })
+    // });
+
+    $('#search').click(function () {
+        alert("ok");
+        var url = 'churukuguanli/findBookInfo';
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {
+                name:$("#name").val(),
+                code:$("#code").val(),
+                kind:$("#kind").val(),
+                jiaofu:$("#jiaofu").val(),
+                type:$("#type").val(),
+                status:$("#status").val(),
+                quality:$("#quality").val(),
+                author:$("#author").val()
+            },
+            success: function (data) {
+                console.log(data);
+                $('#book').html(data);
+                alert("ok")
+            }
+        })
+
+    });
+
+</script>
 </html>
