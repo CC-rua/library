@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/adviceManager")
+@RequestMapping("fankuiguanli")
 public class adviceManagerController {
     private final AdviceService adviceService;
 
@@ -25,8 +25,8 @@ public class adviceManagerController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String  ShowadviceManagerPage(Model model){
-        model.addAttribute("Alladvice",adviceService.FindAllAdvice());
-        return "adviceManager";
+        model.addAttribute("list2",adviceService.FindAllAdvice());
+        return "fankuiguanli";
     }
     
     
@@ -44,6 +44,7 @@ public class adviceManagerController {
                 adviceService.DeleteByAdviceId(getid);
             }
         }
+
     }
     //改
     @RequestMapping(value = "/update",method = RequestMethod.POST)
@@ -57,9 +58,10 @@ public class adviceManagerController {
     }
     //查
     @RequestMapping(method = RequestMethod.POST)
-    @ResponseBody
-    public List<Advice>Searchadvice(@RequestBody(required = false) Advice advice1) {
+    public String Searchadvice (Model model,@RequestBody(required = false) Advice advice1) {
         //需要一个advice的json
-        return adviceService.findAdviceByConditions(advice1.getAdviceId(),advice1.getName(), advice1.getMessage(),advice1.getState());
+        List<Advice> list=adviceService.findAdviceByConditions(advice1.getAdviceId(),advice1.getName(), advice1.getMessage(),advice1.getState());
+        model.addAttribute("list2", list);
+        return "fankuiguanli::form1";
     }
 }

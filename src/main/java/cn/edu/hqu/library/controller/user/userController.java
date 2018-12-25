@@ -15,7 +15,7 @@ import java.util.Date;
 
 
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/gerenxinxi")
 @SessionAttributes({"name","pwd"})
 public class userController extends ConvertServiceImpl {
     private final UserService userService;
@@ -25,25 +25,25 @@ public class userController extends ConvertServiceImpl {
         this.userService = userService;
     }
 
+//    @RequestMapping(method = RequestMethod.GET)
+//    public String ShowUserPage(@ModelAttribute("name")String name, Model model){
+//
+//        User user=  userService.findUserByUserId(name);
+//        users users = new users();
+//        users.setName(user.getUserId());
+//        users.setPwd(user.getPassword());
+//        users.setBirthday(user.getBirthday());
+//        model.addAttribute(users);
+//
+//        return "user";
+//    }
     @RequestMapping(method = RequestMethod.GET)
-    public String ShowUserPage(@ModelAttribute("name")String name, Model model){
-
-        User user=  userService.findUserByUserId(name);
-        users users = new users();
-        users.setName(user.getUserId());
-        users.setPwd(user.getPassword());
-        users.setBirthday(user.getBirthday());
-        model.addAttribute(users);
-
-        return "user";
-    }
-    @RequestMapping("/showUserInfo")
     public String showUserInfo(@ModelAttribute("name")String name,Model model)
     {
         User user = userService.findUserByUserId(name);
         user.setPassword("");
         model.addAttribute(user);
-        return "userInfo";
+        return "gerenxinxi";
     }
 
 }

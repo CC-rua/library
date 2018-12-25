@@ -7,7 +7,10 @@
 			book. CODE AS "Code",
 			bookmessage. NAME AS "name",
 			bookmessage.jiaofu AS "JiaoFu",
-			bookmessage.kind AS "Kind"
+			bookmessage.kind AS "Kind",
+			bookmessage.author AS "author",
+			bookmessage.publisher AS "publisher",
+			bookmessage.introduction AS "introduction"
 		FROM
 			book
 		LEFT JOIN bookmessage ON book.BookID = bookmessage.BookID

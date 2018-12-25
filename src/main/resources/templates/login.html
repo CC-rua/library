@@ -1,35 +1,89 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link
-            href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            rel="stylesheet">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>find book</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+
+  <link rel="stylesheet" href="../dist/css/skins/skin-blue.min.css">
+
+  <script src="/dist/js/jquery.js"></script>
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <style type="text/css">
+  .sp {
+	font-size: 14px;
+}
+  sp {
+	font-size: 18px;
+}
+  .sp {
+	font-size: 16px;
+}
+  </style>
 </head>
-<body>
-<div>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="../index2.html"><b>Find your Book</b></a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">登录开始新的旅程吧</p>
 
     <form action="" method="post" th:action="@{/login}"
           th:object="${users}">
-        <div class="errors" th:if="${#fields.hasErrors('*')}">
-            错误信息:
-            <ul>
-                <li th:each="err:${#fields.errors('*')}"
-                    th:text="${err}">Input is incorrect</li>
-            </ul>
+      <div class="form-group has-feedback">
+        <input type="text" name="name" th:field="*{name}" class="form-control" placeholder="Account">
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password"  name="pwd" th:field="*{pwd}" class="form-control" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="bs-checkbos">
+            <label>
+              <input type="checkbox"><lable class="h5">记住账号</lable>
+            </label>
+          </div>
         </div>
-        <label th:class="${#fields.hasErrors('name')}?'error'">用户名:
-            <input  type="text" name="name" th:class="${#fields.hasErrors('name')}?'error'" th:field="*{name}" />
-        </label><br />
-        <label th:class="${#fields.hasErrors('pwd')}?'error'">密码:
-            <input type="password" name="pwd" th:class="${#fields.hasErrors('pwd')}?'error'" th:field="*{pwd}"/>
-        </label><br />
-        <input type="submit" value="登录" />
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+        </div>
+        <!-- /.col -->
+      </div>
     </form>
-    <a th:href="@{/register}" href="register">注册</a>
 
+    <!-- /.social-auth-links -->
+
+  </div>
+  <!-- /.login-box-body -->
 </div>
+<!-- /.login-box -->
+
+
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+
+
+</script>
 </body>
 </html>

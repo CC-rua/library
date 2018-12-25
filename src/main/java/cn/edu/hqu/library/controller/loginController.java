@@ -38,7 +38,7 @@ public class loginController {
             //如果存在这个cookie进行页面跳转
             if (cookie2.getName().equals("user")) {
                 if (session.getAttribute("user") != null) {
-                    return "redirect:/user";
+                    return "redirect:/gerenxinxi";
                 } else {
                     users user1 = new users();
                     model.addAttribute(user1);
@@ -78,7 +78,7 @@ public class loginController {
                 return "login";
             }else {
                 session.setAttribute("name", user.getName());
-                return "redirect:/user";
+                return "redirect:/gerenxinxi";
             }
         }
     }

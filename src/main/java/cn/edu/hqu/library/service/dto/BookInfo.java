@@ -19,4 +19,7 @@ public class BookInfo {
    String Status;
    String ReturnStatus;
    String Quality;
+   String author;
+   String publisher;
+   String introduction;
 }

@@ -16,26 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = {"/","index"})
+@RequestMapping(value = {"/","start"})
 public class indexController extends BaseController{
 
     @Autowired
     BookService bookService;
-
-//    @RequestMapping
-//    public String index()
-//    {
-//        return "index";
-//    }
-//
-//    @RequestMapping(method = RequestMethod.POST)
-//    @ResponseBody
-//    public ReturnBean searchBook(@RequestParam(value = "name")String name)
-//    {
-//        List<BookInfo> bookInfos;
-//        bookInfos= bookService.FindBookInfoByName(name);
-//        return getSuccess("success",bookInfos,bookInfos.size());
-//    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model)
@@ -43,7 +28,7 @@ public class indexController extends BaseController{
         List<BookInfo> bookInfos;
         bookInfos= bookService.FindBookInfoByName("");
         model.addAttribute("list", bookInfos);
-        return "index";
+        return "start";
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -52,17 +37,8 @@ public class indexController extends BaseController{
         List<BookInfo> bookInfos;
         bookInfos= bookService.FindBookInfoByName(name);
         model.addAttribute("list", bookInfos);
-        return "index::bookform";
+        return "start::bookform";
     }
-//    @RequestMapping("/ajaxTest")
-//    public String test(Model model){
-//        System.out.println("ajaxTest");
-//        List<String> list = new ArrayList<>(10);
-//        for(int i=0;i<10;i++){
-//            list.add("hello"+i);
-//        }
-//        model.addAttribute("aa",list);
-//        return "index::div1";
-//    }
+
 
 }
