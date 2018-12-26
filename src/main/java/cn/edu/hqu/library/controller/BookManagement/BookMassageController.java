@@ -10,13 +10,14 @@ import cn.edu.hqu.library.service.Impl.BorrowService;
 import cn.edu.hqu.library.service.Impl.CollectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 @SessionAttributes("name")
-@RequestMapping("bookMsg")
+@RequestMapping("tushuxinxiguanli")
 public class BookMassageController extends BaseController {
 
     @Autowired
@@ -31,8 +32,8 @@ public class BookMassageController extends BaseController {
     @Autowired
     BorrowService borrowService;
 
-    //收藏 借书
 
+    //收藏 借书
     @ResponseBody
     @RequestMapping("CollectionBook")
     public ReturnBean CollectionBook(@ModelAttribute("name")String userId, String bookId)
