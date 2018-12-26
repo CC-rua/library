@@ -50,4 +50,5 @@ public interface BookService {
 
     List<BookMsgVo> findBookMsgInfo(String bookId,String bookName,String jiaofu,String type,String publisher,String author);
 
+    BookInfo FindBookInfoByCode(String code);
 }

@@ -9,23 +9,23 @@
 				WHERE
 					(
 						CASE
-						WHEN adviceID=#{adviceId}||ISNULL(#{adviceId}) THEN
+						WHEN adviceID=#{adviceId}||ISNULL(#{adviceId})||#{adviceId}='' THEN
 							1
 						ELSE
 							0
 						END + CASE
-						WHEN name=#{name}||ISNULL(#{name}) THEN
+						WHEN name=#{name}||ISNULL(#{name})||#{name}='' THEN
 							1
 						ELSE
 							0
 				END+ CASE
 						WHEN CONCAT(message) LIKE concat('%', #{message}, '%')||
-						ISNULL( #{message})	||ISNULL(message) THEN
+						ISNULL( #{message})	||ISNULL#(message)||#{message}='' THEN
 							1
 						ELSE
 							0
 				END+ CASE
-						WHEN state=#{state}||ISNULL(#{state}) THEN
+						WHEN state=#{state}||ISNULL(#{state})||#{state}='' THEN
 							1
 						ELSE
 							0

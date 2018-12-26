@@ -11,6 +11,7 @@ import java.util.Date;
 @Data
 public class BookInfo {
    String Code;
+   String bookId;
    String name;
    String JiaoFu;
    String Kind;

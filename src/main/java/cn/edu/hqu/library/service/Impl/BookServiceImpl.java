@@ -180,5 +180,10 @@ public class BookServiceImpl implements BookService {
         return bookImp.findBookMsgInfo( bookId, bookName, jiaofu, type, publisher, author);
     }
 
+    @Override
+    public BookInfo FindBookInfoByCode(String code) {
+        return null;
+    }
+
 
 }
