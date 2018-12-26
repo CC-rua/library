@@ -134,7 +134,7 @@ public class BookServiceImpl implements BookService {
     {
         Book book = bookRepository.findByBookIdAndCode(bookId,code);
         Bookmessage bookmessage = bookMsgRepository.findBookmessageByBookId(bookId);
-        BookVo bookVo = new BookVo(bookId,bookmessage.getName(),bookmessage.getJiaofu(),bookmessage.getKind(),bookmessage.getPublisher(),bookmessage.getAuthor(),book.getQuality(),book.getCode());
+        BookVo bookVo = new BookVo(bookId,bookmessage.getName(),bookmessage.getJiaofu(),bookmessage.getKind(),bookmessage.getPublisher(),bookmessage.getAuthor(),book.getQuality(),book.getState(),book.getCode());
         return bookVo;
     }
 

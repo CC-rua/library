@@ -6,7 +6,7 @@ public final class StaticData {
 
     public static String BOOK_STATUS_WAIT_BACK = "0";//
     public static String BOOK_STATUS_ALREADY_BACK = "1";
-    public static String BOOK_STATUS_OUT_TIME = "2";
+    public static String BOOK_STATUS_OUT_TIME = "2";//逾期
     public static String BOOK_STATUS_WAIT_QU = "3";
 
 

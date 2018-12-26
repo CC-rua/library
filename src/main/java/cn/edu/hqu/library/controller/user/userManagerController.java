@@ -30,6 +30,7 @@ public class userManagerController extends BaseController {
     }
 
     //删
+    @ResponseBody
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     public  void DeleteUser(@RequestBody(required = false) List<String> userId){
         //发回id串
@@ -40,6 +41,7 @@ public class userManagerController extends BaseController {
         }
     }
     //改
+    @ResponseBody
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     public void UpDateUser(@RequestBody(required = false) List<User> userList){
         for(User user1:userList){

@@ -44,7 +44,7 @@
 
 	<!--String code, String name, String kind, String jiaofu, String type, String status, String quality, String author-->
 	<select id="findBookInfo" resultType="cn.edu.hqu.library.controller.vo.BookVo">
-		select b.BookID,name as bookName,jiaofu,kind,publisher,author,Code,quality from book left join bookmessage b on book.BookID = b.BookID
+		select b.BookID,name as bookName,jiaofu,kind,publisher,author,Code,quality,state as status from book left join bookmessage b on book.BookID = b.BookID
 
 		where  isDelete =false
 

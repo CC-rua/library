@@ -300,11 +300,15 @@ $('#search').click(function() {
             },
             data: JSON.stringify(getFormData2()),
             success: function(data) {
+                if(data.success)
+                    alert("删除成功");
                  alert("ok");
                 console.log(data);
             }
         })
     });
+
+
 </script>
 
 </html>

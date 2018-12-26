@@ -29,18 +29,13 @@ public class BookController extends BaseController {
     @Autowired
     BookService bookService;
     @RequestMapping(method = RequestMethod.GET)
-    public  String churukuguanli(){
+    public  String churukuguanli(Model model){
+        List<BookVo> list = bookService.findBookInfo("","","","","","","","");
+        model.addAttribute("list2",list );
         return "churukuguanli";
     }
 
-    //最新图书
-    @RequestMapping("findNewBook")
-    public String findNewBook(Model model)
-    {
-        List<NewBookInfo> list =  bookService.findNewBookInfo();
-        model.addAttribute("list",list);
-        return "newBook";
-    }
+
 
     //推荐图书
     @RequestMapping("recommendBook")
@@ -60,6 +55,7 @@ public class BookController extends BaseController {
         return "bookMsgInfo";
     }
 
+    //批量添加图书
     @RequestMapping("addBookList")
     public ReturnBean addBookList(AddBookVo addBookVo,String quality)
     {
@@ -74,6 +70,7 @@ public class BookController extends BaseController {
         return getSuccess("success");
     }
 
+    //
     @RequestMapping("findBookByIdAndCode")
     public ReturnBean findBookByIdAndCode(String bookId,String code)
     {
@@ -85,6 +82,16 @@ public class BookController extends BaseController {
     public ReturnBean deleteBook(String bookId,String code)
     {
         bookService.deleteBook(bookId,code);
+        return getSuccess("success");
+    }
+
+    @RequestMapping("deleteBookList")
+    public ReturnBean deleteBookList(List<String> bookIdList,List<String> codeList)
+    {
+        for(int i = 0;i<bookIdList.size();i++)
+        {
+            bookService.deleteBook(bookIdList.get(i),codeList.get(i));
+        }
         return getSuccess("success");
     }
 
@@ -103,7 +110,7 @@ public class BookController extends BaseController {
     }
 
     @RequestMapping(value = "findBookInfo",method = RequestMethod.POST)
-    public String findBookListInfo(   @RequestParam(value = "code",required = false,defaultValue = "")String code,
+    public String findBookListInfo(    @RequestParam(value = "code",required = false,defaultValue = "")String code,
                                        @RequestParam(value = "name",required = false,defaultValue = "")String name,
                                        @RequestParam(value = "kind",required = false,defaultValue = "")String kind,
                                        @RequestParam(value = "jiaofu",required = false,defaultValue = "")String jiaofu,

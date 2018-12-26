@@ -15,5 +15,6 @@ public class BookVo {
     String publisher;
     String author;
     String quality;
+    String status;
     String code;
 }

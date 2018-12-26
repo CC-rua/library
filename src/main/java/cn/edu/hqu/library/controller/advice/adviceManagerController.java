@@ -31,11 +31,13 @@ public class adviceManagerController {
     
     
     //增
+    @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public void Addadvice(@RequestBody(required = false) Advice advice1){
             adviceService.addAdvice(advice1);
     }
     //删
+    @ResponseBody
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     public  void Deleteadvice(@RequestBody(required = false) List<Integer> adviceId){
         //发回id串
@@ -47,6 +49,7 @@ public class adviceManagerController {
 
     }
     //改
+    @ResponseBody
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     public void UpDateadvice(@RequestBody(required = false) List<Advice> adviceList){
         for(Advice advice1:adviceList){

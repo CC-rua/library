@@ -29,6 +29,7 @@ public class noticeManagerController {
     }
 
     //删
+    @ResponseBody
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     public  void Deletenotice(@RequestBody(required = false) List<Integer> noticeId){
         //发回id串
@@ -39,6 +40,7 @@ public class noticeManagerController {
         }
     }
     //改
+    @ResponseBody
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     public void UpDatenotice(@RequestBody(required = false) List<Notice> noticeList){
         for(Notice notice1:noticeList){
