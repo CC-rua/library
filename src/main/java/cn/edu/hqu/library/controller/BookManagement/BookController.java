@@ -33,16 +33,6 @@ public class BookController extends BaseController {
     }
 
 
-
-    //通过Id查看图书的详细信息
-    @RequestMapping(value = "jumpBookMsgByBookId")
-    public String findBookMsgByBookId(String bookId, Model model)
-    {
-        BookMsgVo bookMsgVo = bookService.findBookMsgByBookId(bookId);
-        model.addAttribute("bookInfo",bookMsgVo);
-        return "bookMsgInfo";
-    }
-
     //批量添加图书
     @RequestMapping("addBookList")
     public ReturnBean addBookList(AddBookVo addBookVo,String quality)
