@@ -32,7 +32,12 @@ public class BookMassageController extends BaseController {
     @Autowired
     BorrowService borrowService;
 
-
+    @RequestMapping(method = RequestMethod.GET)
+    public String ShowBookMsgPage(Model model){
+        List<BookMsgVo> list = bookService.findAllBookMsgInfo( );
+        model.addAttribute("list3", list);
+        return "tushuxinxiguanli";
+    }
     //收藏 借书
     @ResponseBody
     @RequestMapping("CollectionBook")
