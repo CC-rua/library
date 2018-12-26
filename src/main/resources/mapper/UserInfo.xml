@@ -4,38 +4,33 @@
 
     <select id="findUserByConditions" resultType="cn.edu.hqu.library.entity.User" >
 	SELECT
-		UserID AS "userId",
-		name AS "name",
-		department AS "department",
-		grade AS "grade",
-		major AS "major",
-		sex AS "sex"
+	*
 		FROM
 			user
-		WHERE
+WHERE
 			(
 				CASE
-				WHEN userid= #{UserId}||ISNULL(#{UserId}) THEN
+				WHEN UserID= #{UserId}||ISNULL(#{UserId})||#{UserId}='' THEN
 					1
 				ELSE
 					0
 				END + CASE
-				WHEN name=#{name}||ISNULL(#{name}) THEN
+				WHEN name=#{name}||ISNULL(#{name})||#{name}='' THEN
 					1
 				ELSE
 					0
 		END+ CASE
-				WHEN department=#{department}||ISNULL(#{department}) THEN
+				WHEN department=#{department}||ISNULL(#{department})||#{department}='' THEN
 					1
 				ELSE
 					0
 		END+ CASE
-				WHEN grade=#{grade}||ISNULL(#{grade}) THEN
+				WHEN grade=#{grade}||ISNULL(#{grade})||#{grade}='' THEN
 					1
 				ELSE
 					0
 		END+ CASE
-				WHEN major=#{major}||ISNULL(#{major}) THEN
+				WHEN major=#{major}||ISNULL(#{major})||#{major}='' THEN
 					1
 				ELSE
 					0

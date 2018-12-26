@@ -65,6 +65,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<Rank> FindRankListByJiaoFu(String JiaoFu) {
+        return bookImp.FindRankListByJiaoFu(JiaoFu);
+    }
+
+    @Override
     public List<NewBookInfo> findNewBookInfo()
     {
         return bookImp.FindBookByTimeDesc();

@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Controller
-@RequestMapping("notice")
+@RequestMapping("gonggao")
 public class noticeController {
 
     private final NoticeService noticeService;
@@ -31,7 +31,9 @@ public class noticeController {
         List<Notice> afterNow=new ArrayList<>();
         Date date = new Date();
         for(Notice notice:notices){
-           if(!notice.getBtime().before(date)&&!notice.getEtime().before(date)) {
+            if(notice.getBtime()==null||notice.getEtime()==null){
+                afterNow.add(notice);
+            }else if(!notice.getBtime().before(date)&&!notice.getEtime().before(date)) {
                 beforeNow.add(notice);
            }else if(!notice.getEtime().before(date)){
                afterNow.add(notice);
@@ -39,6 +41,6 @@ public class noticeController {
         }
         model.addAttribute("beginNotice",beforeNow);
         model.addAttribute("afterNotice",afterNow);
-        return "notice";
+        return "gonggao";
     }
 }

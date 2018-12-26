@@ -9,7 +9,7 @@
 		FROM
 			notice
 		WHERE
-			CONCAT(notice.msg) LIKE concat('%', #{msg}, '%')||ISNULL( #{msg})AND(
+			(CONCAT(notice.msg) LIKE concat('%', #{msg}, '%')||ISNULL( #{msg}))AND(
 				NoticeID = #{noticeId} || ISNULL( #{noticeId})
 			)
     </select>

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-@RequestMapping("rank")
+@RequestMapping("jieyuepaihang")
 public class RankingController {
 
     @Autowired
@@ -21,10 +21,10 @@ public class RankingController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String ShowRankingPage(Model model){
-        List<Rank> ranks=bookService.FindRankList("计算机");
-        List<Rank> ranks2=bookService.FindRankList("数学");
+        List<Rank> ranks=bookService.FindRankListByJiaoFu("是");
+        List<Rank> ranks2=bookService.FindRankList("小说");
         model.addAttribute("ranks",ranks);
         model.addAttribute("ranks2",ranks2);
-        return "rank";
+        return "jieyuepaihang";
     }
 }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("noticeManager")
+@RequestMapping("gonggaoguanli")
 public class noticeManagerController {
 
     private final NoticeService noticeService;
@@ -25,16 +25,9 @@ public class noticeManagerController {
     @RequestMapping(method = RequestMethod.GET)
     public String  ShowNoticeManagerPage(Model model){
         model.addAttribute("Allnotice",noticeService.FindAllNotice());
-        return "noticeManager";
+        return "gonggaoguanli";
     }
-    //增
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public void AddNotice(@RequestBody(required = false) Notice notice1){
-        Integer getid=notice1.getNoticeId();
-        if(noticeService.findNoticeByNoticeId(getid)==null){
-            noticeService.addNotice(notice1);
-        }
-    }
+
     //删
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     public  void Deletenotice(@RequestBody(required = false) List<Integer> noticeId){
@@ -57,9 +50,10 @@ public class noticeManagerController {
     }
     //查
     @RequestMapping(method = RequestMethod.POST)
-    @ResponseBody
-    public List<Notice> Searchnotice(@RequestBody(required = false) Notice notice1) {
+    public String Searchnotice(Model model,@RequestBody(required = false) Notice notice1) {
         //需要一个notice的json
-        return noticeService.findNoticeByConditions(notice1.getNoticeId(), notice1.getMsg());
+        List<Notice> list=noticeService.findNoticeByConditions(notice1.getNoticeId(), notice1.getMsg());
+        model.addAttribute("Allnotice",list);
+        return "gonggaoguanli::form2";
     }
 }

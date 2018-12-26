@@ -1,0 +1,297 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>find book</title>
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+	<link rel="stylesheet" href="../dist/css/skins/skin-blue.min.css">
+	<script src="/dist/js/jquery.js"></script>
+	<!-- Google Font -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"></head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+	<!-- Main Header -->
+	<header class="main-header">
+		<!-- Logo -->
+		<a href="/index2 " class="logo">
+			<!-- mini logo for sidebar mini 50x50 pixels -->
+			<span class="logo-mini">
+            <b>Find</b>Book</span>
+			<!-- logo for regular state and mobile devices -->
+			<span class="logo-lg">
+            <b>Find Book！</b>
+          </span>
+		</a>
+		<!-- Header Navbar -->
+		<nav class="navbar navbar-static-top" role="navigation">
+			<!-- Sidebar toggle button-->
+			<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+				<span class="sr-only">Toggle navigation</span></a>
+			<!-- Navbar Right Menu -->
+			<div class="navbar-custom-menu">
+				<ul class="nav navbar-nav">
+					<!-- User Account Menu -->
+					<li class="dropdown user user-menu">
+						<!-- Menu Toggle Button -->
+						<a href="login" class="dropdown-toggle" data-toggle="dropdown">
+							<!-- The user image in the navbar-->
+							<img src="../picture/111.jpg" class="user-image" alt="User Image">
+							<!-- hidden-xs hides the username on small devices so only the image appears. -->
+							<span class="hidden-xs">登录</span></a>
+					</li>
+					<!-- Control Sidebar Toggle Button -->
+					<li>
+						<a href="#" data-toggle="control-sidebar">
+							<i class="fa fa-gears"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<!-- Left side column. contains the logo and sidebar -->
+	<aside class="main-sidebar">
+		<!-- sidebar: style can be found in sidebar.less -->
+		<section class="sidebar">
+			<!-- Sidebar user panel (optional) -->
+			<div class="user-panel">
+				<div class="pull-left image">
+					<img src="../picture/111.jpg" class="img-circle" alt="User Image"></div>
+				<div class="pull-left info">
+					<p class="h5">用户名</p></div>
+			</div>
+			<!-- Sidebar Menu -->
+			<ul class="sidebar-menu h5" data-widget="tree">
+				<li class="header">主要导航</li>
+				<li class="active">
+					<a href="start">
+						<i class="fa fa-th"></i>
+						<span>首页</span></a>
+				</li>
+				<li>
+					<a href="xinjintushu">
+						<i class="fa fa-th"></i>
+						<span>新进图书</span></a>
+				</li>
+				<li>
+					<a href="jieyuepaihang">
+						<i class="fa fa-th"></i>
+						<span>借阅排行</span></a>
+				</li>
+				<li>
+					<a href="tushutuijian">
+						<i class="fa fa-th"></i>
+						<span>图书推荐</span></a>
+				</li>
+				<li>
+					<a href="gonggao">
+						<i class="fa fa-th"></i>
+						<span>相关公告</span></a>
+				</li>
+			</ul>
+			<ul class="sidebar-menu h5" data-widget="tree">
+				<li class="header">个人管理</li>
+				<!-- Optionally, you can add icons to the links -->
+				<li>
+					<a href="gerenxinxi">
+						<i class="fa fa-th"></i>
+						<span>个人信息</span></a>
+				</li>
+				<li>
+					<a href="wodejieyue">
+						<i class="fa fa-th"></i>
+						<span>我的借阅</span></a>
+				</li>
+				<li>
+					<a href="wodeshoucang">
+						<i class="fa fa-th"></i>
+						<span>我的收藏</span></a>
+				</li>
+				<li>
+					<a href="liulanlishi">
+						<i class="fa fa-th"></i>
+						<span>浏览历史</span></a>
+				</li>
+				<li>
+					<a href="zhanneixiaoxi">
+						<i class="fa fa-th"></i>
+						<span>站内消息</span></a>
+				</li>
+				<li>
+					<a href="yijianfankui">
+						<i class="fa fa-th"></i>
+						<span>意见反馈</span></a>
+				</li>
+				<li>
+					<a href="tushuxinxiguanli">
+						<i class="fa fa-th"></i>
+						<span>图书信息管理</span></a>
+				</li>
+				<li>
+					<a href="churukuguanli">
+						<i class="fa fa-th"></i>
+						<span>出入库管理</span></a>
+				</li>
+				<li>
+					<a href="gonggaoguanli">
+						<i class="fa fa-th"></i>
+						<span>公告管理</span></a>
+				</li>
+				<li>
+					<a href="yonghuguanli">
+						<i class="fa fa-th"></i>
+						<span>用户管理</span></a>
+				</li>
+				<li>
+					<a href="fankuiguanli">
+						<i class="fa fa-th"></i>
+						<span>反馈管理</span></a>
+				</li>
+			</ul>
+			<!-- /.sidebar-menu --></section>
+		<!-- /.sidebar --></aside>
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<!-- Main content -->
+		<section class="content">
+			<div class="row">
+				<!-- left column -->
+				<div class="col-sm-12">
+					<!-- general form elements -->
+					<div class="box box-primary">
+						<!-- form start -->
+						<form class="form form-horizontal clearfix">
+							<div class="col-xs-12 col-sm-6 col-md-4">
+								<label class="label-item single-overflow pull-left h5">公告编号</label>
+								<input id="noticeId" class="form-control" type="text" placeholder="" /></div>
+							<div class="col-xs-12 col-sm-6 col-md-4">
+								<label class="label-item single-overflow pull-left h5">时间</label>
+								<input id="btime" class="form-control" type="text" placeholder="" /></div>
+							<div class="col-xs-12 col-sm-6 col-md-4">
+								<label class="label-item single-overflow pull-left h5">活动内容</label>
+								<input id="msg" class="form-control" type="text" placeholder="" /></div>
+							<div class="col-xs-12 col-sm-6 col-md-4 box-footer">
+								<div style="margin:26px 0 10px 0">
+									<a id="search" class="btn btn-primary btn-rounded  btn-bordered btn-sm">
+										<i class="fa fa-search"></i>查询</a>
+									<a id="reset" class="btn btn-success btn-rounded  btn-bordered btn-sm">
+										<i class="fa fa-refresh"></i>重置</a>
+								</div>
+							</div>
+						</form>
+					</div>
+					<!-- /.box --></div>
+			</div>
+			<!-- /.nav-tabs-custom --></section>
+		<section class="content">
+			<div class="row">
+				<!-- left column -->
+				<div class="col-sm-12">
+					<!-- general form elements -->
+					<div class="box box-primary">
+						<div class="col-xs-12 col-sm-6 col-md-4 box-footer">
+							<a class="btn btn-danger btn-rounded  btn-bordered btn-sm">
+								<i class="fa fa-search"></i>新增</a>
+							<a class="btn btn-primary btn-rounded  btn-bordered btn-sm">
+								<i class="fa fa-refresh"></i>修改</a>
+							<a class="btn btn-success btn-rounded  btn-bordered btn-sm">
+								<i class="fa fa-refresh"></i>查看</a>
+							<a id="delete" class="btn btn-warning btn-rounded  btn-bordered btn-sm">
+								<i class="fa fa-refresh"></i>删除</a>
+						</div>
+						<div id="form2">
+						<table th:fragment="form2"  class="table table-striped table-hover text-center"> 
+							<thead>   
+							<tr>
+								<th></th>
+								<th>#</th>     
+								<th>公告编号</th>     
+								<th>时间</th>     
+								<th>内容</th>   </tr></thead> 
+							<tbody style="font-size: 1em;font-family: '华文中宋';">   
+							<tr th:each="notice,infoStat:${Allnotice}">
+								<td class="bs-checkbos">
+									<input type="checkbox" name="checkbox" th:value="${notice.noticeId}"></td> 
+								<td th:text="${infoStat.count}"></td>     
+								<td name="noticeId"  th:text="${notice.noticeId}">099528</td>     
+								<td name="btime"  th:text="${notice.btime}">2019.02.05</td>     
+								<td name="msg"  th:text="${notice.msg}">收书了！</td></tr>
+							</tbody>
+						</table>
+						</div>
+					</div>
+					<!-- /.box --></div>
+			</div>
+			<!-- /.nav-tabs-custom --></section>
+		<!-- /.content --></div>
+</div>
+</body>
+<script type="text/javascript">
+    function getFormData() {
+        var json = {
+            noticeId: $("#noticeId").val(),
+            btime: $("#btime").val(),
+            etime: $("#etime").val(),
+            msg: $("#msg").val()
+        };
+        return json;
+    }
+    function getFormData2() {
+        var IdArr = new Array();
+        $("input[name='checkbox']").each(function(){
+            if(this.checked){
+                IdArr.push($(this).val());
+                alert($(this).val());
+            }
+        });
+        console.info(IdArr);
+
+        return IdArr;
+    }
+    $('#search').click(function() {
+        // alert("ok");
+        var url = '/gonggaoguanli';
+        $.ajax({
+            url: url,
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8"
+            },
+            data: JSON.stringify(getFormData()),
+            success: function(data) {
+                // alert("ok");
+                console.log(data);
+                $('#form2').html(data);
+            }
+        })
+    });
+    $('#delete').click(function() {
+        var url = '/gonggaoguanli/delete';
+        $.ajax({
+            url: url,
+            type: "DELETE",
+            contentType: 'application/json;charset=UTF-8',
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8"
+            },
+            data: JSON.stringify(getFormData2()),
+            success: function(data) {
+                alert("ok");
+                console.log(data);
+            }
+        })
+    });
+</script>
+</html>

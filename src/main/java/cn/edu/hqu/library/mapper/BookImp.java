@@ -17,6 +17,7 @@ public interface BookImp {
     List<BookInfo> FindBorrowInfoByName(String name);
     List<BookInfo> FindBookInfoByName(String name);
     List<Rank> FindRankList(String kind);
+    List<Rank> FindRankListByJiaoFu(String JiaoFu);
     List<BookInfo> FindReturnBorrowByName(String name);
     List<NewBookInfo> FindBookByTimeDesc();
 

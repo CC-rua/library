@@ -76,6 +76,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findUserByConditions(String UserId, String name, String department, String grade, String major,Integer sex) {
-        return (List<User>) userImp.findUserByConditions(UserId,name,department,grade,major,sex);
+        return  userImp.findUserByConditions(UserId,name,department,grade,major,sex);
     }
 }

@@ -3,6 +3,7 @@ package cn.edu.hqu.library.controller.user;
 import cn.edu.hqu.library.controller.BaseController;
 import cn.edu.hqu.library.entity.User;
 import cn.edu.hqu.library.service.UserService;
+import cn.edu.hqu.library.service.dto.users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/userManager")
+@RequestMapping("/yonghuguanli")
 public class userManagerController extends BaseController {
     private final UserService userService;
 
@@ -20,20 +21,14 @@ public class userManagerController extends BaseController {
         this.userService = userService;
     }
 
+
     @RequestMapping(method = RequestMethod.GET)
     public String ShowUserManagerPage(Model model){
         List<User> AllUsers=userService.findAll();
         model.addAttribute("AllUsers",AllUsers);
-        return "userManager";
+        return "yonghuguanli";
     }
-    //增
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public void AddUser(@RequestBody(required = false) User user1){
-        String getid=user1.getUserId();
-        if(userService.findUserByUserId(getid)==null) {
-            userService.addUser(user1);
-        }
-    }
+
     //删
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     public  void DeleteUser(@RequestBody(required = false) List<String> userId){
@@ -56,11 +51,11 @@ public class userManagerController extends BaseController {
     }
     //查
     @RequestMapping(method = RequestMethod.POST)
-    @ResponseBody
-    public List<User> SearchUser(@RequestBody(required = false) User user1) {
+    public String  SearchUser(Model model,@RequestBody(required = false) User user1) {
         //需要一个User的json
-        return userService.findUserByConditions(user1.getUserId(), user1.getName(), user1.getDepartment(),
-                user1.getGrade(), user1.getMajor(), user1.getSex());
+        List<User> list=userService.findUserByConditions(user1.getUserId(), user1.getName(), user1.getDepartment(),user1.getGrade(), user1.getMajor(), user1.getSex());
+        model.addAttribute("AllUsers", list);
+        return "yonghuguanli::form3";
     }
 
 }

@@ -14,5 +14,16 @@
 		ORDER BY num DESC
 		limit 5
     </select>
-
+	<select id="FindRankListByJiaoFu" resultType="cn.edu.hqu.library.service.dto.Rank" >
+		SELECT
+			bookmessage.name AS "name",
+			COUNT(book.BookID) AS "num"
+		FROM
+			book
+		LEFT JOIN bookmessage ON book.BookID = bookmessage.BookID
+		WHERE bookmessage.jiaofu =#{0}
+		GROUP BY name
+		ORDER BY num DESC
+		limit 5
+    </select>
 </mapper>
