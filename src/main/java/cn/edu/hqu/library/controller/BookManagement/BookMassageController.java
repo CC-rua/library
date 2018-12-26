@@ -96,12 +96,12 @@ public class BookMassageController extends BaseController {
         return getSuccess("success",bookmessage,1);
     }
 
-    @ResponseBody
-    @RequestMapping("findBookMsgInfo")
-    public ReturnBean findBookMsgInfo(String bookId,String bookName,String jiaofu,String type,String publisher,String author)
+    @RequestMapping(method = RequestMethod.POST)
+    public String findBookMsgInfo(Model model,String bookId,String bookName,String jiaofu,String type,String publisher,String author)
     {
         List<BookMsgVo> list = bookService.findBookMsgInfo( bookId, bookName, jiaofu, type, publisher, author);
-        return getSuccess("success",list,list.size());
+        model.addAttribute("list3",list);
+        return"tushuxinxiguanli::bookform3";
     }
 
 }

@@ -174,35 +174,35 @@
 						<form class="form form-horizontal clearfix">
 							<div class="col-xs-12 col-sm-6 col-md-4">
 								<label class="label-item single-overflow pull-left h5">提取码</label>
-								<input class="form-control" type="text" placeholder="提取码" /></div>
+								<input id="code" class="form-control" type="text" placeholder="提取码" /></div>
 							<div class="col-xs-12 col-sm-6 col-md-4">
 								<label class="label-item single-overflow pull-left h5">图书名称</label>
-								<input class="form-control" type="text" placeholder="图书名称" /></div>
+								<input id="name" class="form-control" type="text" placeholder="图书名称" /></div>
 							<div class="col-xs-12 col-sm-6 col-md-4">
 								<label class="label-item single-overflow pull-left h5">图书性质</label>
-								<select class="form-control m-b" type="text">
-									<option>请选择</option>
-									<option>教辅类</option>
-									<option>其他类</option></select>
+								<select id="jiaofu" class="form-control m-b" type="text">
+									<option value="">请选择</option>
+									<option value="是">教辅类</option>
+									<option value="否">其他类</option></select>
 							</div>
 							<div class="col-xs-12 col-sm-6 col-md-4">
 								<label class="label-item single-overflow pull-left h5">图书类别</label>
-								<select class="form-control m-b" type="text">
-									<option>请选择</option></select>
+								<select id="kind" class="form-control m-b" type="text">
+									<option value="">请选择</option></select>
 							</div>
 							<div class="col-xs-12 col-sm-6 col-md-4">
 								<label class="label-item single-overflow pull-left h5">状态</label>
-								<select class="form-control m-b" type="text">
+								<select id="state" class="form-control m-b" type="text">
 									<option>请选择</option></select>
 							</div>
 							<div class="col-xs-12 col-sm-6 col-md-4">
 								<label class="label-item single-overflow pull-left h5">图书状况</label>
-								<select class="form-control m-b" type="text">
+								<select id="bookstate" class="form-control m-b" type="text">
 									<option>请选择</option></select>
 							</div>
 							<div class="col-xs-12 col-sm-6 col-md-4">
 								<label class="label-item single-overflow pull-left h5">图书作者</label>
-								<input class="form-control" type="text" placeholder="图书作者" /></div>
+								<input id="author" class="form-control" type="text" placeholder="图书作者" /></div>
 							<div class="col-xs-12 col-sm-6 col-md-4 box-footer">
 								<div style="margin:26px 0 10px 0">
 									<a id="search" class="btn btn-primary btn-rounded  btn-bordered btn-sm">
@@ -248,11 +248,11 @@
 								<td class="bs-checkbos">
 									<input type="checkbox" name="checkbox"></td> 
 								<td th:text="${infoStat.count}"></td>    
-								<td th:text="${bookinfo.code}">099528</td>     
-								<td th:text="${bookinfo.name}">高等数学</td>     
+								<td th:text="${bookinfo.bookId	}">099528</td>     
+								<td th:text="${bookinfo.bookName}">高等数学</td>     
 								<td th:text="${bookinfo.jiaofu}">教辅</td>
 								<td th:text="${bookinfo.kind}">基础学科</td>
-								<td th:text="${bookinfo.name}">1000</td></tr> </tbody></table>
+								<td th:text="${bookinfo.freeNum}">1000</td></tr> </tbody></table>
 						</div>
 					</div>
 					<!-- /.box --></div>
@@ -261,5 +261,24 @@
 		<!-- /.content --></div>
 	<!-- /.content-wrapper --></div>
 </body>
-
+<script type="text/javascript">
+    $('#search').click(function() {
+        var url = 'churukuguanli/findBookInfo';
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {
+                bookId: $("#bookId").val(),
+                bookName: $("#bookName").val(),
+                jiaofu: $("#jiaofu").val(),
+                type: $("#type").val(),
+                publisher: $("#publisher").val(),
+                author: $("#author").val()
+            },
+            success: function(data) {
+                console.log(data);
+                $('#bookform').html(data);
+            }
+        })
+    });</script>
 </html>
