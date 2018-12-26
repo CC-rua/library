@@ -116,5 +116,11 @@
 
 
 
+	<select id="findBookInfoByCode" resultType="cn.edu.hqu.library.service.dto.BookInfo">
+		select * from book left join bookmessage b on book.BookID = b.BookID
+	</select>
+
+
+
 
 </mapper>

@@ -177,44 +177,63 @@
 									<i class="fa fa-search"></i>删除历史</a>
 							</div>
 						</div>
-						<table class="table table-striped table-hover text-center"> 
+						<!--<table class="table table-striped table-hover text-center"> -->
+							<!--<thead>   -->
+							<!--<tr>-->
+								<!--<th></th>     -->
+								<!--<th>图书名称</th>     -->
+								<!--<th>作者</th>     -->
+								<!--<th>版次</th>-->
+								<!--<th>性质</th>-->
+								<!--<th>类别</th>-->
+								<!--<th>可借出数量</th>   </tr></thead> -->
+							<!--<tbody style="font-size: 1em;font-family: '华文中宋';">   -->
+							<!--<tr>-->
+								<!--<td class="bs-checkbos">-->
+									<!--<input type="checkbox" name="checkbox"></td>     -->
+								<!--<td>高等数学</td>-->
+								<!--<td>bbbbb</td>-->
+								<!--<td>1</td>     -->
+								<!--<td>教辅</td>-->
+								<!--<td>基础学科</td>-->
+								<!--<td>50</td></tr>-->
+							<!--<tr>-->
+								<!--<td class="bs-checkbos">-->
+									<!--<input type="checkbox" name="checkbox"></td>     -->
+								<!--<td>高等数学</td>-->
+								<!--<td>bbbbb</td>-->
+								<!--<td>1</td>     -->
+								<!--<td>教辅</td>-->
+								<!--<td>基础学科</td>-->
+								<!--<td>100</td></tr>-->
+							<!--<tr>-->
+								<!--<td class="bs-checkbos">-->
+									<!--<input type="checkbox" name="checkbox"></td>     -->
+								<!--<td>高等数学</td>-->
+								<!--<td>bbbbb</td>-->
+								<!--<td>1</td>     -->
+								<!--<td>教辅</td>-->
+								<!--<td>基础学科</td>-->
+								<!--<td>20</td>   </tr> </tbody></table>-->
+						<table th:fragment="historyform" class="table table-striped table-hover text-center"> 
 							<thead>   
 							<tr>
 								<th></th>     
 								<th>图书名称</th>     
 								<th>作者</th>     
-								<th>版次</th>
 								<th>性质</th>
 								<th>类别</th>
-								<th>可借出数量</th>   </tr></thead> 
-							<tbody style="font-size: 1em;font-family: '华文中宋';">   
-							<tr>
-								<td class="bs-checkbos">
-									<input type="checkbox" name="checkbox"></td>     
-								<td>高等数学</td>
-								<td>bbbbb</td>
-								<td>1</td>     
-								<td>教辅</td>
-								<td>基础学科</td>
-								<td>50</td></tr>
-							<tr>
-								<td class="bs-checkbos">
-									<input type="checkbox" name="checkbox"></td>     
-								<td>高等数学</td>
-								<td>bbbbb</td>
-								<td>1</td>     
-								<td>教辅</td>
-								<td>基础学科</td>
-								<td>100</td></tr>
-							<tr>
-								<td class="bs-checkbos">
-									<input type="checkbox" name="checkbox"></td>     
-								<td>高等数学</td>
-								<td>bbbbb</td>
-								<td>1</td>     
-								<td>教辅</td>
-								<td>基础学科</td>
-								<td>20</td>   </tr> </tbody></table>
+								<th>浏览时间</th>   </tr></thead> 
+							<tbody style="font-size: 1em;font-family: '华文中宋';">  
+							<tr th:each="history:${list}">
+								 <td th:text="*{history.bookName}"></td>
+								 <td th:text="*{history.author}"></td>
+								 <td th:text="*{history.jiaofu}"></td>
+								 <td th:text="*{history.kind}"></td>
+								 <td th:text="*{history.time}"></td>
+
+							</tbody>
+						</table>
 					</div>
 					<!-- /.box --></div>
 			</div>
