@@ -38,22 +38,23 @@ public class BookMassageController extends BaseController {
         model.addAttribute("list3", list);
         return "tushuxinxiguanli";
     }
-    //收藏 借书
-    @ResponseBody
-    @RequestMapping("CollectionBook")
-    public ReturnBean CollectionBook(@ModelAttribute("name")String userId, String bookId)
-    {
-        collectionService.collectionBook(userId,bookId);
-        return getSuccess("success");
-    }
+    //已经移入BookCollection和BorrowController
+//    //收藏 借书
+//    @ResponseBody
+//    @RequestMapping("CollectionBook")
+//    public ReturnBean CollectionBook(@ModelAttribute("name")String userId, String bookId)
+//    {
+//        collectionService.collectionBook(userId,bookId);
+//        return getSuccess("success");
+//    }
 
-    @ResponseBody
-    @RequestMapping("BorrowBook")
-    public ReturnBean BorrowBook(@ModelAttribute("name")String userId, String bookId)
-    {
-        borrowService.UserBorrowSomeBook(userId,bookId);
-        return getSuccess("success");
-    }
+//    @ResponseBody
+//    @RequestMapping("BorrowBook")
+//    public ReturnBean BorrowBook(@ModelAttribute("name")String userId, String bookId)
+//    {
+//        borrowService.UserBorrowSomeBook(userId,bookId);
+//        return getSuccess("success");
+//    }
 
     @RequestMapping("findAllBookMsg")
     @ResponseBody

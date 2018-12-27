@@ -1,4 +1,4 @@
-package cn.edu.hqu.library.controller;
+package cn.edu.hqu.library.controller.BookManagement;
 
 import cn.edu.hqu.library.controller.vo.BorrorForm;
 import cn.edu.hqu.library.controller.vo.ReturnForm;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/borrow")
+@RequestMapping("wodejieyue")
 @SessionAttributes({"name"})
 public class borrowController {
     private final BookService bookService;
@@ -48,12 +48,12 @@ public class borrowController {
         }
         model.addAttribute("borrows",result);
         model.addAttribute("Returnborrows",result2);
-        return "borrow";
+        return "wodejieyue";
     }
 
 
     //某人借阅某书
-    @RequestMapping(value = "borrowBookByUserId")
+    @RequestMapping(method = RequestMethod.POST,value = "borrowBookByUserId")
     public String borrowBookByUserId(@ModelAttribute("name") String userId ,String bookMsgId)
     {
         return borrowService.UserBorrowSomeBook(userId,bookMsgId);

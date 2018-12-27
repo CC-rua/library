@@ -24,7 +24,7 @@
 	<!-- Main Header -->
 	<header class="main-header">
 		<!-- Logo -->
-		<a href="/index2.html" class="logo">
+		<a href="/index2 " class="logo">
 			<!-- mini logo for sidebar mini 50x50 pixels -->
 			<span class="logo-mini">
             <b>Find</b>Book</span>
@@ -169,49 +169,33 @@
 				<!-- left column -->
 				<div class="col-sm-12">
 					<!-- general form elements -->
+					<h3>借阅记录</h3>
 					<div class="box box-primary">
-						<!-- form start -->
-						<form class="form form-horizontal clearfix">
-							<div class="col-xs-12 col-sm-6 col-md-4">
-								<label class="label-item single-overflow pull-left h5">提取码</label>
-								<input id="code" class="form-control" type="text" placeholder="提取码" /></div>
-							<div class="col-xs-12 col-sm-6 col-md-4">
-								<label class="label-item single-overflow pull-left h5">图书名称</label>
-								<input id="name" class="form-control" type="text" placeholder="图书名称" /></div>
-							<div class="col-xs-12 col-sm-6 col-md-4">
-								<label class="label-item single-overflow pull-left h5">图书性质</label>
-								<select id="jiaofu" class="form-control m-b" type="text">
-									<option value="">请选择</option>
-									<option value="是">教辅类</option>
-									<option value="否">其他类</option></select>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4">
-								<label class="label-item single-overflow pull-left h5">图书类别</label>
-								<select id="kind" class="form-control m-b" type="text">
-									<option value="">请选择</option></select>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4">
-								<label class="label-item single-overflow pull-left h5">状态</label>
-								<select id="state" class="form-control m-b" type="text">
-									<option>请选择</option></select>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4">
-								<label class="label-item single-overflow pull-left h5">图书状况</label>
-								<select id="bookstate" class="form-control m-b" type="text">
-									<option>请选择</option></select>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4">
-								<label class="label-item single-overflow pull-left h5">图书作者</label>
-								<input id="author" class="form-control" type="text" placeholder="图书作者" /></div>
-							<div class="col-xs-12 col-sm-6 col-md-4 box-footer">
-								<div style="margin:26px 0 10px 0">
-									<a id="search" class="btn btn-primary btn-rounded  btn-bordered btn-sm">
-										<i class="fa fa-search"></i>查询</a>
-									<a id="reset" class="btn btn-success btn-rounded  btn-bordered btn-sm">
-										<i class="fa fa-refresh"></i>重置</a>
-								</div>
-							</div>
-						</form>
+						<div class="col-xs-12 col-sm-6 col-md-4 box-footer">
+							<a class="btn btn-danger btn-rounded  btn-bordered btn-sm">
+								<i class="fa fa-search"></i>申请延期</a>
+						</div>
+						<table method="get" th:action="@{/wodejieyue}" class="table table-striped table-hover text-center"> 
+							<thead>   
+							<tr>
+								<th></th>
+								<th>#</th>    
+								<th>提取码</th>     
+								<th>图书名称</th>     
+								<th>性质</th>
+								<th>预计还书日期</th>
+								<th>状态</th>   </tr></thead> 
+							<tbody style="font-size: 1em;font-family: '华文中宋';">   
+							<tr th:each="borrow,infoState:${borrows}">
+								<td class="bs-checkbos">
+									<input type="checkbox" name="checkbox"></td>
+								<td th:text="${infoState.count}"></td>     
+								<td name="code"  th:text="${borrow.code}">099528</td>     
+								<td  name="name"  th:text="${borrow.name}">高等数学</td>     
+								<td name="JiaoFu" th:text="${borrow.jiaofu}">教辅</td>
+								<td  name="pwd"  th:text="${borrow.etime}">2019.02.05</td>
+								<td  name="status" th:text="${borrow.status}">正常</td></tr>
+							 </tbody></table>
 					</div>
 					<!-- /.box --></div>
 			</div>
@@ -220,40 +204,39 @@
 			<div class="row">
 				<!-- left column -->
 				<div class="col-sm-12">
+					<h3>已还图书记录</h3>
 					<!-- general form elements -->
 					<div class="box box-primary">
 						<div class="col-xs-12 col-sm-6 col-md-4 box-footer">
-							<a class="btn btn-danger btn-rounded  btn-bordered btn-sm">
-								<i class="fa fa-search"></i>新增</a>
-							<a class="btn btn-primary btn-rounded  btn-bordered btn-sm">
-								<i class="fa fa-refresh"></i>修改</a>
-							<a class="btn btn-success btn-rounded  btn-bordered btn-sm">
-								<i class="fa fa-refresh"></i>查看</a>
-							<a class="btn btn-warning btn-rounded  btn-bordered btn-sm">
-								<i class="fa fa-refresh"></i>删除</a>
+							<div>
+								<a class="btn btn-danger btn-rounded  btn-bordered btn-sm">
+									<i class="fa fa-search"></i>删除记录</a>
+							</div>
 						</div>
-						<div id="bookform">
-						<table th:fragment="bookform3"class="table table-striped table-hover text-center"> 
+						<table  method="get" th:action="@{/wodejieyue}"  class="table table-striped table-hover text-center"> 
 							<thead>   
 							<tr>
-								<th></th>
+								<th></th> 
 								<th>#</th>     
-								<th>图书编号</th>     
+								<th>提取码</th>     
 								<th>图书名称</th>     
 								<th>性质</th>
-								<th>分类</th>
-								<th>库存量</th>   </tr></thead> 
+								<th>图书状态</th>
+								<th>归还情况</th> 
+								<th>信用值</th>
+							  </tr></thead> 
 							<tbody style="font-size: 1em;font-family: '华文中宋';">   
-							<tr th:each="bookinfo,infoStat:${list3}">
+							<tr th:each="borrow,infoState:${Returnborrows}">
 								<td class="bs-checkbos">
 									<input type="checkbox" name="checkbox"></td> 
-								<td th:text="${infoStat.count}"></td>    
-								<td th:text="${bookinfo.bookId	}">099528</td>     
-								<td th:text="${bookinfo.bookName}">高等数学</td>     
-								<td th:text="${bookinfo.jiaofu}">教辅</td>
-								<td th:text="${bookinfo.kind}">基础学科</td>
-								<td th:text="${bookinfo.freeNum}">1000</td></tr> </tbody></table>
-						</div>
+								<td th:text="${infoState.count}"></td>     
+								<td name="code"  th:text="${borrow.code}">099528</td>     
+								<td name="name"  th:text="${borrow.name}">高等数学</td>     
+								<td name="JiaoFu" th:text="${borrow.jiaofu}">教辅</td>
+								<td name="status" th:text="${borrow.quality}">正常</td>
+								<td name="Returnstatus" th:text="${borrow.returnStatus}">逾期归还</td>
+								<td>+10</td></tr>
+							 </tbody></table>
 					</div>
 					<!-- /.box --></div>
 			</div>
@@ -261,53 +244,5 @@
 		<!-- /.content --></div>
 	<!-- /.content-wrapper --></div>
 </body>
-<script type="text/javascript">
-    function getFormData2() {
-        var IdArr = new Array();
-        $("input[name='checkbox']").each(function(){
-            if(this.checked){
-                IdArr.push($(this).val());
-                alert($(this).val());
-            }
-        });
-        console.info(IdArr);
 
-        return IdArr;
-    }
-    $('#search').click(function() {
-        var url = '/tushuxinxiguanli';
-        $.ajax({
-            url: url,
-            type: 'post',
-            data: {
-                bookId: $("#bookId").val(),
-                bookName: $("#bookName").val(),
-                jiaofu: $("#jiaofu").val(),
-                type: $("#type").val(),
-                publisher: $("#publisher").val(),
-                author: $("#author").val()
-            },
-            success: function(data) {
-                console.log(data);
-                $('#bookform').html(data);
-            }
-        })
-    });
-    $('#delete').click(function() {
-        var url = '/tushuxinxiguanli/deleteBookMsg';
-        $.ajax({
-            url: url,
-            type: "DELETE",
-            contentType: 'application/json;charset=UTF-8',
-            headers: {
-                "Content-Type": "application/json;charset=UTF-8"
-            },
-            data: JSON.stringify(getFormData2()),
-            success: function(data) {
-                alert("ok");
-                console.log(data);
-            }
-        })
-    });
-</script>
 </html>
