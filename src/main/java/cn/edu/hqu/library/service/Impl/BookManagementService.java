@@ -28,8 +28,10 @@ public class BookManagementService {
         bookMsgRepository.saveAndFlush(bookmessage);
     }
 
-    public void deleteBookMsg(Bookmessage bookmessage)
+    public void deleteBookMsg(String bookMsgId)
     {
+        Bookmessage bookmessage = new Bookmessage();
+        bookmessage.setBookId(bookMsgId);
         bookMsgRepository.delete(bookmessage);
     }
 

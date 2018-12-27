@@ -19,14 +19,14 @@ import java.util.List;
 @Controller
 @RequestMapping("wodejieyue")
 @SessionAttributes({"name"})
-public class borrowController {
+public class BorrowController {
     private final BookService bookService;
 
     @Autowired
     BorrowService borrowService;
 
     @Autowired
-    public borrowController(BookService borrowService) {
+    public BorrowController(BookService borrowService) {
         this.bookService = borrowService;
     }
 

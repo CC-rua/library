@@ -1,4 +1,4 @@
-package cn.edu.hqu.library.controller.zx;
+package cn.edu.hqu.library.controller.BookManagement;
 
 import cn.edu.hqu.library.controller.BaseController;
 

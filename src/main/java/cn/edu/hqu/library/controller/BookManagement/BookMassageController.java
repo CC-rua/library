@@ -82,9 +82,9 @@ public class BookMassageController extends BaseController {
 
     @ResponseBody
     @RequestMapping("deleteBookMsg")
-    public ReturnBean deleteBookMsg(Bookmessage bookmessage)
+    public ReturnBean deleteBookMsg(String bookMsgId)
     {
-        managementService.deleteBookMsg(bookmessage);
+        managementService.deleteBookMsg(bookMsgId);
         return getSuccess("success");
     }
 

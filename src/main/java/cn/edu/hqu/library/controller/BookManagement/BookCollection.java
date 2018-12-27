@@ -2,6 +2,7 @@ package cn.edu.hqu.library.controller.BookManagement;
 
 import cn.edu.hqu.library.controller.BaseController;
 import cn.edu.hqu.library.controller.vo.BookMsgVo;
+import cn.edu.hqu.library.controller.vo.CollectionInfo;
 import cn.edu.hqu.library.entity.Bookmessage;
 import cn.edu.hqu.library.entity.ReturnBean;
 import cn.edu.hqu.library.service.BookService;
@@ -20,23 +21,16 @@ import java.util.List;
 @RequestMapping("wodeshoucang")
 public class BookCollection extends BaseController{
 
-    @Autowired
-    BookService bookService;
-
-    @Autowired
-    BookManagementService managementService;
 
     @Autowired
     CollectionService collectionService;
-
-    @Autowired
-    BorrowService borrowService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String CollectionBook(Model model,@ModelAttribute("name")String userId)
     {
         //查找当前用户的收藏记录并添入model,我的收藏页面也没有绑定
-
+        List<CollectionInfo> list = collectionService.findCollectionInfoByUserId(userId);
+        model.addAttribute("list",list);
      //  model.addAttribute( "list4",collectionService.collectionBook(userId,bookId));
         return "wodeshoucang";
     }

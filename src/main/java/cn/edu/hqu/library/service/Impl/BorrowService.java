@@ -39,4 +39,11 @@ public class BorrowService {
             return book.getCode();
     }
 
+    public void postponeBook(String userId,String code)
+    {
+        Borrow borrowMsg = borrowRepository.findByUserIdAndCode(userId,code);
+        borrowMsg.setEtime(new Date(borrowMsg.getEtime().getTime()+1000*60*60*24*StaticData.POSTPONE_TIME));
+        borrowRepository.saveAndFlush(borrowMsg);
+    }
+
 }

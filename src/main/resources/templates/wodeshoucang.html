@@ -181,29 +181,22 @@
 								<th></th>     
 								<th>图书名称</th>     
 								<th>作者</th>     
-								<th>版次</th>
 								<th>性质</th>
 								<th>类别</th>
+								<th>出版社</th>
 								<th>可借出数量</th>   </tr></thead> 
 							<tbody style="font-size: 1em;font-family: '华文中宋';">   
-							<tr>
+							<tr th:each="collectionInfo:${list}">
 								<td class="bs-checkbos">
 									<input type="checkbox" name="checkbox"></td>     
-								<td>高等数学</td>
-								<td>bbbbbb</td>     
-								<td>1</td>
-								<td>教辅</td>
-								<td>基础学科</td>
-								<td>50</td></tr>
-							<tr>
-								<td class="bs-checkbos">
-									<input type="checkbox" name="checkbox"></td>     
-								<td>高等数学</td>
-								<td>bbbbbb</td>     
-								<td>1</td>
-								<td>教辅</td>
-								<td>基础学科</td>
-								<td>50</td>   </tr> </tbody></table>
+								<td th:text="${collectionInfo.bookName}" >高等数学</td>
+								<td th:text="${collectionInfo.author}" >bbbbbb</td>     
+								<td th:text="${collectionInfo.jiaofu}" >1</td>
+								<td th:text="${collectionInfo.kind}" >教辅</td>
+								<td th:text="${collectionInfo.publisher}" >基础学科</td>
+								<td th:text="${collectionInfo.freeNum}" >50</td></tr>
+							 </tbody>
+						</table>
 					</div>
 					<!-- /.box --></div>
 			</div>

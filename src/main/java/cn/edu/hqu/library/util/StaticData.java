@@ -3,6 +3,7 @@ package cn.edu.hqu.library.util;
 public final class StaticData {
 
     public static int JIEYUEQI = 60;//借阅长度 默认的 60天?
+    public static int POSTPONE_TIME = 30;//延期默认长度
 
     public static String BOOK_STATUS_WAIT_BACK = "0";//
     public static String BOOK_STATUS_ALREADY_BACK = "1";
