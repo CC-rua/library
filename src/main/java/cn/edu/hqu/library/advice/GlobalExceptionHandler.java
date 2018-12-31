@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class GlobalExceptionHandler {
     private static final String DEFAULT_ERROR_VIEW = "/error";
+    private static final String RE_LOGIN = "login";
 
     @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
     public ModelAndView handleIllegalParamException(HttpServletRequest request, HttpRequestMethodNotSupportedException ex){
@@ -47,7 +48,7 @@ public class GlobalExceptionHandler {
         System.out.println("捕获异常HttpSessionRequiredException");
         ModelAndView mav = new ModelAndView();
         mav.addObject("errorMsg","登陆已过时，请重新登陆");
-        mav.setViewName(DEFAULT_ERROR_VIEW);
+        mav.setViewName(RE_LOGIN);
         return mav;
     }
 }

@@ -173,34 +173,35 @@
 						<div class="box-header with-border">
 							<h2 class="box-title">图书详情</h2></div>
 						<!-- form start -->
-						<form class="form form-horizontal clearfix">
+						<form th:object="${bookMsg}" action="" method="get"th:action="@{/tushuxiangqing}" class="form form-horizontal clearfix">
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="clearfix">
 									<div class="box-body">
 										<div class="pull-left">
 											<img class="image" src="picture/222.jpg" style="height: 10em;width: 10em; margin-right:2em;" /></div>
 										<div>
-											<h3>高等数学</h3>
-											<span class="h5">BILIBILI编著</span>
-											<span class="h5">长江出版社</span>
+											<h3 name="name" th:text="*{name}">高等数学</h3>
+											<input id="bookId" th:field="*{bookId}" type="hidden">
+											<span name="author" th:text="*{author}"class="h5">BILIBILI编著</span>
+											<span name="publisher"th:text="*{publisher}"class="h5">长江出版社</span>
 											<span class="h5">第6版</span>
 											<br />
-											<span class="h5">基础学科</span>
-											<span class="h5">教辅类</span>
+											<span name="kind"th:text="*{kind}"class="h5">基础学科</span>
+											<span name="jiaofu" th:text="*{jiaofu}"class="h5">教辅类</span>
 											<br />
-											<span class="h5" style="color: red">2018级指定学科教材</span></div>
+											<span  class="h5" style="color: red">2018级指定学科教材</span></div>
 										<div class="box-header with-border" style="margin-top: 4em;">
 											<h2 class="box-title">图书简介</h2></div>
 										<div class="col-md-12">
-											<p class="h5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 测试多行效果。测试多行效果。测试多行效果。测试多行效果。 测试多行效果。测试多行效果。测试多行效果。测试多行效果。 测试多行效果。测试多行效果。测试多行效果。测试多行效果。测试多行效果。</p></div>
+											<p name="introduction" th:text="*{introduction}"class="h5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 测试多行效果。测试多行效果。测试多行效果。测试多行效果。 测试多行效果。测试多行效果。测试多行效果。测试多行效果。 测试多行效果。测试多行效果。测试多行效果。测试多行效果。测试多行效果。</p></div>
 									</div>
 									<!-- /.info-box-content --></div>
 								<!-- /.info-box --></div>
 							<!-- /.col -->
 							<div class="col-xs-12 col-sm-6 col-md-4 box-footer" style="margin-left:45%;">
-								<a id="" class="btn btn-danger btn-rounded  btn-bordered btn-sm">收藏</a>
-								<a id="" class="btn btn-warning btn-rounded  btn-bordered btn-sm">借书</a>
-								<a id="" class="btn btn-primary btn-rounded  btn-bordered btn-sm">返回</a></div>
+								<a id="collect" class="btn btn-danger btn-rounded  btn-bordered btn-sm">收藏</a>
+								<a id="2" class="btn btn-warning btn-rounded  btn-bordered btn-sm">借书</a>
+								<a id="3" class="btn btn-primary btn-rounded  btn-bordered btn-sm">返回</a></div>
 						</form>
 					</div>
 					<!-- /.box --></div>
@@ -211,3 +212,20 @@
 </body>
 
 </html>
+<script type="text/javascript">
+	 $('#collect').click(function () {
+		 var bookId= $('#bookId').val();
+		 var url="/CollectionBook";
+		 alert(bookId);
+		 $.ajax({
+			 url:url,
+			 type:"POST",
+			 data:{
+			 	bookId:bookId
+			 },
+			 success:function (data){
+				 alert("ok");
+			 }
+		 })
+	 })
+</script>

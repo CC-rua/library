@@ -25,11 +25,11 @@ public class BookInfoCheck {
 
     @Autowired
     BookService bookService;
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST})
     //通过Id查看图书的详细信息
-    public String findBookMsgByBookId(String bookId, Model model)
+    public String findBookMsgByBookId(@RequestParam(required = false,defaultValue = "1") String bookId, Model model)
     {
-        bookId="1";
+        //bookId="1";
         BookMsgVo bookMsgVo = bookService.findBookMsgByBookId(bookId);
         model.addAttribute("bookInfo",bookMsgVo);
         return "chakantushuxinxi";

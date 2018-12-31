@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@SessionAttributes("name")
+@SessionAttributes(value = {"name","roleId"})
 @RequestMapping("tushuxinxiguanli")
 public class BookMassageController extends BaseController {
 
@@ -34,7 +34,7 @@ public class BookMassageController extends BaseController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String ShowBookMsgPage(Model model){
-        List<BookMsgVo> list = bookService.findAllBookMsgInfo( );
+        List<BookMsgVo> list = bookService.findBookMsgInfo( "", "", "", "", "", "");
         model.addAttribute("list3", list);
         return "tushuxinxiguanli";
     }

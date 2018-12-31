@@ -7,4 +7,12 @@
 		where userId = #{userId}
     </select>
 
+    <delete id="deleteHistory">
+        DELETE FROM `History` WHERE id = #{id}
+        </delete>
+    
+    <insert id="addHistory">
+        INSERT INTO `Library`.`History` (`UserId`, `BookId`) VALUES ( #{userId},#{bookId} )
+    </insert>
+
 </mapper>

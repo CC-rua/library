@@ -10,6 +10,7 @@ import cn.edu.hqu.library.util.StaticData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Service
@@ -34,15 +35,16 @@ public class BorrowService {
             Date etime = new Date(System.currentTimeMillis()+1000*60*60*24* StaticData.JIEYUEQI);
             Borrow borrow = new Borrow(userId,book.getCode(),now,etime,bookmessage.getJiaofu(),book.getQuality(),null);
             borrowRepository.save(borrow);
-//            book.setState(StaticData.BOOK_STATUS_WAIT_BACK);
-
+            book.setState(StaticData.BOOK_STATUS_WAIT_BACK);
+            bookRepository.save(book);
             return book.getCode();
-    }
+        }
 
     public void postponeBook(String userId,String code)
     {
         Borrow borrowMsg = borrowRepository.findByUserIdAndCode(userId,code);
-        borrowMsg.setEtime(new Date(borrowMsg.getEtime().getTime()+1000*60*60*24*StaticData.POSTPONE_TIME));
+        long afterMs = (long)(1000)*60*60*24*StaticData.POSTPONE_TIME;
+        borrowMsg.setEtime(new Timestamp(borrowMsg.getEtime().getTime()+afterMs));
         borrowRepository.saveAndFlush(borrowMsg);
     }
 

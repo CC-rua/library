@@ -1,5 +1,6 @@
 package cn.edu.hqu.library.controller;
 
+import cn.edu.hqu.library.repository.AdminRepository;
 import cn.edu.hqu.library.service.UserService;
 import cn.edu.hqu.library.service.dto.users;
 
@@ -20,14 +21,17 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value = {"login"})
-@SessionAttributes({"name","pwd"})
+@SessionAttributes({"name","pwd","role"})
 public class loginController {
-    private final UserService userService;
 
     @Autowired
-    public loginController(UserService userService) {
-        this.userService = userService;
-    }
+    UserService userService;
+
+    @Autowired
+    AdminRepository adminRepository;
+
+
+
 
     @RequestMapping(method = RequestMethod.GET)
     public String ShowIndexPage(Model model,
@@ -65,11 +69,19 @@ public class loginController {
             //当第一次登录成功后，就创建一个Session，并将用户的某些信息保存在Session
             HttpSession session = request.getSession();
             session.setAttribute("user", user.getName());
-            session.setMaxInactiveInterval(6000);//60s
+            session.setMaxInactiveInterval(6000);
             //但是当cookie关闭后，用于保存SessionID的JSESSIONID会消失(此时cookie并没有过期) ，所以得将JSESESSION持久化
             Cookie sessionId = new Cookie("JSESESSIONID", session.getId());
-            sessionId.setMaxAge(6000);//60s
+            sessionId.setMaxAge(6000);
             sessionId.setPath("/");
+
+            if(adminRepository.countAllById(user.getName()) != 0)
+            {
+                session.setAttribute("role","admin");
+
+            }
+            session.setAttribute("role","user");
+
             response.addCookie(sessionId);
 
 

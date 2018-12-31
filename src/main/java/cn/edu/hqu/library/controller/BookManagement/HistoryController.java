@@ -8,9 +8,7 @@ import cn.edu.hqu.library.service.Impl.BorrowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,9 +31,22 @@ public class HistoryController extends BaseController {
     }
 
     @RequestMapping("postponeBook")
-    public ReturnBean postponeBook(String code, @ModelAttribute("name")String userId)
+    public ReturnBean postponeBook(@RequestBody(required = false)List<String> codeList, @ModelAttribute("name")String userId)
     {
-        borrowService.postponeBook(userId,code);
+        for(String code:codeList){
+            borrowService.postponeBook(userId,code);
+        }
+        return getSuccess("success");
+    }
+
+    @ResponseBody
+    @RequestMapping("deleteHistory")
+    public ReturnBean deleteHistory(@RequestBody(required = false) List<String> idList)
+    {
+        for(String id:idList)
+        {
+            historyImp.deleteHistory(id);
+        }
         return getSuccess("success");
     }
 
