@@ -183,29 +183,29 @@
 									<h2 class="box-title">图书管理</h2>
 								</div>
 								<!-- form start -->
-								<form class="form form-horizontal clearfix">
+								<form method="post" th:action="@{/churukuguanli/addBookList}" th:object="${AddBookVo}"class="form form-horizontal clearfix">
 
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">所属图书编号</label>
 										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<input class="form-control" type="text" />
+											<input th:field="*{bookId}" class="form-control" type="text" />
 										</div>
 									</div>
 
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">名称</label>
 										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<input class="form-control" type="text" />
+											<input th:field="*{bookName}" class="form-control" type="text" />
 										</div>
 									</div>
 
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">性质</label>
 										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<select class="form-control m-b" type="text">
-												<option>请选择</option>
-												<option>教辅类</option>
-												<option>其他类</option>
+											<select th:value="*{jiaofu}" class="form-control m-b" type="text">
+												<option value="">请选择</option>
+												<option value="是">教辅类</option>
+												<option value="否">其他类</option>
 											</select>
 										</div>
 									</div>
@@ -213,40 +213,46 @@
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">类别</label>
 										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<input class="form-control" type="text" />
+											<input th:field="*{type}" class="form-control" type="text" />
 										</div>
 									</div>
 
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">出版社</label>
 										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<input class="form-control" type="text" />
+											<input th:field="*{publisher}"class="form-control" type="text" />
 										</div>
 									</div>
 
 									<div class="form-group col-xs-12">
-										<label class="control-label col-sm-3 h5">版次</label>
+										<label class="control-label col-sm-3 h5">质量</label>
 										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<input class="form-control" type="text" />
+											<input th:field="*{quality}"class="form-control" type="text" />
 										</div>
 									</div>
+									<!--<div class="form-group col-xs-12">-->
+										<!--<label class="control-label col-sm-3 h5">版次</label>-->
+										<!--<div class="col-sm-7" style="padding-top:0.5em ;">-->
+											<!--<input th:field="*{bookId}"class="form-control" type="text" />-->
+										<!--</div>-->
+									<!--</div>-->
 
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">作者</label>
 										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<input class="form-control" type="text" />
+											<input th:field="*{author}"class="form-control" type="text" />
 										</div>
 									</div>
 
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">入库数量</label>
 										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<input class="form-control" type="text" />
+											<input th:field="*{count}"class="form-control" type="text" />
 										</div>
 									</div>
 
 									<div class="col-xs-12 col-sm-6 col-md-4 box-footer" style="margin-left:45%;">
-										<a id="search" class="btn btn-danger btn-rounded  btn-bordered btn-sm"> 提交</a>
+										<a type="submit" id="submit" class="btn btn-danger btn-rounded  btn-bordered btn-sm"> </a>
 										<a id="reset" class="btn btn-primary btn-rounded  btn-bordered btn-sm"> 返回</a>
 									</div>
 								</form>
