@@ -203,10 +203,6 @@
 						<div class="col-xs-12 col-sm-6 col-md-4 box-footer">
 							<a href="xinzenggonggao"class="btn btn-danger btn-rounded  btn-bordered btn-sm">
 								<i class="fa fa-search"></i>新增</a>
-							<a id="update" th:href="@{'/pageController?pageNum='+${pageNum}}" th:text="${pageNum}"  class="btn btn-primary btn-rounded  btn-bordered btn-sm">
-								<i class="fa fa-refresh"></i>修改</a>
-							<a class="btn btn-success btn-rounded  btn-bordered btn-sm">
-								<i class="fa fa-refresh"></i>查看</a>
 							<a id="delete" class="btn btn-warning btn-rounded  btn-bordered btn-sm">
 								<i class="fa fa-refresh"></i>删除</a>
 						</div>
@@ -218,7 +214,9 @@
 								<th>#</th>     
 								<th>公告编号</th>     
 								<th>时间</th>     
-								<th>内容</th>   </tr></thead> 
+								<th>内容</th> 
+								<th></th>
+								<th></th>  </tr></thead> 
 							<tbody style="font-size: 1em;font-family: '华文中宋';">   
 							<tr th:each="notice,infoStat:${Allnotice}">
 								<td class="bs-checkbos">
@@ -226,7 +224,10 @@
 								<td th:text="${infoStat.count}"></td>     
 								<td name="noticeId"  th:text="${notice.noticeId}">099528</td>     
 								<td name="btime"  th:text="${notice.btime}">2019.02.05</td>     
-								<td name="msg"  th:text="${notice.msg}">收书了！</td></tr>
+								<td name="msg"  th:text="${notice.msg}">收书了！</td>
+								<td><a class="btn btn-success btn-rounded  btn-bordered btn-sm" th:href="@{'/chakangonggao?noticeId='+${notice.noticeId}}">查看</a><td>   
+								<td><a class="btn btn-primary btn-rounded  btn-bordered btn-sm" th:href="@{'/xiugaigonggao?noticeId='+${notice.noticeId}}">修改</a><td>   
+							</tr>
 							</tbody>
 						</table>
 						</div>

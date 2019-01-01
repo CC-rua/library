@@ -40,22 +40,22 @@ public class noticeManagerController {
             }
         }
     }
-    @RequestMapping(value = "/jump")
-    public String JumpToNoticeCheck(RedirectAttributes model, Integer noticeId){
-        model.addFlashAttribute("noticeId", noticeId);
-        return "redirect:/chakangonggao";
-    }
-    //改
-    @ResponseBody
-    @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public void UpDatenotice(@RequestBody(required = false) List<Notice> noticeList){
-        for(Notice notice1:noticeList){
-            Integer getid=notice1.getNoticeId();
-            if(noticeService.findNoticeByNoticeId(getid)!=null){
-                noticeService.addNotice(notice1);
-            }
-        }
-    }
+//    @RequestMapping(value = "/jump")
+//    public String JumpToNoticeCheck(RedirectAttributes model, Integer noticeId){
+//        model.addFlashAttribute("noticeId", noticeId);
+//        return "redirect:/chakangonggao";
+//    }
+//    //改
+//    @ResponseBody
+//    @RequestMapping(value = "/update",method = RequestMethod.POST)
+//    public void UpDatenotice(@RequestBody(required = false) List<Notice> noticeList){
+//        for(Notice notice1:noticeList){
+//            Integer getid=notice1.getNoticeId();
+//            if(noticeService.findNoticeByNoticeId(getid)!=null){
+//                noticeService.addNotice(notice1);
+//            }
+//        }
+//    }
     //查
     @RequestMapping(method = RequestMethod.POST)
     public String Searchnotice(Model model,@RequestBody(required = false) Notice notice1) {
