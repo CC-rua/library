@@ -79,12 +79,12 @@ public class BookMassageController extends BaseController {
         return "xiugaitushuxinxi";
     }
 
-    @ResponseBody
     @RequestMapping("updateBookMsg")
-    public ReturnBean updateBookMsg(Bookmessage bookmessage)
+    public String updateBookMsg(String bookId,String bookName,String jiaofu,String kind,String publisher,String author,String introduce)
     {
+        Bookmessage bookmessage = new Bookmessage(bookId,bookName,jiaofu,kind,author,publisher,introduce);
         managementService.updateBookMsg(bookmessage);
-        return getSuccess("success");
+        return "redirect:tushuxinxiguanli";
     }
 
     @ResponseBody

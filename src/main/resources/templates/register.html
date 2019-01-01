@@ -26,7 +26,8 @@
         </label><br />
         <label th:class="${#fields.hasErrors('birthday')}?'error'">生日:
             <input type="text" name="birthday" th:class="${#fields.hasErrors('birthday')}?'error'" th:field="*{birthday}"/>
-        </label><br />
+        </label>
+        <br/>
         <input type="submit" value="注册" />
     </form>
 

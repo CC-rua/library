@@ -7,7 +7,7 @@
 	<title>find book</title>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
 	<!-- Ionicons -->
@@ -176,12 +176,14 @@
 									<h2 class="box-title">图书管理</h2>
 								</div>
 								<!-- form start -->
-								<form th:object="${bookInfo}" action="/tushuxinxiguanli/updateBookMsg" class="form form-horizontal clearfix">
+								<!--<form th:action="@{/xiugaiyonghu/update}" th:object="${User}" method="post" class="form form-horizontal clearfix">-->
+
+								<form th:object="${bookInfo}" th:action="@{/tushuxinxiguanli/updateBookMsg}" method="post" class="form form-horizontal clearfix">
 
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">编号</label>
 										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<input th:field="*{bookId}" class="form-control" type="text" />
+											<input readonly = true th:field="*{bookId}" class="form-control" type="text" />
 										</div>
 									</div>
 
@@ -213,12 +215,6 @@
 										</div>
 									</div>
 
-									<div class="form-group col-xs-12">
-										<label class="control-label col-sm-3 h5">版次</label>
-										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<input class="form-control" type="text" />
-										</div>
-									</div>
 
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">作者</label>
@@ -227,19 +223,19 @@
 										</div>
 									</div>
 
-									<div class="form-group col-xs-12">
-										<label class="control-label col-sm-3 h5">库存量</label>
-										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<input th:field="*{freeNum}"class="form-control" type="text" />
-										</div>
-									</div>
+									<!--<div class="form-group col-xs-12">-->
+										<!--<label class="control-label col-sm-3 h5">库存量</label>-->
+										<!--<div class="col-sm-7" style="padding-top:0.5em ;">-->
+											<!--<input th:field="*{freeNum}"class="form-control" type="text" />-->
+										<!--</div>-->
+									<!--</div>-->
 
-									<div class="form-group col-xs-12">
-										<label class="control-label col-sm-3 h5">展示图片</label>
-										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<input class="form-control" type="text" />
-										</div>
-									</div>
+									<!--<div class="form-group col-xs-12">-->
+										<!--<label class="control-label col-sm-3 h5">展示图片</label>-->
+										<!--<div class="col-sm-7" style="padding-top:0.5em ;">-->
+											<!--<input class="form-control" type="text" />-->
+										<!--</div>-->
+									<!--</div>-->
 
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">图书简介</label>
@@ -249,8 +245,8 @@
 									</div>
 
 									<div class="col-xs-12 col-sm-6 col-md-4 box-footer" style="margin-left:45%;">
-										<a id="reset" class="btn btn-danger btn-rounded  btn-bordered btn-sm">提交</a>
-										<a id="back" class="btn btn-primary btn-rounded  btn-bordered btn-sm"> 返回</a>
+										<a id="submit" type="submit" class="btn btn-danger btn-rounded  btn-bordered btn-sm">提交</a>
+										<a id="back" type="submit" class="btn btn-primary btn-rounded  btn-bordered btn-sm"> 返回</a>
 									</div>
 								</form>
 							</div>
