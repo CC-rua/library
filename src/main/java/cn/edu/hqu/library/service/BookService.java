@@ -33,6 +33,8 @@ public interface BookService {
 
     void addBookList(List<Book> list);
 
+    void updateBook(Book book);
+
     void borrowBook(String bookId, String code, String userId)//需要定位到某一本书 然后将其出借给某个人
     ;
 

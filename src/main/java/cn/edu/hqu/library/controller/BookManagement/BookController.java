@@ -102,6 +102,14 @@ public class BookController extends BaseController {
         return "xiugaitushuchuru";
     }
 
+    @RequestMapping("updateBook")
+    public String updateBook(String code,String quality,String status,String bookId)
+    {
+        Book book = new Book(code,bookId,status,0,quality);
+        bookService.updateBook(book);
+        return "redirect:/churukuguanli";
+    }
+
     @RequestMapping(value = "findBookInfo",method = RequestMethod.POST)
     public String findBookListInfo(    @RequestParam(value = "code",required = false,defaultValue = "")String code,
                                        @RequestParam(value = "name",required = false,defaultValue = "")String name,
