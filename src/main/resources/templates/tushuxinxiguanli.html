@@ -257,9 +257,9 @@
 								<td th:text="${bookinfo.bookName}">高等数学</td>     
 								<td th:text="${bookinfo.jiaofu}">教辅</td>
 								<td th:text="${bookinfo.kind}">基础学科</td>
-								<td th:text="${bookinfo.freeNum}">1000</td></tr> 
+								<td th:text="${bookinfo.freeNum}">1000</td>
 								<td > <a class="btn btn-success btn-rounded  btn-bordered btn-sm" th:href="@{'/tushuxiangqing?bookId='+${bookinfo.bookId }}">查看</a></td>
-								<td > <a class="btn btn-success btn-rounded  btn-bordered btn-sm" th:href="@{'/tushuxiugai?bookId='+${bookinfo.bookId }}">修改</a></td>
+								<td > <a class="btn btn-success btn-rounded  btn-bordered btn-sm" th:href="@{'/tushuxinxiguanli/xiugaitushuxinxi?bookId='+${bookinfo.bookId }}">修改</a></td>
 							</tr> 
 							</tbody>
 						</table>
