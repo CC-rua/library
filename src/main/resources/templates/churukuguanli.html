@@ -225,10 +225,6 @@
 							<div>
 								<a class="btn btn-danger btn-rounded  btn-bordered btn-sm" href="xinzengtushu ">
 									<i class="fa fa-search"></i>新增</a>
-								<a class="btn btn-primary btn-rounded  btn-bordered btn-sm" href="xinzengtushu ">
-									<i class="fa fa-refresh"></i>修改</a>
-								<a class="btn btn-success btn-rounded  btn-bordered btn-sm">
-									<i class="fa fa-refresh"></i>查看</a>
 								<a id="delete" class="btn btn-warning btn-rounded  btn-bordered btn-sm">
 									<i class="fa fa-refresh"></i>删除</a>
 							</div>
@@ -244,7 +240,11 @@
 									<th>性质</th>
 									<th>分类</th>
 									<th>图书状况</th>
-									<th>状态</th>   </tr></thead> 
+									<th>状态</th>   
+									<th>查看</th>
+									<th>修改</th>
+								</tr>
+								</thead> 
 								<tbody style="font-size: 1em;font-family: '华文中宋';">
 								<tr th:each="bookinfo,infoStat:${list2}">
 									<td class="bs-checkbos">
@@ -255,16 +255,17 @@
 									<td th:text="${bookinfo.jiaofu}">教辅</td>
 									<td th:text="${bookinfo.kind}">基础学科</td>
 									<td th:text="${bookinfo.quality}">良好</td>
-									<td th:text="${bookinfo.status}">可借</td></tr> </tbody>
+									<td th:text="${bookinfo.status}">可借</td>
+									<td > <a class="btn btn-success btn-rounded  btn-bordered btn-sm" th:href="@{'/tushuxiangqing?bookId='+${bookinfo.bookId }}">查看</a></td>
+									<td > <a class="btn btn-success btn-rounded  btn-bordered btn-sm" th:href="@{'/churukuguanli/xiugaitushuchuru?code='+${bookinfo.code }}">修改</a></td>
+								</tr> 
+								</tbody>
 							</table>
 						</div>
 					</div>
-					<!-- /.box -->
 				</div>
 			</div>
-			<!-- /.nav-tabs-custom -->
 		</section>
-		<!-- /.content -->
 	</div>
 	<script type="text/javascript">
 	$('#search').click(function() {

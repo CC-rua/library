@@ -87,6 +87,21 @@ public class BookController extends BaseController {
         return getSuccess("success");
     }
 
+    @RequestMapping("xiugaitushuchuru")
+    public String xiugaitushuchuru(String code,Model model)
+    {
+//        bookService.findBookVoByBookCodeAndBookId()
+//        model.addAttribute();
+        List<BookVo> list = bookService.findBookInfo(code,"","","","","","","");
+        if(list!=null)
+        {
+            model.addAttribute("bookInfo",list.get(0));
+        }else{
+            model.addAttribute("bookInfo",null);
+        }
+        return "xiugaitushuchuru";
+    }
+
     @RequestMapping(value = "findBookInfo",method = RequestMethod.POST)
     public String findBookListInfo(    @RequestParam(value = "code",required = false,defaultValue = "")String code,
                                        @RequestParam(value = "name",required = false,defaultValue = "")String name,
