@@ -37,7 +37,7 @@ public class BookController extends BaseController {
         return "churukuguanli";
     }
 
-    @RequestMapping("addBook")
+    @RequestMapping("addBookJump")
     public  String addBook(Model model){
         return "xinzengchuru";
     }
