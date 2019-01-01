@@ -3,7 +3,7 @@
 <mapper namespace="cn.edu.hqu.library.mapper.BookImp">
 
     <select id="FindBorrowInfoByName" resultType="cn.edu.hqu.library.service.dto.BookInfo" >
-		SELECT DISTINCT
+		SELECT
 			book. CODE AS "Code",
 			bookmessage. NAME AS "name",
 			borrow.Btime AS "Btime",

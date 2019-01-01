@@ -64,6 +64,12 @@ public class BookMassageController extends BaseController {
         return null;
     }
 
+
+    @RequestMapping("addBookMsgJump")
+    public  String addBook(Model model){
+        return "xinzengtushu";
+    }
+
     @ResponseBody
     @RequestMapping("addBookMsg")
     public ReturnBean addBookMsg(Bookmessage bookmessage)

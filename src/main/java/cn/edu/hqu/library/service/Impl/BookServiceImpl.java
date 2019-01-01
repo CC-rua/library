@@ -130,7 +130,7 @@ public class BookServiceImpl implements BookService {
         bookRepository.saveAndFlush(book);
         Date now = new Date(System.currentTimeMillis());
         Date etime = new Date(System.currentTimeMillis()+1000*60*60*24* StaticData.JIEYUEQI);
-        Borrow borrow = new Borrow(userId,code,now,etime,bookmessage.getJiaofu(),book.getQuality(),null);
+        Borrow borrow = new Borrow(userId,code,now,etime,bookmessage.getJiaofu(),book.getQuality(),"0");
         borrowRepository.save(borrow);
     }
 
@@ -155,11 +155,11 @@ public class BookServiceImpl implements BookService {
 
     //还书  需要精确到书 需要归还时的状态
     @Override
-    public void giveBack(String bookId,String code,String status)
+    public void giveBack(String userId,String code,String status)
     {
-        Book book =bookRepository.findByBookIdAndCode(bookId,code);
+        Book book =bookRepository.findBookByCode(code);
         book.setState(StaticData.BOOK_STATUS_ALREADY_BACK);
-        Borrow borrow = borrowRepository.findByUserIdAndCode(bookId,code);
+        Borrow borrow = borrowRepository.findByUserIdAndCode(userId,code);
         borrow.setReturnStatus(status);
         borrowRepository.save(borrow);
     }

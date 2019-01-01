@@ -43,7 +43,7 @@ public interface BookService {
     void deleteBook(String bookId, String code);
 
     //还书  需要精确到书 需要归还时的状态
-    void giveBack(String bookId, String code, String status);
+    void giveBack( String userId,String code, String status);
 
 
     List<BookVo> findBookInfo(String bookId, String code, String state, String quality, Timestamp startTime, Timestamp endTime);

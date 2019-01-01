@@ -212,7 +212,7 @@
 		$("input[name='checkbox']").each(function() {
 			if (this.checked) {
 				IdArr.push($(this).val());
-				alert($(this).val());
+				//alert($(this).val());
 			}
 		});
 		console.info(IdArr);
@@ -221,7 +221,7 @@
 	}
 
 	$('#delete').click(function() {
-		alert("ok");
+		//alert("ok");
 		var url = '/deleteViewHistory';
 		$.ajax({
 			url: url,

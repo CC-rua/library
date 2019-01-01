@@ -14,16 +14,14 @@ import cn.edu.hqu.library.util.StaticData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
 @Controller
 @RequestMapping("churukuguanli")
+@SessionAttributes(value = {"name","roleId"})
 public class BookController extends BaseController {
 
     @Autowired
@@ -39,19 +37,29 @@ public class BookController extends BaseController {
         return "churukuguanli";
     }
 
+    @RequestMapping("addBook")
+    public  String addBook(Model model){
+        return "xinzengchuru";
+    }
+
 
     //批量添加图书
     @RequestMapping("addBookList")
     public ReturnBean addBookList(AddBookVo addBookVo,String quality)
     {
-        String code = UUID.randomUUID().toString();
-        Book book =new Book(code,addBookVo.getBookId(), StaticData.BOOK_QUALITY_GOOD,StaticData.BOOK_DELETE_NOT_DELETE,quality);
+        //String code = UUID.randomUUID().toString();
+        Book book =new Book(null,addBookVo.getBookId(), StaticData.BOOK_QUALITY_GOOD,StaticData.BOOK_DELETE_NOT_DELETE,quality);
         for(int i = 0;i<addBookVo.getCount();i++)
         {
-//            这里改成了uuid生成的id 会比较复杂
-            book.setCode(code);
             bookService.addBook(book);
         }
+        return getSuccess("success");
+    }
+    @RequestMapping("addBook")
+    public ReturnBean addBook(AddBookVo addBookVo,String quality)
+    {
+        Book book =new Book(null,addBookVo.getBookId(), StaticData.BOOK_QUALITY_GOOD,StaticData.BOOK_DELETE_NOT_DELETE,quality);
+        bookService.addBook(book);
         return getSuccess("success");
     }
 
@@ -83,16 +91,35 @@ public class BookController extends BaseController {
     @RequestMapping("borrowOutBook")
     public ReturnBean borrowOutBook(@ModelAttribute("name")String borrowUserId,String bookId)
     {
-        String code = bookService.findBookCodeByBookId(bookId);
+        String code = "";
+        List<BookVo> list = bookService.findBookInfo("","","","","","","","");
+        for (BookVo bookVo:list)
+        {
+            if(bookVo.getBookId().equals(bookId)){
+                code = bookVo.getCode();
+                break;
+            }
+        }
+        if(code.isEmpty())
+        {
+            return getFailure("filture");
+        }
+        bookService.borrowBook(bookId,code,borrowUserId);
+        return getSuccess("success");
+    }
+
+    @RequestMapping("borrowOutBookByCodeAndBookId")
+    public ReturnBean borrowOutBookByCodeAndBookId(@ModelAttribute("name")String borrowUserId,String bookId,String code)
+    {
         bookService.borrowBook(bookId,code,borrowUserId);
         return getSuccess("success");
     }
 
     @RequestMapping("giveBackBook")
-    public String giveBackBook(String borrowUserId, String bookId, String code)
+    public String giveBackBook(String borrowUserId, String code)
     {
-        bookService.giveBack(bookId,code,borrowUserId);
-        return "redirect:/churukuguanli";
+        bookService.giveBack(borrowUserId,code,StaticData.BOOK_STATUS_ALREADY_BACK);
+        return "redirect:/wodejieyue";
     }
 
     @RequestMapping("xiugaitushuchuru")
