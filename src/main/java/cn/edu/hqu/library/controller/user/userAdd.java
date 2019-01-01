@@ -27,10 +27,11 @@ public class userAdd {
     }
     //增
     @RequestMapping(method = RequestMethod.POST)
-    public void AddUser(Model model,User user1){
+    public String AddUser(Model model,User user1){
         String getid=user1.getUserId();
         if(userService.findUserByUserId(getid)==null) {
             userService.addUser(user1);
         }
+        return "redirect:/yonghuguanli";
     }
 }

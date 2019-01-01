@@ -160,8 +160,11 @@ public class BookServiceImpl implements BookService {
         Book book =bookRepository.findBookByCode(code);
         book.setState(StaticData.BOOK_STATUS_ALREADY_BACK);
         Borrow borrow = borrowRepository.findByUserIdAndCode(userId,code);
-        borrow.setReturnStatus(status);
-        borrowRepository.save(borrow);
+        if(borrow!=null)
+        {
+            borrow.setReturnStatus(status);
+            borrowRepository.save(borrow);
+        }
     }
 
 

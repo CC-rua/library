@@ -213,9 +213,7 @@
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">类别</label>
 										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<select th:value="*{kind}" class="form-control m-b" type="text">
-												<option value="">请选择</option>
-											</select>
+											<input th:value="*{kind}" class="form-control m-b" type="text">
 										</div>
 									</div>
 
@@ -251,7 +249,7 @@
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">图书简介</label>
 										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<textarea th:text="*{introduction}" class="form-control" rows="3" type="text"></textarea>
+											<input th:text="*{introduction}" class="form-control" type="text"></input>
 										</div>
 									</div>
 

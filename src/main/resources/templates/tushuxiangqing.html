@@ -216,7 +216,7 @@
 	 $('#collect').click(function () {
 		 var bookId= $('#bookId').val();
 		 var url="/CollectionBook";
-		 alert(bookId);
+		 //alert(bookId);
 		 $.ajax({
 			 url:url,
 			 type:"POST",
@@ -232,7 +232,7 @@
          var bookId= $('#bookId').val();
          //var code=$('#code').val();
          var url="churukuguanli/borrowOutBook\n";
-         alert(bookId);
+         //alert(bookId);
          $.ajax({
              url:url,
              type:"POST",
@@ -240,7 +240,7 @@
                  bookId:bookId
              },
              success:function (data){
-                 alert("ok");
+                 //alert("ok");
              }
          })
      })

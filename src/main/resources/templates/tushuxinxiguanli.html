@@ -277,7 +277,7 @@
         $("input[name='checkbox']").each(function(){
             if(this.checked){
                 IdArr.push($(this).val());
-                alert($(this).val());
+                //alert($(this).val());
             }
         });
         console.info(IdArr);
@@ -314,7 +314,7 @@
             },
             data: JSON.stringify(getFormData2()),
             success: function(data) {
-                alert("ok");
+                //alert("ok");
                 console.log(data);
             }
         })

@@ -214,7 +214,7 @@
 	 $('#collect').click(function () {
 		 var bookId= $('#bookId').val();
 		 var url="/CollectionBook";
-		 alert(bookId);
+		 //alert(bookId);
 		 $.ajax({
 			 url:url,
 			 type:"POST",
@@ -222,7 +222,7 @@
 			 	bookId:bookId
 			 },
 			 success:function (data){
-				 alert("ok");
+				 //alert("ok");
 			 }
 		 })
 	 })

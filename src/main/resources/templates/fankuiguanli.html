@@ -267,7 +267,7 @@
         $("input[name='checkbox']").each(function(){
             if(this.checked){
                 IdArr.push($(this).val());
-                alert($(this).val());
+                //alert($(this).val());
             }
         });
         console.info(IdArr);
@@ -305,7 +305,7 @@ $('#search').click(function() {
             success: function(data) {
                 if(data.success)
                     alert("删除成功");
-                 alert("ok");
+                 //alert("ok");
                 console.log(data);
             }
         })

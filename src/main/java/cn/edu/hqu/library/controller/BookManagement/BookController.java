@@ -39,17 +39,19 @@ public class BookController extends BaseController {
 
     @RequestMapping("addBookJump")
     public  String addBook(Model model){
+        Book book = new Book();
+        model.addAttribute("bookInfo",book);
         return "xinzengchuru";
     }
 
 
     //批量添加图书
     @RequestMapping("addBookList")
-    public ReturnBean addBookList(AddBookVo addBookVo,String quality)
+    public ReturnBean addBookList(String bookId,String state,String quality,
+                                  @RequestParam(required = false,defaultValue = "0") Integer count)
     {
-        //String code = UUID.randomUUID().toString();
-        Book book =new Book(null,addBookVo.getBookId(), StaticData.BOOK_QUALITY_GOOD,StaticData.BOOK_DELETE_NOT_DELETE,quality);
-        for(int i = 0;i<addBookVo.getCount();i++)
+        Book book =new Book(null,bookId,state,0,quality);
+        for(int i = 0;i<count ;i++)
         {
             bookService.addBook(book);
         }
@@ -116,7 +118,7 @@ public class BookController extends BaseController {
     }
 
     @RequestMapping("giveBackBook")
-    public String giveBackBook(String borrowUserId, String code)
+    public String giveBackBook(@ModelAttribute("name")String borrowUserId, String code)
     {
         bookService.giveBack(borrowUserId,code,StaticData.BOOK_STATUS_ALREADY_BACK);
         return "redirect:/wodejieyue";

@@ -8,6 +8,7 @@ import cn.edu.hqu.library.service.BookService;
 import cn.edu.hqu.library.service.Impl.BookManagementService;
 import cn.edu.hqu.library.service.Impl.BorrowService;
 import cn.edu.hqu.library.service.Impl.CollectionService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -67,15 +68,23 @@ public class BookMassageController extends BaseController {
 
     @RequestMapping("addBookMsgJump")
     public  String addBook(Model model){
+        Bookmessage bookmessage = new Bookmessage();
+        model.addAttribute("Bookmessage",bookmessage);
         return "xinzengtushu";
     }
 
-    @ResponseBody
     @RequestMapping("addBookMsg")
-    public ReturnBean addBookMsg(Bookmessage bookmessage)
+    public String addBookMsg(@RequestParam(required = false,defaultValue = "") String bookId,
+                                 @RequestParam(required = false,defaultValue = "")String name,
+                                 @RequestParam(required = false,defaultValue = "")String jiaofu,
+                                 @RequestParam(required = false,defaultValue = "")String pubsiher,
+                                 @RequestParam(required = false,defaultValue = "")String author,
+                                 @RequestParam(required = false,defaultValue = "")String introduction)
     {
+        Bookmessage bookmessage =new Bookmessage(bookId,name,jiaofu,"",author,pubsiher,introduction);
+
         managementService.addBookMsg(bookmessage);
-        return getSuccess("success");
+        return "redirect:/tushuxinxiguanli";
     }
     @RequestMapping("xiugaitushuxinxi")
     public String jumpToUpdateBookMsg(String bookId,Model model)
