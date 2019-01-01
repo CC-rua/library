@@ -11,6 +11,7 @@ public interface UserService {
      User Authentication(String name, String password);
      User findUserByUserId(String userId);
      void addUser(User user);
+     void UpdateUser(User user);
      boolean UserRegister(users user1);
      List<User> findAll();
      void DeleteByUserId(String UserId);

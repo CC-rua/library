@@ -28,7 +28,7 @@ public class userUpdate {
     public String UpDateUser(User user){
             String getid=user.getUserId();
             if(userService.findUserByUserId(getid)!=null){
-                userService.addUser(user);
+                userService.UpdateUser(user);
         }
         return "redirect:/yonghuguanli";
     }

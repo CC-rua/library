@@ -47,6 +47,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void UpdateUser(User user) {
+        userImp.UpdateUser(user.getUserId(),user.getName(),user.getSex(),user.getGrade(),user.getMajor(),user.getDepartment());
+    }
+
+    @Override
     public boolean UserRegister(users user1) {
         //注册
         if (userRepository.findAllByUserIdEquals(user1.getName()) == null) {

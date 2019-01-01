@@ -44,7 +44,19 @@ WHERE
 			) >= 6
     </select>
 
+<update id="UpdateUser">
+	UPDATE `user`
+SET
+	NAME=#{name},
+	sex=#{sex},
+	grade=#{grade},
+	major=#{major},
+	department=#{department}
 
+
+WHERE
+	UserID =#{userId}
+</update>
 
 
 </mapper>

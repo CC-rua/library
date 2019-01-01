@@ -11,4 +11,6 @@ import java.util.List;
 @Component
 public interface UserImp {
     List<User> findUserByConditions(@Param("UserId") String UserId,@Param("name") String name, @Param("department") String department, @Param("grade") String grade, @Param("major") String major, @Param("sex") Integer sex);
+
+    void UpdateUser(@Param("userId")String userId,@Param("name") String name, @Param("sex") Integer sex, @Param("grade") String grade, @Param("major") String major, @Param("department") String department);
 }
