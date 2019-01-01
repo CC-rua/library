@@ -221,8 +221,6 @@
 							<div>
 								<a href="xinjianyonghu" class="btn btn-danger btn-rounded  btn-bordered btn-sm">
 									<i class="fa fa-search"></i>新增</a>
-								<a class="btn btn-primary btn-rounded  btn-bordered btn-sm">
-									<i class="fa fa-refresh"></i>修改</a>
 								<a id="delete" class="btn btn-warning btn-rounded  btn-bordered btn-sm">
 									<i class="fa fa-refresh"></i>删除</a>
 							</div>
@@ -252,6 +250,7 @@
 									<td name="department" th:text="${user.department}">计算机科学与技术</td>
 									<td name="major" th:text="${user.major}">软件工程</td>
 									<td><a class="btn btn-success btn-rounded  btn-bordered btn-sm" th:href="@{'/chakanyonghu?userId='+${user.userId}}">查看</a><td>   
+									<td><a class="btn btn-primary btn-rounded  btn-bordered btn-sm" th:href="@{'/xiugaiyonghu?userId='+${user.userId}}">查看</a><td>   
 								</tr> 
 								</tbody>
 							</table>

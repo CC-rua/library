@@ -40,17 +40,7 @@ public class userManagerController extends BaseController {
             }
         }
     }
-    //改
-    @ResponseBody
-    @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public void UpDateUser(@RequestBody(required = false) List<User> userList){
-        for(User user1:userList){
-            String getid=user1.getUserId();
-            if(userService.findUserByUserId(getid)!=null){
-                userService.addUser(user1);
-            }
-        }
-    }
+
     //查
     @RequestMapping(method = RequestMethod.POST)
     public String  SearchUser(Model model,@RequestBody(required = false) User user1) {
