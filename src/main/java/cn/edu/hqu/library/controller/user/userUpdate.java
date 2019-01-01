@@ -24,12 +24,12 @@ public class userUpdate {
         return "xiugaiyonghu";
     }
     //改
-    @ResponseBody
     @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public void UpDateUser(User user){
+    public String UpDateUser(User user){
             String getid=user.getUserId();
             if(userService.findUserByUserId(getid)!=null){
                 userService.addUser(user);
         }
+        return "redirect:/yonghuguanli";
     }
 }
