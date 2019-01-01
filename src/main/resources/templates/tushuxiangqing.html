@@ -200,7 +200,7 @@
 							<!-- /.col -->
 							<div class="col-xs-12 col-sm-6 col-md-4 box-footer" style="margin-left:45%;">
 								<a id="collect" class="btn btn-danger btn-rounded  btn-bordered btn-sm">收藏</a>
-								<a id="2" class="btn btn-warning btn-rounded  btn-bordered btn-sm">借书</a>
+								<a id="borrow" class="btn btn-warning btn-rounded  btn-bordered btn-sm">借书</a>
 								<a id="3" class="btn btn-primary btn-rounded  btn-bordered btn-sm">返回</a></div>
 						</form>
 					</div>
@@ -228,4 +228,20 @@
 			 }
 		 })
 	 })
+     $('#borrow').click(function () {
+         var bookId= $('#bookId').val();
+         //var code=$('#code').val();
+         var url="churukuguanli/borrowOutBook\n";
+         alert(bookId);
+         $.ajax({
+             url:url,
+             type:"POST",
+             data:{
+                 bookId:bookId
+             },
+             success:function (data){
+                 alert("ok");
+             }
+         })
+     })
 </script>
