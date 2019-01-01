@@ -57,6 +57,10 @@
 		 	 and kind like concat('%',#{kind},'%')
 		 </if>
 
+		<if test="code!=''and code != null">
+			and code like concat('%',#{code},'%')
+		</if>
+
 		 <if test="jiaofu!=''and jiaofu != null">
 		 	and jiaofu = #{jiaofu}
 		 </if>
