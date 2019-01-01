@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AdviceCheck {
     @Autowired
     AdviceService adviceService;
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping
     public String ShowAdviceCheck(Model model,Integer adviceId){
        // adviceId=8;
         Advice advice = adviceService.findAdviceByAdviceId(adviceId);

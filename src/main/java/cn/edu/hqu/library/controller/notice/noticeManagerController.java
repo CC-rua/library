@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -38,6 +39,11 @@ public class noticeManagerController {
                 noticeService.DeleteByNoticeId(getid);
             }
         }
+    }
+    @RequestMapping(value = "/jump")
+    public String JumpToNoticeCheck(RedirectAttributes model, Integer noticeId){
+        model.addFlashAttribute("noticeId", noticeId);
+        return "redirect:/chakangonggao";
     }
     //改
     @ResponseBody

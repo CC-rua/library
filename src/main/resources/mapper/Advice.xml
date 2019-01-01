@@ -9,7 +9,7 @@
 				WHERE
 					(
 						CASE
-						WHEN adviceID=#{adviceId}||ISNULL(#{adviceId})||#{adviceId}='' THEN
+						WHEN adviceID=#{adviceId}||ISNULL(#{adviceId}) THEN
 							1
 						ELSE
 							0
@@ -19,8 +19,8 @@
 						ELSE
 							0
 				END+ CASE
-						WHEN CONCAT(message) LIKE concat('%', #{message}, '%')||
-						ISNULL( #{message})	||ISNULL#(message)||#{message}='' THEN
+						WHEN CONCAT(message) LIKE concat('%', #{message}, '%')
+						 THEN
 							1
 						ELSE
 							0

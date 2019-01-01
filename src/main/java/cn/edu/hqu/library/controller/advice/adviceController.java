@@ -27,7 +27,6 @@ public class adviceController extends BaseController {
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST,value = "submitAdvice")
     public ReturnBean PostAdvice(Advice advice1, Errors errors, Model model) {
-
         if (advice1 != null) {
             advice1.setState("0");
             adviceRepository.save(advice1);

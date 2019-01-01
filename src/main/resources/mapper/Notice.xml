@@ -5,7 +5,6 @@
     <select id="findNoticeByConditions" resultType="cn.edu.hqu.library.entity.Notice" >
 		SELECT
 			notice.NoticeID AS "noticeId",
-			notice.btime AS "btime"
 			notice.msg AS "msg"
 		FROM
 			notice

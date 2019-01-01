@@ -201,9 +201,9 @@
 					<!-- general form elements -->
 					<div class="box box-primary">
 						<div class="col-xs-12 col-sm-6 col-md-4 box-footer">
-							<a class="btn btn-danger btn-rounded  btn-bordered btn-sm">
+							<a href="xinzenggonggao"class="btn btn-danger btn-rounded  btn-bordered btn-sm">
 								<i class="fa fa-search"></i>新增</a>
-							<a class="btn btn-primary btn-rounded  btn-bordered btn-sm">
+							<a id="update" class="btn btn-primary btn-rounded  btn-bordered btn-sm">
 								<i class="fa fa-refresh"></i>修改</a>
 							<a class="btn btn-success btn-rounded  btn-bordered btn-sm">
 								<i class="fa fa-refresh"></i>查看</a>
@@ -293,5 +293,23 @@
             }
         })
     });
+    $('#update').click(function() {
+        var url = '/gonggaoguanli/jump';
+        alert("ok");
+        $.ajax({
+            url: url,
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8"
+            },
+            data: JSON.stringify(getFormData2()),
+            success: function(data) {
+                window.location='chakangonggao'
+                console.log(data);
+            }
+        })
+    });
+
 </script>
 </html>

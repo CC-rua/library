@@ -21,7 +21,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value = {"login"})
-@SessionAttributes({"name","pwd","role"})
+@SessionAttributes({"name","pwd"})
 public class loginController {
 
     @Autowired

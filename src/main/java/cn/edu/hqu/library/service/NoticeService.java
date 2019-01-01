@@ -13,5 +13,5 @@ public interface NoticeService {
 
     void DeleteByNoticeId(Integer noticeId);
 
-    List<Notice> findNoticeByConditions(Integer noticeId, String msg);
+    List<Notice> findNoticeByConditions(Integer noticeId,String msg);
 }
