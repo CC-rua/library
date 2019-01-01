@@ -10,9 +10,10 @@ import java.util.List;
 @Mapper
 @Component
 public interface HistoryImp {
-    List<HistoryVO> findAllHistoryByUserId(String userId);
 
-    void deleteHistory(String id);
+    void deleteHistory(Integer id);
 
     void addHistory(@Param("userId") String userId,@Param("bookId") String bookId);
+
+    List<HistoryVO> findAllHistoryByUserId(String userId);
 }

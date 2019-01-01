@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 public class HistoryVO {
+
+    Integer id;
     String bookName;
     String author;
     String jiaofu;

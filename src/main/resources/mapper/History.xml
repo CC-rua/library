@@ -3,12 +3,12 @@
 <mapper namespace="cn.edu.hqu.library.mapper.HistoryImp">
 
     <select id="findAllHistoryByUserId" resultType="cn.edu.hqu.library.controller.vo.HistoryVO" >
-		select name as bookName,author,jiaofu,kind,time,userId from History left join bookmessage b on History.BookId = b.BookID
+		select historyId as id , name as bookName,author,jiaofu,kind,time,userId from History left join bookmessage b on History.BookId = b.BookID
 		where userId = #{userId}
     </select>
 
     <delete id="deleteHistory">
-        DELETE FROM `History` WHERE id = #{id}
+        DELETE FROM `History` WHERE historyId = #{id}
         </delete>
     
     <insert id="addHistory">

@@ -40,12 +40,13 @@ public class HistoryController extends BaseController {
     }
 
     @ResponseBody
-    @RequestMapping("deleteHistory")
+    @RequestMapping("deleteViewHistory")
     public ReturnBean deleteHistory(@RequestBody(required = false) List<String> idList)
     {
         for(String id:idList)
         {
-            historyImp.deleteHistory(id);
+            int id_ = Integer.valueOf(id);
+            historyImp.deleteHistory(id_);
         }
         return getSuccess("success");
     }
