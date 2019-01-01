@@ -26,12 +26,10 @@ public class userUpdate {
     //改
     @ResponseBody
     @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public void UpDateUser(@RequestBody(required = false) List<User> userList){
-        for(User user1:userList){
-            String getid=user1.getUserId();
+    public void UpDateUser(User user){
+            String getid=user.getUserId();
             if(userService.findUserByUserId(getid)!=null){
-                userService.addUser(user1);
-            }
+                userService.addUser(user);
         }
     }
 }

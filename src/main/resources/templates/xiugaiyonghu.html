@@ -173,7 +173,7 @@
 						<div class="box-header with-border">
 							<h2 class="box-title">用户管理</h2></div>
 						<!-- form start -->
-						<form th:action="@{/chakanyonghu}" th:object="${User}" method="get" class="form form-horizontal clearfix">
+						<form th:action="@{/xiugaiyonghu/update}" th:object="${User}" method="post" class="form form-horizontal clearfix">
 							<div class="form-group col-xs-12">
 								<label class="control-label col-sm-3 h5">账号</label>
 								<div class="col-sm-7" style="padding-top:0.5em ;">
@@ -205,7 +205,7 @@
 									<input th:field="*{department}" class="form-control" type="text" /></div>
 							</div>
 							<div class="col-xs-12 col-sm-6 col-md-4 box-footer" style="margin-left:45%;">
-								<a id="reset" class="btn btn-danger btn-rounded  btn-bordered btn-sm">提交</a>
+								<input id="submit" type="submit" class="btn btn-danger btn-rounded  btn-bordered btn-sm"></input>
 								<a id="reset" class="btn btn-primary btn-rounded  btn-bordered btn-sm">返回</a></div>
 						</form>
 					</div>
