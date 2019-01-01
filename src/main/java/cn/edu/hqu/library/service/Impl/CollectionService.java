@@ -36,4 +36,7 @@ public class CollectionService {
         return true;
     }
 
+    public void deleteCollection(String userId, String bookId) {
+        collectionImp.deleteCollection(userId,bookId);
+    }
 }

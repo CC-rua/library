@@ -4,6 +4,7 @@
 
     <select id="findCollectionByUserId" resultType="cn.edu.hqu.library.controller.vo.CollectionInfo" >
 		select
+		collection.BookmsgID as bookId,
 		name as bookName,
 		author,
 		jiaofu,
@@ -15,5 +16,9 @@
 		where collection.UserID = #{0}
 		group by name,author,jiaofu,kind,publisher;
     </select>
+
+	<delete id="deleteCollection">
+		DELETE FROM `collection` WHERE bookMsgId = #{bookId} and userId = #{userId}
+	</delete>
 
 </mapper>

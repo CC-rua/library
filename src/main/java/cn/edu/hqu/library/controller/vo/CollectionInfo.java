@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CollectionInfo {
 
+    String bookId;
     String bookName;
     String author;
     String jiaofu;

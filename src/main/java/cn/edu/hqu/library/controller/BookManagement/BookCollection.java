@@ -43,4 +43,15 @@ public class BookCollection extends BaseController{
         return getSuccess("success");
     }
 
+    @ResponseBody
+    @RequestMapping("deleteCollection")
+    public ReturnBean deleteCollection(@ModelAttribute("name")String userId, @RequestBody(required = false) List<String> idList)
+    {
+        for(String bookId:idList)
+        {
+            collectionService.deleteCollection(userId,bookId);
+        }
+        return getSuccess("success");
+    }
+
 }
