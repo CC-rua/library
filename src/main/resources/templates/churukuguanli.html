@@ -256,8 +256,8 @@
 									<td th:text="${bookinfo.kind}">基础学科</td>
 									<td th:text="${bookinfo.quality}">良好</td>
 									<td th:text="${bookinfo.status}">可借</td>
-									<td > <a class="btn btn-success btn-rounded  btn-bordered btn-sm" th:href="@{'/tushuxiangqing?bookId='+${bookinfo.bookId }}">查看</a></td>
-									<td > <a class="btn btn-success btn-rounded  btn-bordered btn-sm" th:href="@{'/churukuguanli/xiugaitushuchuru?code='+${bookinfo.code }}">修改</a></td>
+									<td > <a class="btn btn-success btn-rounded  btn-bordered btn-sm" th:href="@{'/chakantushuchuru?bookId='+${bookinfo.bookId }}">查看</a></td>
+									<td > <a class="btn btn-primary btn-rounded  btn-bordered btn-sm" th:href="@{'/churukuguanli/xiugaitushuchuru?code='+${bookinfo.code }}">修改</a></td>
 								</tr> 
 								</tbody>
 							</table>

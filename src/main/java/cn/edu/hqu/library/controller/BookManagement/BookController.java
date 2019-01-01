@@ -102,7 +102,7 @@ public class BookController extends BaseController {
         return "xiugaitushuchuru";
     }
 
-    @RequestMapping("updateBook")
+    @RequestMapping(value = "updateBook",method = RequestMethod.POST)
     public String updateBook(String code,String quality,String status,String bookId)
     {
         Book book = new Book(code,bookId,status,0,quality);
