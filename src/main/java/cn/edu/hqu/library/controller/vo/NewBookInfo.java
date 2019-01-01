@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NewBookInfo {
+    String bookId;
     String name;
     String author;
     String publisher;

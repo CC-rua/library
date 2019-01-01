@@ -180,9 +180,9 @@
 			<div class="row">
 				<div class="col-sm-12" id="bookform">
 					<div th:each="bookinfo:${list}" th:fragment="bookform" class="col-xs-8 col-sm-12 col-md-4">
-						<a href="tushuxiangqing" style="color:black;">
+						<a  th:href="@{'/tushuxiangqing?bookId='+${bookinfo.bookId}}"  style="color:black;">
 							<div class="box box-primary clearfix">
-								<div class="box-body">
+								<div class="box-body" >
 									<div class="pull-left">
 										<img class="image" src="picture/222.jpg" style="height: 10em;width: 10em; margin-right:2em;" /></div>
 									<div class="pull-left">

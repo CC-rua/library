@@ -223,8 +223,6 @@
 									<i class="fa fa-search"></i>新增</a>
 								<a class="btn btn-primary btn-rounded  btn-bordered btn-sm">
 									<i class="fa fa-refresh"></i>修改</a>
-								<a class="btn btn-success btn-rounded  btn-bordered btn-sm">
-									<i class="fa fa-refresh"></i>查看</a>
 								<a id="delete" class="btn btn-warning btn-rounded  btn-bordered btn-sm">
 									<i class="fa fa-refresh"></i>删除</a>
 							</div>
@@ -240,18 +238,20 @@
 									<th>性别</th>     
 									<th>年级</th>
 									<th>院系</th>
-									<th>专业</th>   </tr></thead> 
+									<th>专业</th> 
+									<th></th>  </tr></thead> 
 								<tbody style="font-size: 1em;font-family: '华文中宋';">   
 								<tr th:each="user,infoStat:${AllUsers}">
-									<td class="bs-checkbos">
+									<td  class="bs-checkbos">
 										<input type="checkbox" name="checkbox" th:value="${user.userId}"></td>
 									<td th:text="${infoStat.count}"></td>     
-									<td name="userId" th:text="${user.userId}">1611112044</td>     
+									<td name="userId" th:text="${user.userId}"></td>     
 									<td name="name" th:text="${user.name}">张三</td>     
 									<td name="sex" th:text="${user.sex}">男</td>     
 									<td name="grade" th:text="${user.grade}">2016</td>
 									<td name="department" th:text="${user.department}">计算机科学与技术</td>
-									<td name="major" th:text="${user.major}">软件工程</td>   </tr> </tbody></table>
+									<td name="major" th:text="${user.major}">软件工程</td>
+									<td><a class="btn btn-success btn-rounded  btn-bordered btn-sm" th:href="@{'/chakanyonghu?userId='+${user.userId}}">查看</a><td>   </tr> </tbody></table>
 						</div>
 					</div>
 					<!-- /.box --></div>
@@ -276,6 +276,18 @@ function getFormData2() {
     $("input[name='checkbox']").each(function() {
         if (this.checked) {
             IdArr.push($(this).val());
+            alert($(this).val());
+        }
+    });
+    console.info(IdArr);
+
+    return IdArr;
+}
+function getFormData3() {
+    var IdArr;
+    $("input[name='checkbox']").each(function() {
+        if (this.checked) {
+            IdArr=$(this).val();
             alert($(this).val());
         }
     });

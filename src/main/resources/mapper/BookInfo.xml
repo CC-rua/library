@@ -5,6 +5,7 @@
     <select id="FindBookInfoByName" resultType="cn.edu.hqu.library.service.dto.BookInfo" >
 		SELECT DISTINCT
 			book. CODE AS "Code",
+	  		bookmessage.bookID AS "bookId",
 			bookmessage. NAME AS "name",
 			bookmessage.jiaofu AS "JiaoFu",
 			bookmessage.kind AS "Kind",

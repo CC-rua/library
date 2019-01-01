@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class userCheck {
     @Autowired
     UserService userService;
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping
     public String ShowUserCheckPage(Model model,String userId){
-        userId="1625122047";
+        //userId="1625122047";
         User user1 = userService.findUserByUserId(userId);
         model.addAttribute("User", user1);
         return "chakanyonghu";

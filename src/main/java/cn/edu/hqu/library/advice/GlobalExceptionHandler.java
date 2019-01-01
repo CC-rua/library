@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    private static final String DEFAULT_ERROR_VIEW = "/error";
+    private static final String DEFAULT_ERROR_VIEW = "login";
     private static final String RE_LOGIN = "login";
 
     @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)

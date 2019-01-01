@@ -171,7 +171,7 @@
 			  <div class="col-sm-12">
 						<!--<h3>2018年12月24日</h3>-->
 				  <div th:each="bookinfo:${list}" class="col-xs-8 col-sm-12 col-md-4" >
-							<a href="tushuxiangqing" style="color:black;">
+							<a th:href="@{'tushuxiangqing?bookId='+${bookinfo.bookId}} "style="color:black;">
 		          <div class="box box-primary clearfix">
 		            <div class="box-body">
 		            	<div class="pull-left">
