@@ -71,6 +71,13 @@ public class BookMassageController extends BaseController {
         managementService.addBookMsg(bookmessage);
         return getSuccess("success");
     }
+    @RequestMapping("xiugaitushuxinxi")
+    public String jumpToUpdateBookMsg(String bookId,Model model)
+    {
+        BookMsgVo bookMsgVo = bookService.findBookMsgByBookId(bookId);
+        model.addAttribute("bookInfo",bookMsgVo);
+        return "xiugaitushuxinxi";
+    }
 
     @ResponseBody
     @RequestMapping("updateBookMsg")
