@@ -259,6 +259,18 @@
 
         return IdArr;
     }
+    function getFormData3() {
+        var IdArr;
+        $("input[name='checkbox']").each(function(){
+            if(this.checked){
+                IdArr=$(this).val();
+                alert($(this).val());
+            }
+        });
+        console.info(IdArr);
+
+        return IdArr;
+    }
     $('#search').click(function() {
         // alert("ok");
         var url = '/gonggaoguanli';
@@ -299,13 +311,11 @@
         $.ajax({
             url: url,
             type: "POST",
-            contentType: 'application/json;charset=UTF-8',
-            headers: {
-                "Content-Type": "application/json;charset=UTF-8"
+            data: {
+                noticeId:getFormData3()
             },
-            data: JSON.stringify(getFormData2()),
             success: function(data) {
-                window.location='chakangonggao'
+
                 console.log(data);
             }
         })
