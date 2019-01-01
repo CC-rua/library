@@ -55,4 +55,6 @@ public interface BookService {
     BookInfo FindBookInfoByCode(String code);
 
     List<BookMsgVo> findAllBookMsgInfo();
+
+    String findBookCodeByBookId(String bookId);
 }

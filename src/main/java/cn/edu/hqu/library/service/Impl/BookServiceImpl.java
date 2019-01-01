@@ -195,5 +195,10 @@ public class BookServiceImpl implements BookService {
         return null;
     }
 
+    @Override
+    public String findBookCodeByBookId(String bookId) {
+        return bookImp.findBookCodeByBookId(bookId);
+    }
+
 
 }

@@ -126,7 +126,9 @@
 		select * from book left join bookmessage b on book.BookID = b.BookID
 	</select>
 
-
+	<select id="findBookCodeByBookId" resultType="java.lang.String">
+		select code from book where state = 0 and BookID = 1 limit 1
+	</select>
 
 
 </mapper>

@@ -6,12 +6,15 @@ import cn.edu.hqu.library.controller.vo.RecommendBookInfo;
 import cn.edu.hqu.library.controller.vo.BookMsgVo;
 import cn.edu.hqu.library.controller.vo.BookVo;
 import cn.edu.hqu.library.entity.Book;
+import cn.edu.hqu.library.entity.Bookmessage;
 import cn.edu.hqu.library.entity.ReturnBean;
 import cn.edu.hqu.library.service.BookService;
+import cn.edu.hqu.library.service.Impl.BookManagementService;
 import cn.edu.hqu.library.util.StaticData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +28,10 @@ public class BookController extends BaseController {
 
     @Autowired
     BookService bookService;
+
+    @Autowired
+    BookManagementService bookManagementService;
+
     @RequestMapping(method = RequestMethod.GET)
     public  String churukuguanli(Model model){
         List<BookVo> list = bookService.findBookInfo("","","","","","","","");
@@ -74,17 +81,18 @@ public class BookController extends BaseController {
     }
 
     @RequestMapping("borrowOutBook")
-    public ReturnBean borrowOutBook(String borrowUserId,String bookId,String code)
+    public ReturnBean borrowOutBook(@ModelAttribute("name")String borrowUserId,String bookId)
     {
+        String code = bookService.findBookCodeByBookId(bookId);
         bookService.borrowBook(bookId,code,borrowUserId);
         return getSuccess("success");
     }
 
     @RequestMapping("giveBackBook")
-    public ReturnBean giveBackBook(String borrowUserId,String bookId,String code)
+    public String giveBackBook(String borrowUserId, String bookId, String code)
     {
         bookService.giveBack(bookId,code,borrowUserId);
-        return getSuccess("success");
+        return "redirect:/churukuguanli";
     }
 
     @RequestMapping("xiugaitushuchuru")
