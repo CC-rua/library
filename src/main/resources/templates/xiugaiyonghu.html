@@ -171,8 +171,9 @@
 					<!-- general form elements -->
 					<div class="box box-primary">
 						<div class="box-header with-border">
-							<h2 class="box-title">意见反馈</h2></div>
-						<form th:action="@{/chakanfankui}" th:object="${Advice}" class="form form-horizontal clearfix">
+							<h2 class="box-title">用户管理</h2></div>
+						<!-- form start -->
+						<form th:action="@{/chakanyonghu}" th:object="${User}" method="get" class="form form-horizontal clearfix">
 							<div class="form-group col-xs-12">
 								<label class="control-label col-sm-3 h5">账号</label>
 								<div class="col-sm-7" style="padding-top:0.5em ;">
@@ -181,18 +182,31 @@
 							<div class="form-group col-xs-12">
 								<label class="control-label col-sm-3 h5">姓名</label>
 								<div class="col-sm-7" style="padding-top:0.5em ;">
-									<input th:field="*{name}" class="form-control" type="text" /></div>
+									<input th:field="*{name}" class="form-control"  type="text" /></div>
 							</div>
 							<div class="form-group col-xs-12">
-								<label class="control-label col-sm-3 h5">意见</label>
+								<label class="control-label col-sm-3 h5">性别</label>
 								<div class="col-sm-7" style="padding-top:0.5em ;">
-									<textarea th:field="*{message}" class="form-control" rows="3"  type="text"></textarea>
-								</div>
+									<input th:field="*{sex}" class="form-control" type="text" /></div>
+							</div>
+							<div class="form-group col-xs-12">
+								<label class="control-label col-sm-3 h5">年级</label>
+								<div class="col-sm-7" style="padding-top:0.5em ;">
+									<input th:field="*{grade}" class="form-control" type="text" /></div>
+							</div>
+							<div class="form-group col-xs-12">
+								<label class="control-label col-sm-3 h5">专业</label>
+								<div class="col-sm-7" style="padding-top:0.5em ;">
+									<input th:field="*{major}" class="form-control" type="text" /></div>
+							</div>
+							<div class="form-group col-xs-12">
+								<label class="control-label col-sm-3 h5">院系</label>
+								<div class="col-sm-7" style="padding-top:0.5em ;">
+									<input th:field="*{department}" class="form-control" type="text" /></div>
 							</div>
 							<div class="col-xs-12 col-sm-6 col-md-4 box-footer" style="margin-left:45%;">
 								<a id="reset" class="btn btn-danger btn-rounded  btn-bordered btn-sm">提交</a>
-								<a id="reset" class="btn btn-primary btn-rounded  btn-bordered btn-sm">返回</a>
-							</div>
+								<a id="reset" class="btn btn-primary btn-rounded  btn-bordered btn-sm">返回</a></div>
 						</form>
 					</div>
 					<!-- /.box --></div>

@@ -225,10 +225,10 @@
 						<div class="col-xs-12 col-sm-6 col-md-4 box-footer">
 							<a class="btn btn-danger btn-rounded  btn-bordered btn-sm">
 								<i class="fa fa-search"></i>新增</a>
-							<a class="btn btn-primary btn-rounded  btn-bordered btn-sm">
-								<i class="fa fa-refresh"></i>修改</a>
-							<a class="btn btn-success btn-rounded  btn-bordered btn-sm">
-								<i class="fa fa-refresh"></i>查看</a>
+							<!--<a class="btn btn-primary btn-rounded  btn-bordered btn-sm">-->
+								<!--<i class="fa fa-refresh"></i>修改</a>-->
+							<!--<a class="btn btn-success btn-rounded  btn-bordered btn-sm">-->
+								<!--<i class="fa fa-refresh"></i>查看</a>-->
 							<a class="btn btn-warning btn-rounded  btn-bordered btn-sm">
 								<i class="fa fa-refresh"></i>删除</a>
 						</div>
@@ -242,7 +242,12 @@
 								<th>图书名称</th>     
 								<th>性质</th>
 								<th>分类</th>
-								<th>库存量</th>   </tr></thead> 
+								<th>库存量</th>
+								<th>查看</th>
+								<th>修改</th>
+							</tr>
+							</thead> 
+
 							<tbody style="font-size: 1em;font-family: '华文中宋';">   
 							<tr th:each="bookinfo,infoStat:${list3}">
 								<td class="bs-checkbos">
@@ -252,7 +257,12 @@
 								<td th:text="${bookinfo.bookName}">高等数学</td>     
 								<td th:text="${bookinfo.jiaofu}">教辅</td>
 								<td th:text="${bookinfo.kind}">基础学科</td>
-								<td th:text="${bookinfo.freeNum}">1000</td></tr> </tbody></table>
+								<td th:text="${bookinfo.freeNum}">1000</td></tr> 
+								<td > <a class="btn btn-success btn-rounded  btn-bordered btn-sm" th:href="@{'/tushuxiangqing?bookId='+${bookinfo.bookId }}">查看</a></td>
+								<td > <a class="btn btn-success btn-rounded  btn-bordered btn-sm" th:href="@{'/tushuxiugai?bookId='+${bookinfo.bookId }}">修改</a></td>
+							</tr> 
+							</tbody>
+						</table>
 						</div>
 					</div>
 					<!-- /.box --></div>

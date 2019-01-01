@@ -24,7 +24,7 @@
 	<!-- Main Header -->
 	<header class="main-header">
 		<!-- Logo -->
-		<a href="/index2 " class="logo">
+		<a href="/index2.html" class="logo">
 			<!-- mini logo for sidebar mini 50x50 pixels -->
 			<span class="logo-mini">
             <b>Find</b>Book</span>
@@ -123,11 +123,11 @@
 						<i class="fa fa-th"></i>
 						<span>浏览历史</span></a>
 				</li>
-				<li>
-					<a href="zhanneixiaoxi">
-						<i class="fa fa-th"></i>
-						<span>站内消息</span></a>
-				</li>
+				<!--<li>-->
+					<!--<a href="zhanneixiaoxi">-->
+						<!--<i class="fa fa-th"></i>-->
+						<!--<span>站内消息</span></a>-->
+				<!--</li>-->
 				<li>
 					<a href="yijianfankui">
 						<i class="fa fa-th"></i>
@@ -171,28 +171,35 @@
 					<!-- general form elements -->
 					<div class="box box-primary">
 						<div class="box-header with-border">
-							<h2 class="box-title">意见反馈</h2></div>
-						<form th:action="@{/chakanfankui}" th:object="${Advice}" class="form form-horizontal clearfix">
-							<div class="form-group col-xs-12">
-								<label class="control-label col-sm-3 h5">账号</label>
-								<div class="col-sm-7" style="padding-top:0.5em ;">
-									<input th:field="*{userId}" class="form-control" type="text" /></div>
-							</div>
-							<div class="form-group col-xs-12">
-								<label class="control-label col-sm-3 h5">姓名</label>
-								<div class="col-sm-7" style="padding-top:0.5em ;">
-									<input th:field="*{name}" class="form-control" type="text" /></div>
-							</div>
-							<div class="form-group col-xs-12">
-								<label class="control-label col-sm-3 h5">意见</label>
-								<div class="col-sm-7" style="padding-top:0.5em ;">
-									<textarea th:field="*{message}" class="form-control" rows="3"  type="text"></textarea>
-								</div>
-							</div>
+							<h2 class="box-title">图书详情</h2></div>
+						<!-- form start -->
+						<form th:object="${bookMsg}" action="" method="get"th:action="@{/tushuxiugai}" class="form form-horizontal clearfix">
+							<div class="col-xs-12 col-sm-12 col-md-12">
+								<div class="clearfix">
+									<div class="box-body">
+										<div class="pull-left">
+											<img class="image" src="picture/222.jpg" style="height: 10em;width: 10em; margin-right:2em;" /></div>
+										<div>
+											<h3 name="name" th:value="*{name}">高等数学</h3>
+											<input id="bookId" th:value="*{bookId}" type="hidden">
+											<input name="author" th:value="*{author}"class="h5">BILIBILI编著</input>
+											<input name="publisher"th:value="*{publisher}"class="h5">长江出版社</input>
+											<input class="h5">第6版</input>
+											<br />
+											<input name="kind"th:value="*{kind}"class="h5">基础学科</input>
+											<input name="jiaofu" th:value="*{jiaofu}"class="h5">教辅类</input>
+											<br />
+											<input  class="h5" style="color: red">2018级指定学科教材</input></div>
+										<div class="box-header with-border" style="margin-top: 4em;">
+											<h2 class="box-title">图书简介</h2></div>
+										<div class="col-md-12">
+											<p name="introduction" th:value="*{introduction}"class="h5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 测试多行效果。测试多行效果。测试多行效果。测试多行效果。 测试多行效果。测试多行效果。测试多行效果。测试多行效果。 测试多行效果。测试多行效果。测试多行效果。测试多行效果。测试多行效果。</p></div>
+									</div>
+									<!-- /.info-box-content --></div>
+								<!-- /.info-box --></div>
+							<!-- /.col -->
 							<div class="col-xs-12 col-sm-6 col-md-4 box-footer" style="margin-left:45%;">
-								<a id="reset" class="btn btn-danger btn-rounded  btn-bordered btn-sm">提交</a>
-								<a id="reset" class="btn btn-primary btn-rounded  btn-bordered btn-sm">返回</a>
-							</div>
+								<a id="collect" class="btn btn-danger btn-rounded  btn-bordered btn-sm">提交修改</a>
 						</form>
 					</div>
 					<!-- /.box --></div>
@@ -203,3 +210,20 @@
 </body>
 
 </html>
+<script type="text/javascript">
+	 $('#collect').click(function () {
+		 var bookId= $('#bookId').val();
+		 var url="/CollectionBook";
+		 alert(bookId);
+		 $.ajax({
+			 url:url,
+			 type:"POST",
+			 data:{
+			 	bookId:bookId
+			 },
+			 success:function (data){
+				 alert("ok");
+			 }
+		 })
+	 })
+</script>

@@ -161,45 +161,109 @@
 			</ul>
 			<!-- /.sidebar-menu --></section>
 		<!-- /.sidebar --></aside>
-	<!-- Content Wrapper. Contains page content -->
-	<div class="content-wrapper">
-		<!-- Main content -->
-		<section class="content">
-			<div class="row">
-				<!-- left column -->
-				<div class="col-sm-8">
-					<!-- general form elements -->
-					<div class="box box-primary">
-						<div class="box-header with-border">
-							<h2 class="box-title">意见反馈</h2></div>
-						<form th:action="@{/chakanfankui}" th:object="${Advice}" class="form form-horizontal clearfix">
-							<div class="form-group col-xs-12">
-								<label class="control-label col-sm-3 h5">账号</label>
-								<div class="col-sm-7" style="padding-top:0.5em ;">
-									<input th:field="*{userId}" class="form-control" type="text" /></div>
-							</div>
-							<div class="form-group col-xs-12">
-								<label class="control-label col-sm-3 h5">姓名</label>
-								<div class="col-sm-7" style="padding-top:0.5em ;">
-									<input th:field="*{name}" class="form-control" type="text" /></div>
-							</div>
-							<div class="form-group col-xs-12">
-								<label class="control-label col-sm-3 h5">意见</label>
-								<div class="col-sm-7" style="padding-top:0.5em ;">
-									<textarea th:field="*{message}" class="form-control" rows="3"  type="text"></textarea>
+
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper">
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="row">
+						<!-- left column -->
+						<div class="col-sm-8">
+							<!-- general form elements -->
+							<div class="box box-primary">
+								<div class="box-header with-border">
+									<h2 class="box-title">图书管理</h2>
 								</div>
+								<!-- form start -->
+								<form th:object="${bookInfo}" class="form form-horizontal clearfix">
+
+									<div class="form-group col-xs-12">
+										<label class="control-label col-sm-3 h5">编号</label>
+										<div class="col-sm-7" style="padding-top:0.5em ;">
+											<input th:field="*{bookId}" class="form-control" type="text" />
+										</div>
+									</div>
+
+									<div class="form-group col-xs-12">
+										<label class="control-label col-sm-3 h5">名称</label>
+										<div class="col-sm-7" style="padding-top:0.5em ;">
+											<input th:field="*{bookName}"class="form-control" type="text" />
+										</div>
+									</div>
+
+									<div class="form-group col-xs-12">
+										<label class="control-label col-sm-3 h5">性质</label>
+										<div class="col-sm-7" style="padding-top:0.5em ;">
+											<input th:field="*{jiaofu}" class="form-control" type="text" />
+										</div>
+									</div>
+
+									<div class="form-group col-xs-12">
+										<label class="control-label col-sm-3 h5">类别</label>
+										<div class="col-sm-7" style="padding-top:0.5em ;">
+											<input th:field="*{kind}" class="form-control" type="text" />
+										</div>
+									</div>
+
+									<div class="form-group col-xs-12">
+										<label class="control-label col-sm-3 h5">出版社</label>
+										<div class="col-sm-7" style="padding-top:0.5em ;">
+											<input th:field="*{publisher}"class="form-control" type="text" />
+										</div>
+									</div>
+
+									<div class="form-group col-xs-12">
+										<label class="control-label col-sm-3 h5">版次</label>
+										<div class="col-sm-7" style="padding-top:0.5em ;">
+											<input class="form-control" type="text" />
+										</div>
+									</div>
+
+									<div class="form-group col-xs-12">
+										<label class="control-label col-sm-3 h5">作者</label>
+										<div class="col-sm-7" style="padding-top:0.5em ;">
+											<input th:field="*{author}"class="form-control" type="text" />
+										</div>
+									</div>
+
+									<div class="form-group col-xs-12">
+										<label class="control-label col-sm-3 h5">库存量</label>
+										<div class="col-sm-7" style="padding-top:0.5em ;">
+											<input th:field="*{freeNum}"class="form-control" type="text" />
+										</div>
+									</div>
+
+									<div class="form-group col-xs-12">
+										<label class="control-label col-sm-3 h5">展示图片</label>
+										<div class="col-sm-7" style="padding-top:0.5em ;">
+											<input class="form-control" type="text" />
+										</div>
+									</div>
+
+									<div class="form-group col-xs-12">
+										<label class="control-label col-sm-3 h5">图书简介</label>
+										<div class="col-sm-7" style="padding-top:0.5em ;">
+											<textarea th:field="*{introduction}"class="form-control" rows="3" type="text"></textarea>
+										</div>
+									</div>
+
+									<div class="col-xs-12 col-sm-6 col-md-4 box-footer" style="margin-left:45%;">
+										<a id="reset" class="btn btn-danger btn-rounded  btn-bordered btn-sm">提交</a>
+										<a id="reset" class="btn btn-primary btn-rounded  btn-bordered btn-sm"> 返回</a>
+									</div>
+								</form>
 							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 box-footer" style="margin-left:45%;">
-								<a id="reset" class="btn btn-danger btn-rounded  btn-bordered btn-sm">提交</a>
-								<a id="reset" class="btn btn-primary btn-rounded  btn-bordered btn-sm">返回</a>
-							</div>
-						</form>
+							<!-- /.box -->
+						</div>
 					</div>
-					<!-- /.box --></div>
+					<!-- /.nav-tabs-custom -->
+				</section>
+
+				<!-- /.content -->
 			</div>
-			<!-- /.nav-tabs-custom --></section>
-		<!-- /.content --></div>
-	<!-- /.content-wrapper --></div>
-</body>
+			<!-- /.content-wrapper -->
+		</div>
+	</body>
 
 </html>
