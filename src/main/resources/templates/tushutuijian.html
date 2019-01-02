@@ -74,7 +74,7 @@
 			<!-- Sidebar Menu -->
 			<ul class="sidebar-menu h5" data-widget="tree">
 				<li class="header">主要导航</li>
-				<li class="active">
+				<li>
 					<a href="start">
 						<i class="fa fa-th"></i>
 						<span>首页</span></a>
@@ -89,7 +89,7 @@
 						<i class="fa fa-th"></i>
 						<span>借阅排行</span></a>
 				</li>
-				<li>
+				<li class="active">
 					<a href="tushutuijian">
 						<i class="fa fa-th"></i>
 						<span>图书推荐</span></a>
@@ -174,7 +174,7 @@
 								<div class="box-body">
 									<div class="pull-left">
 										<img class="image" src="picture/222.jpg" style="height: 10em;width: 10em; margin-right:2em;" /></div>
-									<div class="pull-left">
+									<div class="pull-left" style="width: 100%;">
 										<h3 th:text="${book.name}">高等数学</h3>
 										<span th:text="${book.author}" class="h5">BILIBILI编著</span>
 										<span th:text="${book.publisher}" class="h5">长江出版社</span>

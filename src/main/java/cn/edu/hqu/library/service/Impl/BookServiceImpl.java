@@ -126,12 +126,17 @@ public class BookServiceImpl implements BookService {
     {
         Book book = bookRepository.findByBookIdAndCode(bookId,code);
         Bookmessage bookmessage = bookMsgRepository.findBookmessageByBookId(bookId);
-        book.setState(StaticData.BOOK_STATUS_WAIT_QU);
+        book.setState("1");
         bookRepository.saveAndFlush(book);
         Date now = new Date(System.currentTimeMillis());
-        Date etime = new Date(System.currentTimeMillis()+1000*60*60*24* StaticData.JIEYUEQI);
+        Date etime = new Date(System.currentTimeMillis()+(long)(1000)*60*60*24* StaticData.JIEYUEQI);
         Borrow borrow = new Borrow(userId,code,now,etime,bookmessage.getJiaofu(),book.getQuality(),"0");
         borrowRepository.save(borrow);
+    }
+
+    @Override
+    public Book findBookByCode(String code) {
+        return bookRepository.findBookByCode(code);
     }
 
     @Override

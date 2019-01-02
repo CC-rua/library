@@ -8,6 +8,7 @@ import cn.edu.hqu.library.controller.vo.BookVo;
 import cn.edu.hqu.library.entity.Book;
 import cn.edu.hqu.library.entity.Bookmessage;
 import cn.edu.hqu.library.entity.ReturnBean;
+import cn.edu.hqu.library.repository.zx.BookRepository;
 import cn.edu.hqu.library.service.BookService;
 import cn.edu.hqu.library.service.Impl.BookManagementService;
 import cn.edu.hqu.library.util.StaticData;
@@ -29,6 +30,9 @@ public class BookController extends BaseController {
 
     @Autowired
     BookManagementService bookManagementService;
+
+    @Autowired
+    BookRepository bookRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     public  String churukuguanli(Model model){
@@ -120,8 +124,12 @@ public class BookController extends BaseController {
     @RequestMapping("giveBackBook")
     public String giveBackBook(@ModelAttribute("name")String borrowUserId, String code)
     {
-        bookService.giveBack(borrowUserId,code,StaticData.BOOK_STATUS_ALREADY_BACK);
-        return "redirect:/wodejieyue";
+//        bookService.giveBack(borrowUserId,code,StaticData.BOOK_STATUS_ALREADY_BACK);
+        Book book = bookService.findBookByCode(code);
+        book.setState("0");
+        bookRepository.saveAndFlush(book);
+        return "redirect:/churukuguanli";
+
     }
 
     @RequestMapping("xiugaitushuchuru")
