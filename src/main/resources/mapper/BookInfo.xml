@@ -123,7 +123,7 @@
 
 
 	<select id="findBookInfoByCode" resultType="cn.edu.hqu.library.service.dto.BookInfo">
-		select * from book left join bookmessage b on book.BookID = b.BookID and code = #{code} limit 1
+		select * from book left join bookmessage b on book.BookID = b.BookID where code = #{code} 
 	</select>
 
 	<select id="findBookCodeByBookId" resultType="java.lang.String">
