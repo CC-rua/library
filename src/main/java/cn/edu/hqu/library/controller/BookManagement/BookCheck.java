@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class BookCheck {
     @Autowired
     BookService bookService;
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping
     public String ShowBookCheckPage(Model model,String code){
         BookInfo bookInfo=bookService.FindBookInfoByCode(code);
         model.addAttribute("BookInfo", bookInfo);
