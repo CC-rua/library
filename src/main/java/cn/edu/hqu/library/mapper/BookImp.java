@@ -28,7 +28,7 @@ public interface BookImp {
 
     List<BookMsgVo> findBookMsgInfo(@Param("bookId") String bookId,@Param("bookName") String bookName,@Param("jiaofu") String jiaofu,@Param("type") String type,@Param("publisher") String publisher,@Param("author") String author);
 
-    BookInfo findBookInfoByCode(String code);
+    BookInfo findBookInfoByCode(@Param("code") String code);
 
     String findBookCodeByBookId(String bookId);
 }

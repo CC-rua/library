@@ -16,6 +16,7 @@ public class BookCheck {
     @RequestMapping
     public String ShowBookCheckPage(Model model,String code){
         BookInfo bookInfo=bookService.FindBookInfoByCode(code);
+
         model.addAttribute("BookInfo", bookInfo);
         return "chakantushuchuru";
     }
