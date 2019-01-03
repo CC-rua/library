@@ -7,7 +7,9 @@ import cn.edu.hqu.library.controller.vo.BookMsgVo;
 import cn.edu.hqu.library.controller.vo.BookVo;
 import cn.edu.hqu.library.entity.Book;
 import cn.edu.hqu.library.entity.Bookmessage;
+import cn.edu.hqu.library.entity.Borrow;
 import cn.edu.hqu.library.entity.ReturnBean;
+import cn.edu.hqu.library.repository.BorrowRepository;
 import cn.edu.hqu.library.repository.zx.BookRepository;
 import cn.edu.hqu.library.service.BookService;
 import cn.edu.hqu.library.service.Impl.BookManagementService;
@@ -34,8 +36,11 @@ public class BookController extends BaseController {
     @Autowired
     BookRepository bookRepository;
 
+    @Autowired
+    BorrowRepository borrowRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    public  String churukuguanli(Model model){
+    public  String churukuguanli(@ModelAttribute("name")String userId,Model model){
         List<BookVo> list = bookService.findBookInfo("","","","","","","","");
         model.addAttribute("list2",list );
         return "churukuguanli";
@@ -94,6 +99,7 @@ public class BookController extends BaseController {
         return getSuccess("success");
     }
 
+    @ResponseBody
     @RequestMapping("borrowOutBook")
     public ReturnBean borrowOutBook(@ModelAttribute("name")String borrowUserId,String bookId)
     {
@@ -114,6 +120,7 @@ public class BookController extends BaseController {
         return getSuccess("success");
     }
 
+    @ResponseBody
     @RequestMapping("borrowOutBookByCodeAndBookId")
     public ReturnBean borrowOutBookByCodeAndBookId(@ModelAttribute("name")String borrowUserId,String bookId,String code)
     {
@@ -127,6 +134,9 @@ public class BookController extends BaseController {
 //        bookService.giveBack(borrowUserId,code,StaticData.BOOK_STATUS_ALREADY_BACK);
         Book book = bookService.findBookByCode(code);
         book.setState("0");
+        Borrow borrow = borrowRepository.findByUserIdAndCode(borrowUserId,code);
+        borrow.setReturnStatus("1");
+        borrowRepository.save(borrow);
         bookRepository.saveAndFlush(book);
         return "redirect:/churukuguanli";
 

@@ -5,16 +5,14 @@ import cn.edu.hqu.library.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
 @Controller
 @RequestMapping("gonggaoguanli")
+@SessionAttributes(value = {"name","roleId"})
 public class noticeManagerController {
 
     private final NoticeService noticeService;
@@ -24,7 +22,7 @@ public class noticeManagerController {
         this.noticeService = noticeService;
     }
     @RequestMapping(method = RequestMethod.GET)
-    public String  ShowNoticeManagerPage(Model model){
+    public String  ShowNoticeManagerPage(@ModelAttribute("name")String userId, Model model){
         model.addAttribute("Allnotice",noticeService.FindAllNotice());
         return "gonggaoguanli";
     }

@@ -6,14 +6,12 @@ import cn.edu.hqu.library.service.AdviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
+@SessionAttributes(value = {"name","roleId"})
 @RequestMapping("fankuiguanli")
 public class adviceManagerController {
     private final AdviceService adviceService;
@@ -24,7 +22,7 @@ public class adviceManagerController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String  ShowadviceManagerPage(Model model){
+    public String  ShowadviceManagerPage(@ModelAttribute("name")String userId,Model model){
         model.addAttribute("list2",adviceService.FindAllAdvice());
         return "fankuiguanli";
     }

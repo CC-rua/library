@@ -13,6 +13,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/yonghuguanli")
+@SessionAttributes(value = {"name","roleId"})
 public class userManagerController extends BaseController {
     private final UserService userService;
 
@@ -23,7 +24,7 @@ public class userManagerController extends BaseController {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public String ShowUserManagerPage(Model model){
+    public String ShowUserManagerPage(@ModelAttribute("name")String name,Model model){
         List<User> AllUsers=userService.findAll();
         model.addAttribute("AllUsers",AllUsers);
         return "yonghuguanli";

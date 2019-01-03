@@ -40,7 +40,10 @@ public class BorrowController {
         List<ReturnForm> result2 = new ArrayList<>();
         for(BookInfo borrow : borrows)
         {
-            result.add(new BorrorForm(borrow));
+            if(borrow.getReturnStatus()!=null && borrow.getReturnStatus().equals("0"))
+            {
+                result.add(new BorrorForm(borrow));
+            }
         }
         for(BookInfo borrow : returnBorrows)
         {

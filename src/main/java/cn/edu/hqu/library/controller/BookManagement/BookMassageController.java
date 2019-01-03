@@ -34,7 +34,7 @@ public class BookMassageController extends BaseController {
     BorrowService borrowService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String ShowBookMsgPage(Model model){
+    public String ShowBookMsgPage(@ModelAttribute("name")String userId,Model model){
         List<BookMsgVo> list = bookService.findBookMsgInfo( "", "", "", "", "", "");
         model.addAttribute("list3", list);
         return "tushuxinxiguanli";

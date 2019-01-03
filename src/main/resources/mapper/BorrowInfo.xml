@@ -9,6 +9,7 @@
 			borrow.Btime AS "Btime",
 			borrow.Etime AS "Etime",
 			bookmessage.jiaofu AS "JiaoFu",
+			borrow.returnStatus as ReturnStatus,
 			book.state AS "status"
 		FROM
 			book
