@@ -197,7 +197,7 @@
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">性质</label>
 										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<select th:value="*{jiaofu}"class="form-control m-b" type="text">
+											<select th:field="*{jiaofu}"class="form-control m-b" type="text">
 												<option value="">请选择</option>
 												<option value="是"> 教辅类</option>
 												<option value="否">其他类</option>
@@ -208,7 +208,7 @@
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">类别</label>
 										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<input th:value="*{kind}" class="form-control m-b" type="text">
+											<input th:field="*{kind}" class="form-control m-b" type="text">
 										</div>
 									</div>
 
@@ -244,7 +244,7 @@
 									<div class="form-group col-xs-12">
 										<label class="control-label col-sm-3 h5">图书简介</label>
 										<div class="col-sm-7" style="padding-top:0.5em ;">
-											<input th:text="*{introduction}" class="form-control" type="text"></input>
+											<input th:field="*{introduction}" class="form-control" type="text"></input>
 										</div>
 									</div>
 
