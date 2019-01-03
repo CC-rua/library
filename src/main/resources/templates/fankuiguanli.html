@@ -227,19 +227,21 @@
                                     <th>内容</th>
                                     <th>状态</th> 
                                     <th></th>
-                                    <th></th>  </tr></thead> 
+                                </tr></thead> 
                                 <tbody style="font-size: 1em;font-family: '华文中宋';">   
-                                <tr th:each="advice,infoStat:${list2}">
-                                    <td class="bs-checkbos">
-                                        <input type="checkbox" name="checkbox" th:value="${advice.adviceId}"></td>
-                                    <td th:text="${infoStat.count}">1</td> 
-                                    <td th:text="${advice.adviceId}">1</td>     
-                                    <td th:text="${advice.userId}">099528</td>     
-                                    <td th:text="${advice.name}">安琪拉</td>     
-                                    <td th:text="${advice.message}"  style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">我要蓝Buff</td>
-                                    <td th:text="${advice.state}">已处理</td>
-                                    <td><a  class="btn btn-primary btn-rounded  btn-bordered btn-sm" th:href="@{'/chakanfankui?adviceId='+${advice.adviceId}}">查看</a></td>
-                                       </tr> </tbody></table>
+                                    <tr th:each="advice,infoStat:${list2}">
+                                        <td class="bs-checkbos">
+                                            <input type="checkbox" name="checkbox" th:value="${advice.adviceId}"></td>
+                                        <td th:text="${infoStat.count}">1</td> 
+                                        <td th:text="${advice.adviceId}">1</td>     
+                                        <td th:text="${advice.userId}">099528</td>     
+                                        <td th:text="${advice.name}">安琪拉</td>     
+                                        <td th:text="${advice.message}"  style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">我要蓝Buff</td>
+                                        <td th:text="${advice.state}">已处理</td>
+                                        <td><a  class="btn btn-primary btn-rounded  btn-bordered btn-sm" th:href="@{'/chakanfankui?adviceId='+${advice.adviceId}}">查看</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <!-- /.box -->

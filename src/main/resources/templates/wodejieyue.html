@@ -182,7 +182,7 @@
 								<th>#</th>    
 								<th>提取码</th>     
 								<th>图书名称</th>     
-								<th>性质</th>
+								<th>教辅</th>
 								<th>预计还书日期</th>
 								<th>状态</th>   </tr></thead> 
 							<tbody style="font-size: 1em;font-family: '华文中宋';">   
@@ -220,7 +220,7 @@
 								<th>#</th>     
 								<th>提取码</th>     
 								<th>图书名称</th>     
-								<th>性质</th>
+								<th>教辅</th>
 								<th>图书状态</th>
 								<th>归还情况</th> 
 								<th>信用值</th>
@@ -235,7 +235,7 @@
 								<td name="JiaoFu" th:text="${borrow.jiaofu}">教辅</td>
 								<td name="status" th:text="${borrow.quality}">正常</td>
 								<td name="Returnstatus" th:text="${borrow.returnStatus}">逾期归还</td>
-								<td>+10</td></tr>
+								<td>-10</td></tr>
 							 </tbody></table>
 					</div>
 					<!-- /.box --></div>

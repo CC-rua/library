@@ -124,11 +124,6 @@
 						<span>浏览历史</span></a>
 				</li>
 				<li>
-					<a href="zhanneixiaoxi">
-						<i class="fa fa-th"></i>
-						<span>站内消息</span></a>
-				</li>
-				<li>
 					<a href="yijianfankui">
 						<i class="fa fa-th"></i>
 						<span>意见反馈</span></a>
@@ -177,7 +172,7 @@
 							<div class="form-group col-xs-12">
 								<label class="control-label col-sm-3 h5">编号</label>
 								<div class="col-sm-7" style="padding-top:0.5em ;">
-									<input name="noticeId" th:field="*{noticeId}" class="form-control"  type="text" /></div>
+									<input name="noticeId" th:field="*{noticeId}" class="form-control" readonly="true" type="text" /></div>
 							</div>
 							<div class="form-group col-xs-12">
 								<label class="control-label col-sm-3 h5">时间</label>
@@ -187,12 +182,12 @@
 							<div class="form-group col-xs-12">
 								<label class="control-label col-sm-3 h5">内容</label>
 								<div class="col-sm-7" style="padding-top:0.5em ;">
-									<textarea name="msg" th:field="*{msg}" class="form-control" rows="3"  type="text"></textarea>
+									<textarea name="msg" th:field="*{msg}" class="form-control" rows="8"  type="text"></textarea>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-6 col-md-4 box-footer" style="margin-left:45%;">
 								<input id="submit" type="submit" class="btn btn-danger btn-rounded  btn-bordered btn-sm"></input>
-								<a id="reset" class="btn btn-primary btn-rounded  btn-bordered btn-sm" href="gonggaoguanli.html">返回</a>
+								<a id="reset" class="btn btn-primary btn-rounded  btn-bordered btn-sm" href="/gonggaoguanli">返回</a>
 							</div>
 						</form>
 					</div>

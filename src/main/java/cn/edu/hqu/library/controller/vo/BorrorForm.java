@@ -52,11 +52,12 @@ public class BorrorForm {
         return "";
     }
     private String translateJiaoFu(String jiaofu){
-        if(jiaofu.equals("是")){
-            return "教辅类";
-        }else {
-            return "非教辅";
-        }
+//        if(jiaofu.equals("是")){
+//            return "教辅类";
+//        }else {
+//            return "非教辅";
+//        }
+        return jiaofu;
     }
     public BorrorForm(BookInfo borrow) {
         this.name=borrow.getName();
